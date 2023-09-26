@@ -25,12 +25,23 @@ public class RegistroController {
         if (evt.equals(botonRegistro))
         {
             if (!nombre.getText().isEmpty() && !correo.getText().isEmpty() && !cedula.getText().isEmpty() && !usuario.getText().isEmpty() && !contraseña.getText().isEmpty() && !ciudad.getText().isEmpty() && !celular.getText().isEmpty() && !direccion.getText().isEmpty()) {
-                Metodo.crearCliente(cedula.getText(),nombre.getText(), celular.getText(), correo.getText(), ciudad.getText(), direccion.getText(), usuario.getText(),contraseña.getText());
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Datos registrados con exito");
-                alert.setContentText("La validacion de credenciales es correcta");
-                alert.show();
-                cedula.setText("");nombre.setText("");celular.setText("");correo.setText("");ciudad.setText("");direccion.setText("");usuario.setText("");contraseña.setText("");
+                if(Metodo.verificarCredenciales(usuario.getText(),contraseña.getText()))
+                {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Error en las Credenciales");
+                    alert.setContentText("Las credenciales proporcionadas se encuentran en uso");
+                    alert.show();
+                    usuario.setText("");contraseña.setText("");
+                }
+                else
+                {
+                    Metodo.crearCliente(cedula.getText(),nombre.getText(), celular.getText(), correo.getText(), ciudad.getText(), direccion.getText(), usuario.getText(),contraseña.getText());
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Datos registrados con exito");
+                    alert.setContentText("La validacion de credenciales es correcta");
+                    alert.show();
+                    cedula.setText("");nombre.setText("");celular.setText("");correo.setText("");ciudad.setText("");direccion.setText("");usuario.setText("");contraseña.setText("");
+                }
             }
             else
             {

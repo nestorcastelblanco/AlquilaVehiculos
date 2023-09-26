@@ -45,6 +45,17 @@ public class Metodo {
         }
         return state;
     }
+    public static boolean verificarCredenciales (String usuario, String contraseña)
+    {
+        boolean state = false;
+        for (Cliente c : clientes)
+        {
+            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContraseña()) || usuario.equals("admin") && contraseña.equals("123")) {
+                state = true;
+            }
+        }
+        return state;
+    }
     public static void crearCliente ( String  cedula,String  nombre,String  teléfono, String email, String ciudad,String direccionResidencia, String usuario, String contraseña)
     {
         Cliente cliente = new Cliente();
