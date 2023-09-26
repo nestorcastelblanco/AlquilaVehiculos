@@ -15,7 +15,7 @@ public class Ingreso extends Application {
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        stage.setTitle("Ingreso Alquiler");
+        stage.setTitle("Ingreso ALQUILER");
         stage.show();
     }
 
