@@ -56,7 +56,7 @@ public class RegistroController {
     public void regresar (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
-            Metodo.loadStage("/pngPrincipal.fxml", e);
+            Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
         }
     }
 

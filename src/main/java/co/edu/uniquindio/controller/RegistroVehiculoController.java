@@ -25,7 +25,7 @@ public class RegistroVehiculoController {
     public void regresar (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
-            Metodo.loadStage("/pngPrincipal.fxml", e);
+            Metodo.loadStage("/paginaRegistroVehiculo.fxml.fxml", e);
         }
     }
     public void listarSillas (Event event)
