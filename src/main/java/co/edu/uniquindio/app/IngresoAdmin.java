@@ -13,10 +13,10 @@ public class IngresoAdmin extends Application {
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        stage.setTitle("INGRESO Administrador");
+        stage.setTitle("INGRESO ADMINISTRADOR");
         stage.show();
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) {    
 
         launch( IngresoAdmin.class, args );
     }
