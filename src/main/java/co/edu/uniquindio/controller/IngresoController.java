@@ -62,10 +62,4 @@ public class IngresoController {
 
         }
     }
-    public void registrarse (ActionEvent e) {
-        Object evt = e.getSource();
-        if (evt.equals(botonRegistro)) {
-           Metodo.loadStage("/paginaRegistro.fxml", e);
-        }
-    }
 }

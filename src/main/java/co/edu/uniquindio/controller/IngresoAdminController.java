@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import co.edu.uniquindio.model.Metodo;
 public class IngresoAdminController {
     @FXML
-    private Button botonRegistroVehiculo, botonRegreso;
+    private Button botonRegistroVehiculo, botonRegreso, botonRegistro;
     public void registrarVehiculo (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegistroVehiculo)) {
@@ -20,6 +20,12 @@ public class IngresoAdminController {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
             Metodo.loadStage("/pngPrincipal.fxml", e);
+        }
+    }
+    public void registrarse (ActionEvent e) {
+        Object evt = e.getSource();
+        if (evt.equals(botonRegistro)) {
+            Metodo.loadStage("/paginaRegistro.fxml", e);
         }
     }
 }
