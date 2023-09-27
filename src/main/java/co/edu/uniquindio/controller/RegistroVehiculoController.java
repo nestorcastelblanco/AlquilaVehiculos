@@ -36,7 +36,7 @@ public class RegistroVehiculoController {
         Object evt =  e.getSource();
         if (evt.equals(botonRegistro))
         {
-            if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedItem().toString() != "-1" && sillas.getSelectionModel().getSelectedItem().toString() != "-1") {
+            if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedIndex() != -1 && sillas.getSelectionModel().getSelectedIndex() != -1) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Datos registrados con exito");
                 alert.setContentText("La validacion de credenciales es correcta");

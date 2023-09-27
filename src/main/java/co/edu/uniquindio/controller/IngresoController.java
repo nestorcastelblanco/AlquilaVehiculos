@@ -31,7 +31,6 @@ public class IngresoController {
 
     @FXML
     public void ingresar (ActionEvent e){
-
         Object evt =  e.getSource();
         if (evt.equals(bttIngreso)) {
             if (usuario.getText().equals("123") && contraseña.getText().equals("123")) {

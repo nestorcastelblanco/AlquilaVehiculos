@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vehiculos {
-    private String placa, nombre, marca, modelo, foto, kilometraje, precioAlquilerDia,numeroSillas;
-    private boolean automático;
+    private String placa, nombre, marca, modelo, foto, kilometraje, precioAlquilerDia,numeroSillas, automatico;
+
     //private  __________ fechaInicio, fechaFin;
 
     public String toString()
@@ -17,4 +17,5 @@ public class Vehiculos {
         String s = this.nombre + " ---- " + this.marca;
         return s;
     }
+
 }

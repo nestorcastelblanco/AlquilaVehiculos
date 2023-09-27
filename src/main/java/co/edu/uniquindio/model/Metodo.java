@@ -32,13 +32,19 @@ public class Metodo {
         cliente.setUsuario("123");                           cliente1.setUsuario("1234");                        cliente2.setUsuario("12345");
         cliente.setContrasena("123");                        cliente1.setContrasena("1234");                     cliente2.setContrasena("12345");
         clientes.add(cliente);                               clientes.add(cliente1);                             clientes.add(cliente2);
-        Vehiculos vehiculo = new Vehiculos();
-        vehiculo.setMarca("Chevrolet");
-        vehiculo.setNombre("Onix");
-        vehiculos.add(vehiculo);
+
+        Vehiculos vehiculo = new Vehiculos();                Vehiculos vehiculo1 = new Vehiculos();               Vehiculos vehiculo2 = new Vehiculos();
+        vehiculo.setPlaca("FQK884");                         vehiculo1.setPlaca("KMP282");                        vehiculo2.setPlaca("FQK884");
+        vehiculo.setMarca("Chevrolet");                      vehiculo1.setMarca("Renault");                       vehiculo2.setMarca("Chevrolet");
+        vehiculo.setNombre("Tracker");                       vehiculo1.setNombre("Sandero");                      vehiculo2.setNombre("Tracker");
+        vehiculo.setModelo("2019");                          vehiculo1.setModelo("2019");                         vehiculo2.setModelo("2019");
+        vehiculo.setFoto("");                                vehiculo1.setFoto("");                               vehiculo2.setFoto("");
+        vehiculo.setKilometraje("45000");                    vehiculo1.setKilometraje("45000");                   vehiculo2.setKilometraje("45000");
+        vehiculo.setPrecioAlquilerDia("120000");             vehiculo1.setPrecioAlquilerDia("120000");            vehiculo2.setPrecioAlquilerDia("120000");
+        vehiculo.setNumeroSillas("5");                       vehiculo1.setNumeroSillas("5");                      vehiculo2.setNumeroSillas("5");
+        vehiculo.setAutomatico("Si");                        vehiculo1.setAutomatico("Si");                       vehiculo2.setAutomatico("Si");
+        vehiculos.add(vehiculo);                             vehiculos.add(vehiculo1);                            vehiculos.add(vehiculo2);
     }
-
-
     public static boolean verificarDatos (String usuario, String contraseña)
     {
         boolean state = false;
@@ -104,6 +110,7 @@ public class Metodo {
     }
     public static ArrayList<Vehiculos> enviarVehiculos()
     {
+        System.out.print(vehiculos);
         return vehiculos;
     }
 }
