@@ -10,6 +10,6 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cliente {
-    private String  cedula, nombre, telefono, email, ciudad,direccionResidencia, usuario, contraseña;
+    private String  cedula, nombre, telefono, email, ciudad,direccionResidencia, usuario, contrasena;
     private ArrayList<Vehiculos> vehiculoAdquirido;
 }
