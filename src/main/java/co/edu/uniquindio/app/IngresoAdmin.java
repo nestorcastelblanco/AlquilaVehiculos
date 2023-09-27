@@ -13,7 +13,7 @@ public class IngresoAdmin extends Application {
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        stage.setTitle("Ingreso Administrador");
+        stage.setTitle("INGRESO Administrador");
         stage.show();
     }
     public static void main(String[] args) {
