@@ -44,7 +44,6 @@ public class IngresoController {
                         alert.setContentText("La validacion de credenciales es correcta");
                         alert.show();
                         Metodo.loadStage("/paginaVehiculo.fxml", e);
-                        SeleccionVehiculoController.cargarVehiculos();
                     } else {
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("Datos ingresados no validos");
