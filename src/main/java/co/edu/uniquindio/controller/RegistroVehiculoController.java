@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
+
 public class RegistroVehiculoController {
     @FXML
     private Button botonRegreso,botonRegistro;
@@ -36,18 +38,15 @@ public class RegistroVehiculoController {
         Object evt =  e.getSource();
         if (evt.equals(botonRegistro))
         {
-            if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedIndex() != -1 && sillas.getSelectionModel().getSelectedIndex() != -1) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Datos registrados con exito");
-                alert.setContentText("La validacion de credenciales es correcta");
-                alert.show();
+            if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedIndex() != -1 && sillas.getSelectionModel().getSelectedIndex() != -1 ) {
+                Metodo.crearVehiculo(placa.getText(),marca.getText(),nombre.getText(),modelo.getText(),km.getText(),precio.getText(),sillas.getSelectionModel().getSelectedItem().toString(),automatico.getSelectionModel().getSelectedItem().toString(),foto.getText());
+                placa.setText("");marca.setText("");nombre.setText("");modelo.setText("");km.setText("");precio.setText("");foto.setText("");
+                JOptionPane.showMessageDialog(null,"Datos Registrados Correctamente","Registro Realizado",1);
+                Metodo.mostrarVehiculos();
             }
             else
             {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Datos necesarios no llenados");
-                alert.setContentText("La validacion de credenciales es incorrecta");
-                alert.show();
+                JOptionPane.showMessageDialog(null,"No se llenaron los campos correspondientes","Registro Fallido",2);
             }
         }
     }

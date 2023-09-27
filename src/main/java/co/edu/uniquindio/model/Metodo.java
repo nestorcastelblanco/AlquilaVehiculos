@@ -20,6 +20,7 @@ public class Metodo {
     public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     public static ArrayList<Vehiculos> vehiculos = new ArrayList<Vehiculos>();
     public static ArrayList<Cliente> registros = new ArrayList<Cliente>();
+    public static Cliente clienteSesion = new Cliente();
     public static void cargarDatos ()
     {
         Cliente cliente = new Cliente();                     Cliente cliente1 = new Cliente();                   Cliente cliente2 = new Cliente();
@@ -35,15 +36,19 @@ public class Metodo {
 
         Vehiculos vehiculo = new Vehiculos();                Vehiculos vehiculo1 = new Vehiculos();               Vehiculos vehiculo2 = new Vehiculos();
         vehiculo.setPlaca("FQK884");                         vehiculo1.setPlaca("KMP282");                        vehiculo2.setPlaca("FQK884");
-        vehiculo.setMarca("Chevrolet");                      vehiculo1.setMarca("Renault");                       vehiculo2.setMarca("Chevrolet");
-        vehiculo.setNombre("Tracker");                       vehiculo1.setNombre("Sandero");                      vehiculo2.setNombre("Tracker");
-        vehiculo.setModelo("2019");                          vehiculo1.setModelo("2019");                         vehiculo2.setModelo("2019");
-        vehiculo.setFoto("");                                vehiculo1.setFoto("");                               vehiculo2.setFoto("");
+        vehiculo.setMarca("CHEVROLET");                      vehiculo1.setMarca("RENAULT");                       vehiculo2.setMarca("CHEVROLET");
+        vehiculo.setNombre("TRACKER");                       vehiculo1.setNombre("SANDERO");                      vehiculo2.setNombre("SPARK GT");
+        vehiculo.setModelo("2019");                          vehiculo1.setModelo("2019");                         vehiculo2.setModelo("2020");
         vehiculo.setKilometraje("45000");                    vehiculo1.setKilometraje("45000");                   vehiculo2.setKilometraje("45000");
         vehiculo.setPrecioAlquilerDia("120000");             vehiculo1.setPrecioAlquilerDia("120000");            vehiculo2.setPrecioAlquilerDia("120000");
         vehiculo.setNumeroSillas("5");                       vehiculo1.setNumeroSillas("5");                      vehiculo2.setNumeroSillas("5");
-        vehiculo.setAutomatico("Si");                        vehiculo1.setAutomatico("Si");                       vehiculo2.setAutomatico("Si");
+        vehiculo.setAutomatico("SI");                        vehiculo1.setAutomatico("SI");                       vehiculo2.setAutomatico("SI");
+        vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
         vehiculos.add(vehiculo);                             vehiculos.add(vehiculo1);                            vehiculos.add(vehiculo2);
+    }
+    public static void recibirClienteSesion(Cliente cliente)
+    {
+        clienteSesion = cliente;
     }
     public static boolean verificarDatos (String usuario, String contraseña)
     {
@@ -55,6 +60,17 @@ public class Metodo {
             }
         }
         return state;
+    }
+    public static Cliente retornarCliente (String usuario, String contraseña)
+    {
+        Cliente c1 = new Cliente();
+        for (Cliente c : clientes)
+        {
+            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContrasena())) {
+                c1 = c;
+            }
+        }
+        return c1;
     }
     public static boolean verificarCredenciales (String usuario, String contraseña)
     {
@@ -79,6 +95,24 @@ public class Metodo {
         cliente.setUsuario(usuario);
         cliente.setContrasena(contraseña);
         clientes.add(cliente);
+    }
+    public static void crearVehiculo ( String  placa,String marca,String nombre, String modelo, String km,String alquiler, String sillas, String automatico, String foto)
+    {
+        Vehiculos vehiculo = new Vehiculos();
+        vehiculo.setPlaca(placa.toUpperCase());
+        vehiculo.setMarca(marca.toUpperCase());
+        vehiculo.setNombre(nombre.toUpperCase());
+        vehiculo.setModelo(modelo.toUpperCase());
+        vehiculo.setKilometraje(km.toUpperCase());
+        vehiculo.setPrecioAlquilerDia(alquiler.toUpperCase());
+        vehiculo.setNumeroSillas(sillas.toUpperCase());
+        vehiculo.setAutomatico(automatico.toUpperCase());
+        vehiculo.setFoto(foto);
+        vehiculos.add(vehiculo);
+    }
+    public static void mostrarVehiculos()
+    {
+        System.out.println(vehiculos);
     }
     public static void llenarComboSillas (ComboBox<Integer> sillas, ObservableList<Integer> numeros)
     {
@@ -112,5 +146,17 @@ public class Metodo {
     {
         System.out.print(vehiculos);
         return vehiculos;
+    }
+    public static Cliente enviarCliente()
+    {
+        return clienteSesion;
+    }
+    public static void cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem) {
+        clienteSistema.setVehiculoAdquirido(selectedItem);
+        registros.add(clienteSistema);
+    }
+    public static void imprimirRegistros()
+    {
+        System.out.println(registros);
     }
 }

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.controller;
 
+import co.edu.uniquindio.model.Cliente;
 import co.edu.uniquindio.model.Metodo;
 import co.edu.uniquindio.model.Vehiculos;
 import javafx.collections.FXCollections;
@@ -8,18 +9,26 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SeleccionVehiculoController {
     @FXML
-    private Label placa, nombre, marca, modelo, foto, kilometraje, alquilerDia,sillas,automatico;
+    private Label txtImagen, placa, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
     @FXML
-    private Button botonRegreso,botonCargar;
+    private Button botonRegreso,botonCargar, botonAlquilar;
+    @FXML
+    private ImageView imagenVehiculo;
     @FXML
     private ComboBox<Vehiculos> vehiculos;
+    Cliente clienteSistema;
     ObservableList<Vehiculos> listaVehiculos;
     ArrayList<Vehiculos> arrayVehiculos = new ArrayList<Vehiculos>();
+    private int indiceCombo;
     public void regresar (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
@@ -29,13 +38,16 @@ public class SeleccionVehiculoController {
     public void recibirVehiculos()
     {
         arrayVehiculos = Metodo.enviarVehiculos();
-
     }
     public void listarVehiculos(Event event)
     {
+        recibirClienteSesion();
         recibirVehiculos();
         llenarListaVehiculos();
         Metodo.llenarVehiculos(vehiculos,listaVehiculos);
+    }
+    private void recibirClienteSesion() {
+        clienteSistema = Metodo.enviarCliente();
     }
     public void llenarListaVehiculos() {
         for (int i = 0; i < arrayVehiculos.size(); i++) {
@@ -50,6 +62,7 @@ public class SeleccionVehiculoController {
         {
             if (vehiculos.getSelectionModel().getSelectedIndex() != -1)
             {
+                indiceCombo = vehiculos.getSelectionModel().getSelectedIndex();
                 Vehiculos vehiculoSeleccionado = vehiculos.getSelectionModel().getSelectedItem();
                 System.out.print(vehiculoSeleccionado.toString());
                 nombre.setText(vehiculoSeleccionado.getNombre());
@@ -60,6 +73,9 @@ public class SeleccionVehiculoController {
                 alquilerDia.setText(vehiculoSeleccionado.getPrecioAlquilerDia());
                 sillas.setText(vehiculoSeleccionado.getNumeroSillas());
                 automatico.setText(vehiculoSeleccionado.getAutomatico());
+                txtImagen.setText(vehiculoSeleccionado.toString());
+                Image imagen = new Image(vehiculoSeleccionado.getFoto());
+                imagenVehiculo.setImage(imagen);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Datos necesarios no llenados");
@@ -68,4 +84,22 @@ public class SeleccionVehiculoController {
             }
         }
     }
+    public void alquilar(ActionEvent actionEvent)
+    {
+        Object evt = actionEvent.getSource();
+        if (evt.equals(botonAlquilar))
+        {
+            if (indiceCombo != -1)
+            {
+                Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem());
+                Metodo.imprimirRegistros();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Datos necesarios no llenados");
+                alert.setContentText("No ha seleccionado un item valido");
+                alert.show();
+            }
+        }
+    }
+
 }

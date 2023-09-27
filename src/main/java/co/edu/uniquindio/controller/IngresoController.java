@@ -42,6 +42,7 @@ public class IngresoController {
                         alert.setTitle("Datos ingresados con exito");
                         alert.setContentText("La validacion de credenciales es correcta");
                         alert.show();
+                        Metodo.recibirClienteSesion(Metodo.retornarCliente(usuario.getText(),contraseña.getText()));
                         Metodo.loadStage("/paginaVehiculo.fxml", e);
                     } else {
                         Alert alert = new Alert(Alert.AlertType.WARNING);

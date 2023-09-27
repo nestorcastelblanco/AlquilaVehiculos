@@ -11,5 +11,12 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class Cliente {
     private String  cedula, nombre, telefono, email, ciudad,direccionResidencia, usuario, contrasena;
-    private ArrayList<Vehiculos> vehiculoAdquirido;
+    private ArrayList<Vehiculos> vehiculoAdquirido = new ArrayList<Vehiculos>();
+    public ArrayList<Vehiculos> getVehiculoAdquirido() {
+        return vehiculoAdquirido;
+    }
+
+    public void setVehiculoAdquirido(Vehiculos vehiculoAdquirido) {
+        this.vehiculoAdquirido.add(vehiculoAdquirido);
+    }
 }
