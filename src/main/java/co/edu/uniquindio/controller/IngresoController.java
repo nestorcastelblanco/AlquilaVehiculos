@@ -33,7 +33,7 @@ public class IngresoController {
     public void ingresar (ActionEvent e){
         Object evt =  e.getSource();
         if (evt.equals(bttIngreso)) {
-            if (usuario.getText().equals("123") && contraseña.getText().equals("123")) {
+            if (usuario.getText().equals("admin") && contraseña.getText().equals("admin")) {
                 Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
             } else {
                 if (!usuario.getText().isEmpty() && !contraseña.getText().isEmpty()) {
