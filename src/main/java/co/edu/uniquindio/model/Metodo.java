@@ -30,7 +30,7 @@ public class Metodo {
         cliente.setTelefono("3054194624");                   cliente1.setTelefono("30234533");                   cliente2.setTelefono("305324124");
         cliente.setDireccionResidencia("Calle 9N");          cliente1.setDireccionResidencia("Calle 10N");       cliente2.setDireccionResidencia("Calle 9N");
         cliente.setUsuario("123");                           cliente1.setUsuario("1234");                        cliente2.setUsuario("12345");
-        cliente.setContraseña("123");                        cliente1.setContraseña("1234");                     cliente2.setContraseña("12345");
+        cliente.setContrasena("123");                        cliente1.setContrasena("1234");                     cliente2.setContrasena("12345");
         clientes.add(cliente);                               clientes.add(cliente1);                             clientes.add(cliente2);
     }
 
@@ -39,7 +39,7 @@ public class Metodo {
         boolean state = false;
         for (Cliente c : clientes)
         {
-            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContraseña())) {
+            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContrasena())) {
                 state = true;
             }
         }
@@ -50,7 +50,7 @@ public class Metodo {
         boolean state = false;
         for (Cliente c : clientes)
         {
-            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContraseña()) || usuario.equals("admin") && contraseña.equals("123")) {
+            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContrasena()) || usuario.equals("admin") && contraseña.equals("123")) {
                 state = true;
             }
         }
@@ -66,7 +66,7 @@ public class Metodo {
         cliente.setTelefono(teléfono);
         cliente.setDireccionResidencia(direccionResidencia);
         cliente.setUsuario(usuario);
-        cliente.setContraseña(contraseña);
+        cliente.setContrasena(contraseña);
         clientes.add(cliente);
     }
     public static void llenarComboSillas (ComboBox<Integer> sillas, ObservableList<Integer> numeros)

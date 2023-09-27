@@ -4,95 +4,90 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="396.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.RegistroVehiculoController">
-   <ComboBox fx:id="automatico" layoutX="182.0" layoutY="302.0" onShowing="#listarSillas" prefHeight="27.0" prefWidth="124.0" visibleRowCount="2" />
-      <Label layoutX="30.0" layoutY="276.0" prefHeight="25.0" prefWidth="81.0" text="Sillas">
+   <ComboBox fx:id="automatico" layoutX="208.0" layoutY="296.0" onShowing="#listarSillas" prefHeight="27.0" prefWidth="124.0" visibleRowCount="2" />
+      <Label layoutX="56.0" layoutY="270.0" prefHeight="25.0" prefWidth="81.0" text="Sillas">
          <font>
             <Font name="Franklin Gothic Book" size="15.0" />
          </font></Label>
-      <Button fx:id="botonRegreso" layoutX="30.0" layoutY="348.0" mnemonicParsing="false" onAction="#regresar" prefHeight="38.0" prefWidth="98.0" text="Regresar" textOverrun="LEADING_ELLIPSIS" />
-      <Label layoutX="182.0" layoutY="276.0" prefHeight="25.0" prefWidth="110.0" text="Automatico">
+      <Button fx:id="botonRegreso" layoutX="69.0" layoutY="342.0" mnemonicParsing="false" onAction="#regresar" prefHeight="38.0" prefWidth="98.0" text="Regresar" textOverrun="LEADING_ELLIPSIS" />
+      <Label layoutX="208.0" layoutY="270.0" prefHeight="25.0" prefWidth="110.0" text="Automatico">
          <font>
             <Font name="Franklin Gothic Book" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="100.0" layoutY="23.0" prefHeight="83.0" prefWidth="136.0" text="Registro">
+      <Label contentDisplay="CENTER" layoutX="126.0" layoutY="17.0" prefHeight="83.0" prefWidth="136.0" text="Registro">
          <font>
             <Font name="Franklin Gothic Book" size="34.0" />
          </font>
       </Label>
-      <ImageView fitHeight="298.0" fitWidth="267.0" layoutX="362.0" layoutY="80.0" pickOnBounds="true">
-         <image>
-            <Image url="@imagenes/concepto-cartel-alquiler-coches-chica-vector-estilo-dibujos-animados-coche-rojo-negocio-alquiler-autos-ilustracion-publicidad-transporte-automoviles_53562-4491.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="botonRegistro" layoutX="195.0" layoutY="348.0" mnemonicParsing="false" onAction="#verificarAccion" prefHeight="38.0" prefWidth="98.0" text="Registrar" textOverrun="LEADING_ELLIPSIS" />
-   <TextField fx:id="marca" layoutX="30.0" layoutY="124.0" prefHeight="27.0" prefWidth="124.0" promptText="Marca">
+      <ImageView fx:id="imagen" fitHeight="298.0" fitWidth="267.0" layoutX="362.0" layoutY="80.0" pickOnBounds="true" />
+      <Button fx:id="botonRegistro" layoutX="221.0" layoutY="342.0" mnemonicParsing="false" onAction="#verificarAccion" prefHeight="38.0" prefWidth="98.0" text="Registrar" textOverrun="LEADING_ELLIPSIS" />
+   <TextField fx:id="marca" layoutX="56.0" layoutY="118.0" prefHeight="27.0" prefWidth="124.0" promptText="Marca">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <Label layoutX="30.0" layoutY="99.0" prefHeight="25.0" prefWidth="81.0" text="Marca">
+   <Label layoutX="56.0" layoutY="93.0" prefHeight="25.0" prefWidth="81.0" text="Marca">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="182.0" layoutY="99.0" prefHeight="25.0" prefWidth="110.0" text="Placa">
+   <Label layoutX="208.0" layoutY="93.0" prefHeight="25.0" prefWidth="110.0" text="Placa">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
    </Label>
-   <TextField fx:id="nombre" layoutX="30.0" layoutY="181.0" prefHeight="27.0" prefWidth="124.0" promptText="Nombre">
+   <TextField fx:id="nombre" layoutX="56.0" layoutY="175.0" prefHeight="27.0" prefWidth="124.0" promptText="Nombre">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <Label layoutX="30.0" layoutY="156.0" prefHeight="25.0" prefWidth="81.0" text="Nombre">
+   <Label layoutX="56.0" layoutY="150.0" prefHeight="25.0" prefWidth="81.0" text="Nombre">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="182.0" layoutY="156.0" prefHeight="25.0" prefWidth="110.0" text="Modelo">
+   <Label layoutX="208.0" layoutY="150.0" prefHeight="25.0" prefWidth="110.0" text="Modelo">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
    </Label>
-   <TextField fx:id="km" layoutX="30.0" layoutY="241.0" prefHeight="27.0" prefWidth="124.0" promptText="Kilometraje">
+   <TextField fx:id="km" layoutX="56.0" layoutY="235.0" prefHeight="27.0" prefWidth="124.0" promptText="Kilometraje">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <Label layoutX="30.0" layoutY="216.0" prefHeight="25.0" prefWidth="81.0" text="Kilometraje">
+   <Label layoutX="56.0" layoutY="210.0" prefHeight="25.0" prefWidth="81.0" text="Kilometraje">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="182.0" layoutY="216.0" prefHeight="25.0" prefWidth="110.0" text="Precio Dia">
+   <Label layoutX="208.0" layoutY="210.0" prefHeight="25.0" prefWidth="110.0" text="Precio Dia">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
    </Label>
-   <TextField fx:id="placa" layoutX="182.0" layoutY="124.0" prefHeight="27.0" prefWidth="124.0" promptText="Placa">
+   <TextField fx:id="placa" layoutX="208.0" layoutY="118.0" prefHeight="27.0" prefWidth="124.0" promptText="Placa">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <TextField fx:id="modelo" layoutX="182.0" layoutY="181.0" prefHeight="27.0" prefWidth="124.0" promptText="Modelo">
+   <TextField fx:id="modelo" layoutX="208.0" layoutY="175.0" prefHeight="27.0" prefWidth="124.0" promptText="Modelo">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <TextField fx:id="precio" layoutX="182.0" layoutY="241.0" prefHeight="27.0" prefWidth="124.0" promptText="Precio">
+   <TextField fx:id="precio" layoutX="208.0" layoutY="235.0" prefHeight="27.0" prefWidth="124.0" promptText="Precio">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <ComboBox fx:id="sillas" layoutX="30.0" layoutY="302.0" onShowing="#listarSillas" prefHeight="27.0" prefWidth="124.0" visibleRowCount="3" />
+   <ComboBox fx:id="sillas" layoutX="56.0" layoutY="296.0" onShowing="#listarSillas" prefHeight="27.0" prefWidth="124.0" visibleRowCount="3" />
    <TextField fx:id="foto" layoutX="362.0" layoutY="43.0" prefHeight="29.0" prefWidth="267.0" promptText="URL">
       <font>
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
