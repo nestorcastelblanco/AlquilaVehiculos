@@ -32,7 +32,12 @@ public class Metodo {
         cliente.setUsuario("123");                           cliente1.setUsuario("1234");                        cliente2.setUsuario("12345");
         cliente.setContrasena("123");                        cliente1.setContrasena("1234");                     cliente2.setContrasena("12345");
         clientes.add(cliente);                               clientes.add(cliente1);                             clientes.add(cliente2);
+        Vehiculos vehiculo = new Vehiculos();
+        vehiculo.setMarca("Chevrolet");
+        vehiculo.setNombre("Onix");
+        vehiculos.add(vehiculo);
     }
+
 
     public static boolean verificarDatos (String usuario, String contraseña)
     {
@@ -73,6 +78,10 @@ public class Metodo {
     {
         sillas.setItems(numeros);
     }
+    public static void llenarVehiculos (ComboBox<Vehiculos> vehiculos, ObservableList<Vehiculos> vh)
+    {
+        vehiculos.setItems(vh);
+    }
     public static void llenarComboAuto (ComboBox<String> auto , ObservableList<String> pal)
     {
        auto.setItems(pal);
@@ -92,5 +101,9 @@ public class Metodo {
         } catch (Exception ignored) {
 
         }
+    }
+    public static ArrayList<Vehiculos> enviarVehiculos()
+    {
+        return vehiculos;
     }
 }
