@@ -13,7 +13,7 @@
             <Font name="Franklin Gothic Medium Cond" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="vehiculos" layoutX="43.0" layoutY="32.0" onShowing="#listarVehiculos" prefHeight="27.0" prefWidth="121.0" visibleRowCount="3" />
+      <ComboBox fx:id="vehiculos" layoutX="34.0" layoutY="32.0" onShowing="#listarVehiculos" prefHeight="27.0" prefWidth="208.0" visibleRowCount="3" AnchorPane.bottomAnchor="341.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="32.0" />
       <Button fx:id="botonRegreso" layoutX="43.0" layoutY="361.0" mnemonicParsing="false" onAction="#regresar" prefHeight="25.0" prefWidth="86.0" text="Regresar">
          <font>
             <Font name="Franklin Gothic Medium Cond" size="13.0" />
@@ -53,7 +53,7 @@
             <Font name="Franklin Gothic Medium Cond" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="botonCargar" layoutX="193.0" layoutY="33.0" mnemonicParsing="false" onAction="#cargar" prefHeight="25.0" prefWidth="86.0" text="Cargar">
+      <Button fx:id="botonCargar" layoutX="255.0" layoutY="33.0" mnemonicParsing="false" onAction="#cargar" prefHeight="25.0" prefWidth="86.0" text="Cargar">
          <font>
             <Font name="Franklin Gothic Medium Cond" size="13.0" />
          </font>
@@ -74,19 +74,19 @@
          <font>
             <Font name="Franklin Gothic Medium Cond" size="14.0" />
          </font></Label>
-      <Label fx:id="kilometraje" layoutX="37.0" layoutY="241.0" prefHeight="33.0" prefWidth="115.0">
+      <Label fx:id="kilometraje" layoutX="43.0" layoutY="241.0" prefHeight="33.0" prefWidth="115.0">
          <font>
             <Font name="Franklin Gothic Medium Cond" size="14.0" />
          </font></Label>
-      <Label fx:id="alquilerDia" layoutX="177.0" layoutY="241.0" prefHeight="33.0" prefWidth="115.0">
+      <Label fx:id="alquilerDia" layoutX="185.0" layoutY="241.0" prefHeight="33.0" prefWidth="115.0">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label fx:id="sillas" layoutX="37.0" layoutY="312.0" prefHeight="33.0" prefWidth="115.0">
+      <Label fx:id="sillas" layoutX="43.0" layoutY="312.0" prefHeight="33.0" prefWidth="115.0">
          <font>
             <Font name="Franklin Gothic Medium Cond" size="14.0" />
          </font></Label>
-      <Label fx:id="automatico" layoutX="177.0" layoutY="312.0" prefHeight="33.0" prefWidth="115.0">
+      <Label fx:id="automatico" layoutX="183.0" layoutY="312.0" prefHeight="33.0" prefWidth="115.0">
          <font>
             <Font name="Franklin Gothic Medium Cond" size="14.0" />
          </font></Label>
