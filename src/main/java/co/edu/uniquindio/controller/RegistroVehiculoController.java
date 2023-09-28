@@ -12,8 +12,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RegistroVehiculoController {
+    private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
     private Button botonRegreso,botonRegistro;
     @FXML
@@ -25,7 +30,13 @@ public class RegistroVehiculoController {
     public void regresar (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
-            Metodo.loadStage("/paginaRegistroVehiculo.fxml.fxml", e);
+            Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
+            try {
+                LOGGER.addHandler((new FileHandler("BotonRegresoVehRegtr.xml",true)));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            LOGGER.log(Level.INFO, "Se regreso al portal de administrador ");
         }
     }
     public void listarSillas (Event event)
@@ -41,11 +52,23 @@ public class RegistroVehiculoController {
             if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedIndex() != -1 && sillas.getSelectionModel().getSelectedIndex() != -1 ) {
                 Metodo.crearVehiculo(placa.getText(),marca.getText(),nombre.getText(),modelo.getText(),km.getText(),precio.getText(),sillas.getSelectionModel().getSelectedItem().toString(),automatico.getSelectionModel().getSelectedItem().toString(),foto.getText());
                 placa.setText("");marca.setText("");nombre.setText("");modelo.setText("");km.setText("");precio.setText("");foto.setText("");
+                try {
+                    LOGGER.addHandler((new FileHandler("RegistroVehicular.xml",true)));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                LOGGER.log(Level.INFO, "Se registro un vehiculo correctamente");
                 JOptionPane.showMessageDialog(null,"Datos Registrados Correctamente","Registro Realizado",1);
                 Metodo.mostrarVehiculos();
             }
             else
             {
+                try {
+                    LOGGER.addHandler((new FileHandler("RegistroVehicularEmpty.xml",true)));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                LOGGER.log(Level.INFO, "Se intento el registro un vehiculo con campos vacios");
                 JOptionPane.showMessageDialog(null,"No se llenaron los campos correspondientes","Registro Fallido",2);
             }
         }

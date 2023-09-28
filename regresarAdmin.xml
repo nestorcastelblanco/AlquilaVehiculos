@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-09-28T16:41:30.833431800Z</date>
+  <millis>1695919290833</millis>
+  <nanos>431800</nanos>
+  <sequence>6</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
+  <method>regresar</method>
+  <thread>17</thread>
+  <message>Se regreso a la pagina principal</message>
+</record>
+</log>

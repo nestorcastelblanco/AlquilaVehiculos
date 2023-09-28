@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -158,5 +159,14 @@ public class Metodo {
     public static void imprimirRegistros()
     {
         System.out.println(registros);
+    }
+
+    public static void verificarFechas(LocalDate fechaFin, LocalDate fechaInicio)
+    {
+       // if (fechaInicio.isAfter(fechaFin))
+        {
+       //     throw new Exception("La fecha de inicio no puede ser despues de la fecha final");
+        }
+        // long dias = fechaInicio.until(fechaFin.isAfter(fechaInicio) != 1);
     }
 }
