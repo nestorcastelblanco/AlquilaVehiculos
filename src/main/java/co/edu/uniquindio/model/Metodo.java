@@ -18,9 +18,9 @@ import java.util.Objects;
 @Setter
 @ToString
 public class Metodo {
-    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-    public static ArrayList<Vehiculos> vehiculos = new ArrayList<Vehiculos>();
-    public static ArrayList<Cliente> registros = new ArrayList<Cliente>();
+    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Vehiculos> vehiculos = new ArrayList<>();
+    public static ArrayList<Cliente> registros = new ArrayList<>();
     public static Cliente clienteSesion = new Cliente();
     public static void cargarDatos ()
     {
@@ -41,7 +41,7 @@ public class Metodo {
         vehiculo.setNombre("TRACKER");                       vehiculo1.setNombre("SANDERO");                      vehiculo2.setNombre("SPARK GT");
         vehiculo.setModelo("2019");                          vehiculo1.setModelo("2019");                         vehiculo2.setModelo("2020");
         vehiculo.setKilometraje("45000");                    vehiculo1.setKilometraje("45000");                   vehiculo2.setKilometraje("45000");
-        vehiculo.setPrecioAlquilerDia("120000");             vehiculo1.setPrecioAlquilerDia("120000");            vehiculo2.setPrecioAlquilerDia("120000");
+        vehiculo.setPrecioAlquilerDia("115000");             vehiculo1.setPrecioAlquilerDia("120000");            vehiculo2.setPrecioAlquilerDia("110000");
         vehiculo.setNumeroSillas("5");                       vehiculo1.setNumeroSillas("5");                      vehiculo2.setNumeroSillas("5");
         vehiculo.setAutomatico("SI");                        vehiculo1.setAutomatico("SI");                       vehiculo2.setAutomatico("SI");
         vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
@@ -51,53 +51,55 @@ public class Metodo {
     {
         clienteSesion = cliente;
     }
-    public static boolean verificarDatos (String usuario, String contraseña)
+    public static boolean verificarDatos (String usuario, String contrasena)
     {
         boolean state = false;
         for (Cliente c : clientes)
         {
-            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContrasena())) {
+            if(usuario.equals(c.getUsuario()) && contrasena.equals(c.getContrasena())) {
                 state = true;
+                break;
             }
         }
         return state;
     }
-    public static Cliente retornarCliente (String usuario, String contraseña)
+    public static Cliente retornarCliente (String usuario, String contrasena)
     {
         Cliente c1 = new Cliente();
         for (Cliente c : clientes)
         {
-            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContrasena())) {
+            if(usuario.equals(c.getUsuario()) && contrasena.equals(c.getContrasena())) {
                 c1 = c;
             }
         }
         return c1;
     }
-    public static boolean verificarCredenciales (String usuario, String contraseña)
+    public static boolean verificarCredenciales (String usuario, String contrasena)
     {
         boolean state = false;
         for (Cliente c : clientes)
         {
-            if(usuario.equals(c.getUsuario()) && contraseña.equals(c.getContrasena()) || usuario.equals("admin") && contraseña.equals("123")) {
+            if(usuario.equals(c.getUsuario()) && contrasena.equals(c.getContrasena()) || usuario.equals("admin") && contrasena.equals("123")) {
                 state = true;
+                break;
             }
         }
         return state;
     }
-    public static void crearCliente ( String  cedula,String  nombre,String  teléfono, String email, String ciudad,String direccionResidencia, String usuario, String contraseña)
+    public static void crearCliente (String  cedula, String  nombre, String  telefono, String email, String ciudad, String direccionResidencia, String usuario, String contrasena)
     {
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setCedula(cedula);
         cliente.setCiudad(ciudad);
         cliente.setEmail(email);
-        cliente.setTelefono(teléfono);
+        cliente.setTelefono(telefono);
         cliente.setDireccionResidencia(direccionResidencia);
         cliente.setUsuario(usuario);
-        cliente.setContrasena(contraseña);
+        cliente.setContrasena(contrasena);
         clientes.add(cliente);
     }
-    public static void crearVehiculo ( String  placa,String marca,String nombre, String modelo, String km,String alquiler, String sillas, String automatico, String foto)
+    public static void crearVehiculo (String  placa, String marca, String nombre, String modelo, String km, String alquiler, String sillas, String automatico, String foto)
     {
         Vehiculos vehiculo = new Vehiculos();
         vehiculo.setPlaca(placa.toUpperCase());
@@ -161,11 +163,10 @@ public class Metodo {
         System.out.println(registros);
     }
 
-    public static void verificarFechas(LocalDate fechaFin, LocalDate fechaInicio)
-    {
-       // if (fechaInicio.isAfter(fechaFin))
+    public static void verificarFechas(LocalDate fechaFin, LocalDate fechaInicio) throws Exception {
+        if(fechaInicio.isAfter(fechaFin))
         {
-       //     throw new Exception("La fecha de inicio no puede ser despues de la fecha final");
+            throw new Exception("La fecha de inicio, no puedo ser después de la fecha final");
         }
         // long dias = fechaInicio.until(fechaFin.isAfter(fechaInicio) != 1);
     }
