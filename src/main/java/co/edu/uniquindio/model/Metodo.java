@@ -86,7 +86,7 @@ public class Metodo {
         }
         return state;
     }
-    public static void crearCliente (String  cedula, String  nombre, String  telefono, String email, String ciudad, String direccionResidencia, String usuario, String contrasena)
+    public static void crearCliente (String  cedula, String  nombre, String  telefono, String email, String ciudad, String direccion, String usuario, String contrasena)
     {
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
@@ -94,7 +94,7 @@ public class Metodo {
         cliente.setCiudad(ciudad);
         cliente.setEmail(email);
         cliente.setTelefono(telefono);
-        cliente.setDireccionResidencia(direccionResidencia);
+        cliente.setDireccionResidencia(direccion);
         cliente.setUsuario(usuario);
         cliente.setContrasena(contrasena);
         clientes.add(cliente);
