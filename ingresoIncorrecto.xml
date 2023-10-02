@@ -158,3 +158,95 @@
   <message>Se regreso a la pagina principal</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-02T20:36:21.967374900Z</date>
+  <millis>1696278981967</millis>
+  <nanos>374900</nanos>
+  <sequence>7</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoController</class>
+  <method>ingresar</method>
+  <thread>17</thread>
+  <message>Se ingresaron ccredenciales incorrectas</message>
+</record>
+<record>
+  <date>2023-10-02T20:36:28.889826500Z</date>
+  <millis>1696278988889</millis>
+  <nanos>826500</nanos>
+  <sequence>8</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoController</class>
+  <method>ingresar</method>
+  <thread>17</thread>
+  <message>Se ingresaron ccredenciales incorrectas</message>
+</record>
+<record>
+  <date>2023-10-02T20:36:32.806179700Z</date>
+  <millis>1696278992806</millis>
+  <nanos>179700</nanos>
+  <sequence>9</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoController</class>
+  <method>ingresar</method>
+  <thread>17</thread>
+  <message>Se ingresaron ccredenciales incorrectas</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-02T20:50:31.696112800Z</date>
+  <millis>1696279831696</millis>
+  <nanos>112800</nanos>
+  <sequence>1</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoController</class>
+  <method>ingresar</method>
+  <thread>17</thread>
+  <message>Se ingresaron ccredenciales incorrectas</message>
+</record>
+<record>
+  <date>2023-10-02T20:50:36.788647300Z</date>
+  <millis>1696279836788</millis>
+  <nanos>647300</nanos>
+  <sequence>2</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoController</class>
+  <method>ingresar</method>
+  <thread>17</thread>
+  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
+</record>
+<record>
+  <date>2023-10-02T20:50:42.995490500Z</date>
+  <millis>1696279842995</millis>
+  <nanos>490500</nanos>
+  <sequence>5</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>cargar</method>
+  <thread>17</thread>
+  <message>Se cargaron las propiedades de los vehiculos para mostrarlos</message>
+</record>
+<record>
+  <date>2023-10-02T20:50:53.775889800Z</date>
+  <millis>1696279853775</millis>
+  <nanos>889800</nanos>
+  <sequence>6</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>alquilar</method>
+  <thread>17</thread>
+  <message>Se genero un alquiler de vehiculo</message>
+</record>
+</log>

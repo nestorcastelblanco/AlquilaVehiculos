@@ -2,34 +2,6 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-09-28T16:14:41.244021600Z</date>
-  <millis>1695917681244</millis>
-  <nanos>21600</nanos>
-  <sequence>6</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2023-10-02T20:34:56.883992700Z</date>
-  <millis>1696278896883</millis>
-  <nanos>992700</nanos>
-  <sequence>1</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
-<record>
   <date>2023-10-02T20:35:02.526656400Z</date>
   <millis>1696278902526</millis>
   <nanos>656400</nanos>
@@ -94,18 +66,6 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-10-02T20:36:53.397161300Z</date>
-  <millis>1696279013397</millis>
-  <nanos>161300</nanos>
-  <sequence>1</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
-<record>
   <date>2023-10-02T20:37:05.703872100Z</date>
   <millis>1696279025703</millis>
   <nanos>872100</nanos>
@@ -122,18 +82,6 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-10-02T20:43:25.285889200Z</date>
-  <millis>1696279405285</millis>
-  <nanos>889200</nanos>
-  <sequence>1</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
-<record>
   <date>2023-10-02T20:43:29.309418200Z</date>
   <millis>1696279409309</millis>
   <nanos>418200</nanos>
@@ -149,18 +97,6 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
-<record>
-  <date>2023-10-02T20:47:13.469693500Z</date>
-  <millis>1696279633469</millis>
-  <nanos>693500</nanos>
-  <sequence>1</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
 <record>
   <date>2023-10-02T20:47:17.624819Z</date>
   <millis>1696279637624</millis>
@@ -189,18 +125,6 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
-<record>
-  <date>2023-10-02T20:50:36.788647300Z</date>
-  <millis>1696279836788</millis>
-  <nanos>647300</nanos>
-  <sequence>2</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
 <record>
   <date>2023-10-02T20:50:42.995490500Z</date>
   <millis>1696279842995</millis>

@@ -14,8 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -31,7 +34,10 @@ public class SeleccionVehiculoController {
     private ImageView imagenVehiculo;
     @FXML
     private ComboBox<Vehiculos> vehiculos;
+    @FXML
+    private TextField diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
     Cliente clienteSistema;
+    private LocalDate inicio, fin;
     ObservableList<Vehiculos> listaVehiculos;
     ArrayList<Vehiculos> arrayVehiculos = new ArrayList<Vehiculos>();
     private int indiceCombo;
@@ -82,7 +88,7 @@ public class SeleccionVehiculoController {
                 placa.setText(vehiculoSeleccionado.getPlaca());
                 marca.setText(vehiculoSeleccionado.getMarca());
                 kilometraje.setText(vehiculoSeleccionado.getKilometraje());
-                alquilerDia.setText(vehiculoSeleccionado.getPrecioAlquilerDia());
+                alquilerDia.setText(String.valueOf(vehiculoSeleccionado.getPrecioAlquilerDia()));
                 sillas.setText(vehiculoSeleccionado.getNumeroSillas());
                 automatico.setText(vehiculoSeleccionado.getAutomatico());
                 txtImagen.setText(vehiculoSeleccionado.toString());
@@ -113,27 +119,40 @@ public class SeleccionVehiculoController {
         Object evt = actionEvent.getSource();
         if (evt.equals(botonAlquilar))
         {
-            if (indiceCombo != -1)
+            if(Metodo.verificarCampos(diaInicio.getText(),mesInicio.getText(),anioInicio.getText()) != null && Metodo.verificarCampos(diaFin.getText(),mesFin.getText(),anioFin.getText()) != null)
             {
-                Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem());
-                Metodo.imprimirRegistros();
+                inicio = Metodo.verificarCampos(diaInicio.getText(),mesInicio.getText(),anioInicio.getText());
+                fin = Metodo.verificarCampos(diaFin.getText(),mesFin.getText(),anioFin.getText());
+                if (indiceCombo != -1)
+                {
+                    Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin);
+                    Metodo.imprimirRegistros();
+                    try {
+                        LOGGER.addHandler((new FileHandler("AlquilarVehiculo.xml",true)));
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    LOGGER.log(Level.INFO, "Se genero un alquiler de vehiculo");
+                }else {
+                    try {
+                        LOGGER.addHandler((new FileHandler("errorVehiculo.xml",true)));
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionarlo");
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Datos necesarios no llenados");
+                    alert.setContentText("No ha seleccionado un item valido");
+                    alert.show();
+                }
+            }
+            else {
                 try {
-                    LOGGER.addHandler((new FileHandler("AlquilarVehiculo.xml",true)));
+                    LOGGER.addHandler((new FileHandler("errorFecha.xml",true)));
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                LOGGER.log(Level.INFO, "Se genero un alquiler de vehiculo");
-            }else {
-                try {
-                    LOGGER.addHandler((new FileHandler("errorVehiculo.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionarlo");
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Datos necesarios no llenados");
-                alert.setContentText("No ha seleccionado un item valido");
-                alert.show();
+                LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
             }
         }
     }

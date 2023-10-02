@@ -8,9 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import java.time.LocalDate;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -41,11 +43,35 @@ public class Metodo {
         vehiculo.setNombre("TRACKER");                       vehiculo1.setNombre("SANDERO");                      vehiculo2.setNombre("SPARK GT");
         vehiculo.setModelo("2019");                          vehiculo1.setModelo("2019");                         vehiculo2.setModelo("2020");
         vehiculo.setKilometraje("45000");                    vehiculo1.setKilometraje("45000");                   vehiculo2.setKilometraje("45000");
-        vehiculo.setPrecioAlquilerDia("115000");             vehiculo1.setPrecioAlquilerDia("120000");            vehiculo2.setPrecioAlquilerDia("110000");
+        vehiculo.setPrecioAlquilerDia(115000);             vehiculo1.setPrecioAlquilerDia(120000);            vehiculo2.setPrecioAlquilerDia(120000);
         vehiculo.setNumeroSillas("5");                       vehiculo1.setNumeroSillas("5");                      vehiculo2.setNumeroSillas("5");
         vehiculo.setAutomatico("SI");                        vehiculo1.setAutomatico("SI");                       vehiculo2.setAutomatico("SI");
         vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
         vehiculos.add(vehiculo);                             vehiculos.add(vehiculo1);                            vehiculos.add(vehiculo2);
+    }
+    public static boolean verificarFechas(LocalDate fechaInicio, LocalDate fechaFinal)
+    {
+        boolean state = false;
+        if(fechaFinal.isAfter(fechaInicio))
+        {
+            state = true;
+        }
+        return state;
+    }
+    public static LocalDate verificarCampos(String diaI, String mesI, String anioI)
+    {
+        LocalDate fecha = null;
+        int d = Integer.parseInt(diaI);
+        int m = Integer.parseInt(mesI);
+        int yr = Integer.parseInt(anioI);
+        if (d<1 || d>31 && m<1 || m>12)
+        {
+            fecha = null;
+        }else
+        {
+            fecha = LocalDate.of(yr,m,d);
+        }
+        return fecha;
     }
     public static void recibirClienteSesion(Cliente cliente)
     {
@@ -107,7 +133,7 @@ public class Metodo {
         vehiculo.setNombre(nombre.toUpperCase());
         vehiculo.setModelo(modelo.toUpperCase());
         vehiculo.setKilometraje(km.toUpperCase());
-        vehiculo.setPrecioAlquilerDia(alquiler.toUpperCase());
+        vehiculo.setPrecioAlquilerDia(Float.parseFloat(alquiler));
         vehiculo.setNumeroSillas(sillas.toUpperCase());
         vehiculo.setAutomatico(automatico.toUpperCase());
         vehiculo.setFoto(foto);
@@ -130,19 +156,15 @@ public class Metodo {
        auto.setItems(pal);
     }
     public static void loadStage(String url, Event evento) {
-
         try {
             ((Node) (evento.getSource())).getScene().getWindow().hide();
-
             Parent root = FXMLLoader.load(Objects.requireNonNull(Metodo.class.getResource(url)));
             Scene scene = new Scene(root);
             Stage newStage = new Stage();
             newStage.setScene(scene);
             newStage.setTitle("Travel Agency");
             newStage.show();
-
         } catch (Exception ignored) {
-
         }
     }
     public static ArrayList<Vehiculos> enviarVehiculos()
@@ -154,20 +176,22 @@ public class Metodo {
     {
         return clienteSesion;
     }
-    public static void cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem) {
+    public static void cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem,LocalDate fechaInicio, LocalDate fechaFinal) {
+        Vehiculos vehiculo = new Vehiculos();
+        vehiculo = selectedItem;
+        long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
+        vehiculo.setValorTotal((float) dias * vehiculo.getPrecioAlquilerDia());
+        vehiculo.setFechaInicio(fechaInicio);
+        vehiculo.setFechaFin(fechaFinal);
         clienteSistema.setVehiculoAdquirido(selectedItem);
         registros.add(clienteSistema);
+        System.out.println("cantidad de dias = " + dias);
+        System.out.println("fecha inicio = " + fechaInicio);
+        System.out.println("fecha final = " + fechaFinal);
+        System.out.println("valor de dia =" +vehiculo.getPrecioAlquilerDia()+ "Total" + vehiculo.getValorTotal());
     }
     public static void imprimirRegistros()
     {
         System.out.println(registros);
-    }
-
-    public static void verificarFechas(LocalDate fechaFin, LocalDate fechaInicio) throws Exception {
-        if(fechaInicio.isAfter(fechaFin))
-        {
-            throw new Exception("La fecha de inicio, no puedo ser después de la fecha final");
-        }
-        // long dias = fechaInicio.until(fechaFin.isAfter(fechaInicio) != 1);
     }
 }
