@@ -16,6 +16,14 @@ public class Cliente {
         return vehiculoAdquirido;
     }
 
+    public String getFactura() {
+        return nombre + " " + cedula;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public void setVehiculoAdquirido(Vehiculos vehiculoAdquirido) {
         this.vehiculoAdquirido.add(vehiculoAdquirido);
     }

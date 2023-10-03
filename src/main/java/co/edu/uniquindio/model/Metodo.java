@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import lombok.*;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -208,6 +209,8 @@ public class Metodo {
         vehiculo.setFechaFin(fechaFinal);
         clienteSistema.setVehiculoAdquirido(selectedItem);
         registros.add(clienteSistema);
+        String msg = "Factura de prestacion de servicios y contratacion\n\n" + clienteSistema.getFactura() + "\n" +"Vehiculo Seleccionado  " + selectedItem.toString() + "\n" + "Valor alquiler Diario " + vehiculo.getPrecioAlquilerDia() + "\nCantidad de dias Reservados  " + dias + "\nFecha Inicio " + fechaInicio + "\nFecha Final " + fechaFinal + "\nValor Total: " + vehiculo.getValorTotal();
+        JOptionPane.showMessageDialog(null, msg, "Factura Prestacion de Servicios", 1);
         System.out.println("cantidad de dias = " + dias);
         System.out.println("fecha inicio = " + fechaInicio);
         System.out.println("fecha final = " + fechaFinal);
