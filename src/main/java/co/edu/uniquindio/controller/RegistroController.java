@@ -81,7 +81,7 @@ public class RegistroController {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            LOGGER.log(Level.INFO, "Se regreso a la pagina de admin");
+            LOGGER.log(Level.INFO, "Se regresó a la pagina de admin");
         }
     }
 
