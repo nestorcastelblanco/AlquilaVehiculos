@@ -125,6 +125,7 @@ public class SeleccionVehiculoController {
                 fin = Metodo.verificarCampos(diaFin.getText(),mesFin.getText(),anioFin.getText());
                 if (indiceCombo != -1)
                 {
+                    Metodo.buscarVehiculo(vehiculos.getSelectionModel().getSelectedItem());
                     Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin);
                     Metodo.imprimirRegistros();
                     try {

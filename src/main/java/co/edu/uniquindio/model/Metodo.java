@@ -220,4 +220,27 @@ public class Metodo {
     {
         System.out.println(registros);
     }
+    public static void buscarVehiculo(Vehiculos item) {
+        for(int i = 0; i<vehiculos.size();i++ )
+        {
+            if ( vehiculos.get(i).equals(item))
+            {
+                vehiculos.get(i).setContPrestamos(+1);
+            }
+        }
+    }
+    public static Vehiculos buscarVehiculoAlquiler() {
+        Vehiculos vehiculo = new Vehiculos();
+        int mayor  = vehiculos.get(0).getContPrestamos();
+        for (int i = 0; i<vehiculos.size() ; i++)
+        {
+            System.out.println("Contador de: " + vehiculos.get(i).toString() + vehiculos.get(i).getContPrestamos());
+            if (vehiculos.get(i).getContPrestamos() > mayor)
+            {
+                vehiculo = vehiculos.get(i);
+                mayor = vehiculo.getContPrestamos();
+            }
+        }
+        return vehiculo;
+    }
 }

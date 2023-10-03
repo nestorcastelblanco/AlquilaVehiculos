@@ -14,6 +14,16 @@ public class Vehiculos {
     private LocalDate fechaInicio, fechaFin;
     private float valorTotal, precioAlquilerDia;
     private Cliente cliente;
+    private int contPrestamos;
+
+    public int getContPrestamos() {
+        return contPrestamos;
+    }
+
+    public void setContPrestamos(int contPrestamos) {
+        this.contPrestamos = contPrestamos;
+    }
+
     public String toString()
     {
         String s = this.nombre + " ---- " + this.marca;

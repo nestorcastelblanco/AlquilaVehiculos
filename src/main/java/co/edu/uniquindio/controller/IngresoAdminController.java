@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class IngresoAdminController {
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
-    private Button botonRegistroVehiculo, botonRegreso, botonRegistro,botonAdministrativo;
+    private Button botonRegistroVehiculo, botonRegreso, botonRegistro,botonAdministrativo,botonContador;
     public void registrarVehiculo (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegistroVehiculo)) {
@@ -54,6 +54,19 @@ public class IngresoAdminController {
             Metodo.loadStage("/paginaPrestamos.fxml", e);
             try {
                 LOGGER.addHandler((new FileHandler("ingresoPagPrestamos.xml",true)));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            LOGGER.log(Level.INFO, "Ingreso al apartado prestamos");
+        }
+    }
+
+    public void contador(ActionEvent e) {
+        Object evt = e.getSource();
+        if (evt.equals(botonContador)) {
+            Metodo.loadStage("/paginaEstadisticas.fxml", e);
+            try {
+                LOGGER.addHandler((new FileHandler("ingresoPagEstadisticas.xml",true)));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
