@@ -33,9 +33,12 @@ public class IngresoController {
                 }
                 LOGGER.log(Level.INFO, "Se ingreso con credenciales administrativas");
             } else {
-                if (!usuario.getText().isEmpty() && !contrasena.getText().isEmpty()) {
-                    if (Metodo.verificarDatos(usuario.getText(), contrasena.getText())) {
-                        try {
+                if (!usuario.getText().isEmpty() && !contrasena.getText().isEmpty())
+                {
+                    if (Metodo.verificarDatos(usuario.getText(), contrasena.getText()))
+                    {
+                        try
+                        {
                             LOGGER.addHandler((new FileHandler("ingresoCorrecto.xml",true)));
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
@@ -47,18 +50,21 @@ public class IngresoController {
                         alert.show();
                         Metodo.recibirClienteSesion(Metodo.retornarCliente(usuario.getText(),contrasena.getText()));
                         Metodo.loadStage("/paginaVehiculo.fxml", e);
-                    } else {
-                        try {
-                            LOGGER.addHandler((new FileHandler("ingresoIncorrecto.xml",true)));
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        LOGGER.log(Level.INFO, "Se ingresaron ccredenciales incorrectas");
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Datos ingresados no validos");
-                        alert.setContentText("La validacion de credenciales es incorrecta");
-                        alert.show();
                     }
+                    else
+                        {
+                             try {
+                                 LOGGER.addHandler((new FileHandler("ingresoIncorrecto.xml",true)));
+                             } catch (IOException ex)
+                             {
+                                throw new RuntimeException(ex);
+                             }
+                            LOGGER.log(Level.INFO, "Se ingresaron ccredenciales incorrectas");
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Datos ingresados no validos");
+                            alert.setContentText("La validacion de credenciales es incorrecta");
+                            alert.show();
+                        }
                 }
                 else
                 {

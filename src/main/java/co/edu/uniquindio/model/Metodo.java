@@ -24,39 +24,65 @@ public class Metodo {
     public static ArrayList<Vehiculos> vehiculos = new ArrayList<>();
     public static ArrayList<Cliente> registros = new ArrayList<>();
     public static Cliente clienteSesion = new Cliente();
-    public static void cargarDatos ()
-    {
-        Cliente cliente = new Cliente();                     Cliente cliente1 = new Cliente();                   Cliente cliente2 = new Cliente();
-        cliente.setNombre("Nestor Castelblanco");            cliente1.setNombre("Sebastian Agudelo");            cliente2.setNombre("Hulbert Ferney");
-        cliente.setCedula("1104697206");                     cliente1.setCedula("11046972");                     cliente2.setCedula("110412306");
-        cliente.setCiudad("Armenia");                        cliente1.setCiudad("Armenia");                      cliente2.setCiudad("Armenia");
-        cliente.setEmail("nestorf.castelblancod@gmail.com"); cliente1.setEmail("sebastianagudelom");             cliente2.setEmail("hulberta@uqvirtual.edu.co");
-        cliente.setTelefono("3054194624");                   cliente1.setTelefono("30234533");                   cliente2.setTelefono("305324124");
-        cliente.setDireccionResidencia("Calle 9N");          cliente1.setDireccionResidencia("Calle 10N");       cliente2.setDireccionResidencia("Calle 9N");
-        cliente.setUsuario("123");                           cliente1.setUsuario("1234");                        cliente2.setUsuario("12345");
-        cliente.setContrasena("123");                        cliente1.setContrasena("1234");                     cliente2.setContrasena("12345");
-        clientes.add(cliente);                               clientes.add(cliente1);                             clientes.add(cliente2);
-
-        Vehiculos vehiculo = new Vehiculos();                Vehiculos vehiculo1 = new Vehiculos();               Vehiculos vehiculo2 = new Vehiculos();
-        vehiculo.setPlaca("FQK884");                         vehiculo1.setPlaca("KMP282");                        vehiculo2.setPlaca("FQK884");
-        vehiculo.setMarca("CHEVROLET");                      vehiculo1.setMarca("RENAULT");                       vehiculo2.setMarca("CHEVROLET");
-        vehiculo.setNombre("TRACKER");                       vehiculo1.setNombre("SANDERO");                      vehiculo2.setNombre("SPARK GT");
-        vehiculo.setModelo("2019");                          vehiculo1.setModelo("2019");                         vehiculo2.setModelo("2020");
-        vehiculo.setKilometraje("45000");                    vehiculo1.setKilometraje("45000");                   vehiculo2.setKilometraje("45000");
-        vehiculo.setPrecioAlquilerDia(115000);             vehiculo1.setPrecioAlquilerDia(120000);            vehiculo2.setPrecioAlquilerDia(120000);
-        vehiculo.setNumeroSillas("5");                       vehiculo1.setNumeroSillas("5");                      vehiculo2.setNumeroSillas("5");
-        vehiculo.setAutomatico("SI");                        vehiculo1.setAutomatico("SI");                       vehiculo2.setAutomatico("SI");
-        vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
-        vehiculos.add(vehiculo);                             vehiculos.add(vehiculo1);                            vehiculos.add(vehiculo2);
+    public static void cargarDatos () {
+        Cliente cliente = new Cliente();                         Cliente cliente1 = new Cliente();               Cliente cliente2 = new Cliente();
+        cliente.setNombre("Nestor Castelblanco");                cliente1.setNombre("Sebastian Agudelo");        cliente2.setNombre("Hulbert Ferney");
+        cliente.setCedula("1104697206");                         cliente1.setCedula("11046972");                 cliente2.setCedula("110412306");
+        cliente.setCiudad("Armenia");                            cliente1.setCiudad("Armenia");                  cliente2.setCiudad("Armenia");
+        cliente.setEmail("nestorf.castelblancod@gmail.com");     cliente1.setEmail("sebastianagudelom");         cliente2.setEmail("hulberta@uqvirtual.edu.co");
+        cliente.setTelefono("3054194624");                       cliente1.setTelefono("30234533");               cliente2.setTelefono("305324124");
+        cliente.setDireccionResidencia("Calle 9N");              cliente1.setDireccionResidencia("Calle 10N");   cliente2.setDireccionResidencia("Calle 9N");
+        cliente.setUsuario("123");                               cliente1.setUsuario("1234");                    cliente2.setUsuario("12345");
+        cliente.setContrasena("123");                            cliente1.setContrasena("1234");                 cliente2.setContrasena("12345");
+        clientes.add(cliente);                                   clientes.add(cliente1);                         clientes.add(cliente2);
+        Vehiculos vehiculo = new Vehiculos();                    Vehiculos vehiculo1 = new Vehiculos();          Vehiculos vehiculo2 = new Vehiculos();
+        vehiculo.setPlaca("FQK884");
+        vehiculo1.setPlaca("KMP282");
+        vehiculo2.setPlaca("FQK884");
+        vehiculo.setMarca("CHEVROLET");
+        vehiculo1.setMarca("RENAULT");
+        vehiculo2.setMarca("CHEVROLET");
+        vehiculo.setNombre("TRACKER");
+        vehiculo1.setNombre("SANDERO");
+        vehiculo2.setNombre("SPARK GT");
+        vehiculo.setModelo("2019");
+        vehiculo1.setModelo("2019");
+        vehiculo2.setModelo("2020");
+        vehiculo.setKilometraje("45000");
+        vehiculo1.setKilometraje("45000");
+        vehiculo2.setKilometraje("45000");
+        vehiculo.setPrecioAlquilerDia(115000);
+        vehiculo1.setPrecioAlquilerDia(120000);
+        vehiculo2.setPrecioAlquilerDia(120000);
+        vehiculo.setNumeroSillas("5");
+        vehiculo1.setNumeroSillas("5");
+        vehiculo2.setNumeroSillas("5");
+        vehiculo.setAutomatico("SI");
+        vehiculo1.setAutomatico("SI");
+        vehiculo2.setAutomatico("SI");
+        vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");
+        vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");
+        vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
+        vehiculos.add(vehiculo);
+        vehiculos.add(vehiculo1);
+        vehiculos.add(vehiculo2);
     }
-    public static boolean verificarFechas(LocalDate fechaInicio, LocalDate fechaFinal)
+    public static ArrayList<Vehiculos> listarVehiculosAlquilados(LocalDate fechaInicio, LocalDate fechaFinal)
     {
-        boolean state = false;
-        if(fechaFinal.isAfter(fechaInicio))
+        ArrayList<Vehiculos> vehiculosRegistrados = new ArrayList<>();
+        for (int i = 0 ; i<registros.size(); i++)
         {
-            state = true;
+            for (int j = 0; j<registros.get(i).getVehiculoAdquirido().size() ; j++)
+            {
+                if (registros.get(i).getVehiculoAdquirido().get(j).getFechaInicio().isAfter(fechaInicio) || registros.get(i).getVehiculoAdquirido().get(j).getFechaInicio().isEqual(fechaInicio)
+                 && registros.get(i).getVehiculoAdquirido().get(j).getFechaFin().isBefore(fechaFinal) || registros.get(i).getVehiculoAdquirido().get(j).getFechaFin().isEqual(fechaFinal))
+                {
+                    registros.get(i).getVehiculoAdquirido().get(j).setCliente(registros.get(i));
+                    vehiculosRegistrados.add(registros.get(i).getVehiculoAdquirido().get(j));
+                }
+            }
         }
-        return state;
+        return vehiculosRegistrados;
     }
     public static LocalDate verificarCampos(String diaI, String mesI, String anioI)
     {

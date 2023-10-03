@@ -2,133 +2,17 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-09-29T21:21:29.204537100Z</date>
-  <millis>1696022489204</millis>
-  <nanos>537100</nanos>
-  <sequence>18</sequence>
+  <date>2023-10-03T03:41:49.849827200Z</date>
+  <millis>1696304509849</millis>
+  <nanos>827200</nanos>
+  <sequence>11</sequence>
   <logger>co.edu.uniquindio.controller.IngresoController</logger>
   <level>INFO</level>
   <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
-  <method>regresar</method>
+  <method>verificarAccion</method>
   <thread>17</thread>
-  <message>Se regreso al portal de administrador </message>
+  <message>Se registro un vehiculo correctamente</message>
 </record>
-<record>
-  <date>2023-09-29T21:21:29.978126800Z</date>
-  <millis>1696022489978</millis>
-  <nanos>126800</nanos>
-  <sequence>20</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
-  <method>regresar</method>
-  <thread>17</thread>
-  <message>Se regreso a la pagina principal</message>
-</record>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2023-10-03T03:39:23.907266100Z</date>
-  <millis>1696304363907</millis>
-  <nanos>266100</nanos>
-  <sequence>13</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
-  <method>regresar</method>
-  <thread>17</thread>
-  <message>Se regreso al portal de administrador </message>
-</record>
-<record>
-  <date>2023-10-03T03:39:25.381400500Z</date>
-  <millis>1696304365381</millis>
-  <nanos>400500</nanos>
-  <sequence>15</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
-  <method>regresar</method>
-  <thread>17</thread>
-  <message>Se regreso a la pagina principal</message>
-</record>
-<record>
-  <date>2023-10-03T03:39:27.809964Z</date>
-  <millis>1696304367809</millis>
-  <nanos>964000</nanos>
-  <sequence>16</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales correctas y entra a la seccion de seleccion</message>
-</record>
-<record>
-  <date>2023-10-03T03:39:49.196031200Z</date>
-  <millis>1696304389196</millis>
-  <nanos>31200</nanos>
-  <sequence>20</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
-  <method>regresar</method>
-  <thread>17</thread>
-  <message>Se regreso al portal de ingreso</message>
-</record>
-<record>
-  <date>2023-10-03T03:39:58.172037100Z</date>
-  <millis>1696304398172</millis>
-  <nanos>37100</nanos>
-  <sequence>22</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoController</class>
-  <method>ingresar</method>
-  <thread>17</thread>
-  <message>Se ingreso con credenciales administrativas</message>
-</record>
-<record>
-  <date>2023-10-03T03:40:00.192354300Z</date>
-  <millis>1696304400192</millis>
-  <nanos>354300</nanos>
-  <sequence>24</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
-  <method>registrarVehiculo</method>
-  <thread>17</thread>
-  <message>Se ingreso al registro vehicular</message>
-</record>
-<record>
-  <date>2023-10-03T03:40:12.223311Z</date>
-  <millis>1696304412223</millis>
-  <nanos>311000</nanos>
-  <sequence>26</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
-  <method>regresar</method>
-  <thread>17</thread>
-  <message>Se regreso al portal de administrador </message>
-</record>
-<record>
-  <date>2023-10-03T03:40:13.785112200Z</date>
-  <millis>1696304413785</millis>
-  <nanos>112200</nanos>
-  <sequence>28</sequence>
-  <logger>co.edu.uniquindio.controller.IngresoController</logger>
-  <level>INFO</level>
-  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
-  <method>registrarVehiculo</method>
-  <thread>17</thread>
-  <message>Se ingreso al registro vehicular</message>
-</record>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
 <record>
   <date>2023-10-03T03:41:52.255965400Z</date>
   <millis>1696304512255</millis>
@@ -289,6 +173,18 @@
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
+<record>
+  <date>2023-10-03T03:46:26.210061Z</date>
+  <millis>1696304786210</millis>
+  <nanos>61000</nanos>
+  <sequence>5</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se registro un vehiculo correctamente</message>
+</record>
 <record>
   <date>2023-10-03T03:46:27.885959800Z</date>
   <millis>1696304787885</millis>
