@@ -21,7 +21,7 @@ public class Vehiculos {
     }
 
     public void setContPrestamos(int contPrestamos) {
-        this.contPrestamos = contPrestamos;
+        this.contPrestamos += contPrestamos;
     }
 
     public String toString()

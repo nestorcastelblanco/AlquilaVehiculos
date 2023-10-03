@@ -18,13 +18,15 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PaginaEstadisticasController {
+public class PaginaFacturasController {
         private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
         @FXML
-        private Label placa,alquiler, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
+        private Label precio;
         @FXML
         private Button botonRegreso, botonBuscar;
         @FXML
+        private TextField diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
+        private LocalDate inicio, fin;
         public void regresar (ActionEvent e) {
             Object evt = e.getSource();
             if (evt.equals(botonRegreso)) {
@@ -40,18 +42,11 @@ public class PaginaEstadisticasController {
         public void buscar(ActionEvent actionEvent) {
             Object evt = actionEvent.getSource();
             if (evt.equals(botonBuscar)) {
-                Vehiculos vehiculo;
-                vehiculo = Metodo.buscarVehiculoAlquiler();
-                System.out.println(vehiculo);
-                nombre.setText(vehiculo.getNombre());
-                modelo.setText(vehiculo.getModelo());
-                placa.setText(vehiculo.getPlaca());
-                marca.setText(vehiculo.getMarca());
-                kilometraje.setText(vehiculo.getKilometraje());
-                alquilerDia.setText(String.valueOf(vehiculo.getPrecioAlquilerDia()));
-                sillas.setText(vehiculo.getNumeroSillas());
-                automatico.setText(vehiculo.getAutomatico());
-                alquiler.setText(vehiculo.getContPrestamos()+"");
+                if (Metodo.verificarCampos(diaInicio.getText(), mesInicio.getText(), anioInicio.getText()) != null && Metodo.verificarCampos(diaFin.getText(), mesFin.getText(), anioFin.getText()) != null)
+                {
+                    inicio = Metodo.verificarCampos(diaInicio.getText(), mesInicio.getText(), anioInicio.getText());
+                    fin = Metodo.verificarCampos(diaFin.getText(), mesFin.getText(), anioFin.getText());
+                    precio.setText(Metodo.adquirirUtilidades(inicio,fin) +"");
                 } else {
                     JOptionPane.showMessageDialog(null, "Datos de fechas erroneos", "Validacion Rechazada", 1);
                     try {
@@ -61,5 +56,6 @@ public class PaginaEstadisticasController {
                     }
                     LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
                 }
+            }
         }
 }

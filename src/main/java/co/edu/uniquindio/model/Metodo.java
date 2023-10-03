@@ -23,6 +23,7 @@ public class Metodo {
     public static ArrayList<Cliente> clientes = new ArrayList<>();
     public static ArrayList<Vehiculos> vehiculos = new ArrayList<>();
     public static ArrayList<Cliente> registros = new ArrayList<>();
+    public static ArrayList<Facturas> facturas = new ArrayList<>();
     public static Cliente clienteSesion = new Cliente();
     public static void cargarDatos () {
         Cliente cliente = new Cliente();                         Cliente cliente1 = new Cliente();               Cliente cliente2 = new Cliente();
@@ -35,37 +36,20 @@ public class Metodo {
         cliente.setUsuario("123");                               cliente1.setUsuario("1234");                    cliente2.setUsuario("12345");
         cliente.setContrasena("123");                            cliente1.setContrasena("1234");                 cliente2.setContrasena("12345");
         clientes.add(cliente);                                   clientes.add(cliente1);                         clientes.add(cliente2);
+
         Vehiculos vehiculo = new Vehiculos();                    Vehiculos vehiculo1 = new Vehiculos();          Vehiculos vehiculo2 = new Vehiculos();
-        vehiculo.setPlaca("FQK884");
-        vehiculo1.setPlaca("KMP282");
-        vehiculo2.setPlaca("FQK884");
-        vehiculo.setMarca("CHEVROLET");
-        vehiculo1.setMarca("RENAULT");
-        vehiculo2.setMarca("CHEVROLET");
-        vehiculo.setNombre("TRACKER");
-        vehiculo1.setNombre("SANDERO");
-        vehiculo2.setNombre("SPARK GT");
-        vehiculo.setModelo("2019");
-        vehiculo1.setModelo("2019");
-        vehiculo2.setModelo("2020");
-        vehiculo.setKilometraje("45000");
-        vehiculo1.setKilometraje("45000");
-        vehiculo2.setKilometraje("45000");
-        vehiculo.setPrecioAlquilerDia(115000);
-        vehiculo1.setPrecioAlquilerDia(120000);
-        vehiculo2.setPrecioAlquilerDia(120000);
-        vehiculo.setNumeroSillas("5");
-        vehiculo1.setNumeroSillas("5");
-        vehiculo2.setNumeroSillas("5");
-        vehiculo.setAutomatico("SI");
-        vehiculo1.setAutomatico("SI");
-        vehiculo2.setAutomatico("SI");
+        vehiculo.setPlaca("FQK884");                             vehiculo1.setPlaca("KMP282");                   vehiculo2.setPlaca("FQK884");
+        vehiculo.setMarca("CHEVROLET");                          vehiculo1.setMarca("RENAULT");                  vehiculo2.setMarca("CHEVROLET");
+        vehiculo.setNombre("TRACKER");                           vehiculo1.setNombre("SANDERO");                 vehiculo2.setNombre("SPARK GT");
+        vehiculo.setModelo("2019");                              vehiculo1.setModelo("2019");                    vehiculo2.setModelo("2020");
+        vehiculo.setKilometraje("45000");                        vehiculo1.setKilometraje("45000");              vehiculo2.setKilometraje("45000");
+        vehiculo.setPrecioAlquilerDia(115000);                   vehiculo1.setPrecioAlquilerDia(120000);         vehiculo2.setPrecioAlquilerDia(120000);
+        vehiculo.setNumeroSillas("5");                           vehiculo1.setNumeroSillas("5");                 vehiculo2.setNumeroSillas("5");
+        vehiculo.setAutomatico("SI");                            vehiculo1.setAutomatico("SI");                  vehiculo2.setAutomatico("SI");
         vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");
         vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");
         vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
-        vehiculos.add(vehiculo);
-        vehiculos.add(vehiculo1);
-        vehiculos.add(vehiculo2);
+        vehiculos.add(vehiculo);                                 vehiculos.add(vehiculo1);                       vehiculos.add(vehiculo2);
     }
     public static ArrayList<Vehiculos> listarVehiculosAlquilados(LocalDate fechaInicio, LocalDate fechaFinal)
     {
@@ -83,6 +67,19 @@ public class Metodo {
             }
         }
         return vehiculosRegistrados;
+    }
+    public static float adquirirUtilidades (LocalDate fechaInicio, LocalDate fechaFinal)
+    {
+        float contadorUtilidades = 0;
+        for (int i = 0 ; i<facturas.size(); i++)
+        {
+            if (facturas.get(i).getFechaInicio().isAfter(fechaInicio) || facturas.get(i).getFechaInicio().isEqual(fechaInicio)
+                && facturas.get(i).getFechaFin().isBefore(fechaFinal) || facturas.get(i).getFechaFin().isEqual(fechaFinal))
+            {
+                contadorUtilidades+= facturas.get(i).getValorTotal();
+            }
+        }
+        return contadorUtilidades;
     }
     public static LocalDate verificarCampos(String diaI, String mesI, String anioI)
     {
@@ -216,6 +213,15 @@ public class Metodo {
         System.out.println("fecha final = " + fechaFinal);
         System.out.println("valor de dia =" +vehiculo.getPrecioAlquilerDia()+ "Total" + vehiculo.getValorTotal());
     }
+    public static void cargarFactura(Cliente clienteSistema,LocalDate fechaInicio, LocalDate fechaFinal, float valor) {
+        Facturas factura = new Facturas();
+        long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
+        factura.setValorTotal((float) dias * valor);
+        factura.setFechaInicio(fechaInicio);
+        factura.setFechaFin(fechaFinal);
+        factura.setCliente(clienteSistema);
+        facturas.add(factura);
+    }
     public static void imprimirRegistros()
     {
         System.out.println(registros);
@@ -231,14 +237,15 @@ public class Metodo {
     }
     public static Vehiculos buscarVehiculoAlquiler() {
         Vehiculos vehiculo = new Vehiculos();
-        int mayor  = vehiculos.get(0).getContPrestamos();
+        int mayor  = 0;
         for (int i = 0; i<vehiculos.size() ; i++)
         {
-            System.out.println("Contador de: " + vehiculos.get(i).toString() + vehiculos.get(i).getContPrestamos());
+            System.out.println("Contador de: " + vehiculos.get(i).toString() + "  " + vehiculos.get(i).getContPrestamos());
             if (vehiculos.get(i).getContPrestamos() > mayor)
             {
                 vehiculo = vehiculos.get(i);
                 mayor = vehiculo.getContPrestamos();
+                System.out.println("Vehiculo entra " + vehiculo + "  Prestamos"+ mayor);
             }
         }
         return vehiculo;

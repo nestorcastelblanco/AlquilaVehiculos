@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-03T13:57:43.370545300Z</date>
+  <millis>1696341463370</millis>
+  <nanos>545300</nanos>
+  <sequence>13</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
+  <method>utilidades</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de utilidades</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-03T14:00:39.664485500Z</date>
+  <millis>1696341639664</millis>
+  <nanos>485500</nanos>
+  <sequence>13</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
+  <method>utilidades</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de utilidades</message>
+</record>
+<record>
+  <date>2023-10-03T14:05:11.114501600Z</date>
+  <millis>1696341911114</millis>
+  <nanos>501600</nanos>
+  <sequence>15</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.PaginaFacturasController</class>
+  <method>regresar</method>
+  <thread>17</thread>
+  <message>Se regreso al portal de ingreso</message>
+</record>
+<record>
+  <date>2023-10-03T14:05:22.899060700Z</date>
+  <millis>1696341922899</millis>
+  <nanos>60700</nanos>
+  <sequence>18</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.IngresoAdminController</class>
+  <method>contador</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado prestamos</message>
+</record>
+<record>
+  <date>2023-10-03T14:05:26.463535300Z</date>
+  <millis>1696341926463</millis>
+  <nanos>535300</nanos>
+  <sequence>20</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.PaginaEstadisticasController</class>
+  <method>regresar</method>
+  <thread>17</thread>
+  <message>Se regreso al portal de ingreso</message>
+</record>
+</log>

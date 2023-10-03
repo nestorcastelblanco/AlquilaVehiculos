@@ -127,6 +127,7 @@ public class SeleccionVehiculoController {
                 {
                     Metodo.buscarVehiculo(vehiculos.getSelectionModel().getSelectedItem());
                     Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin);
+                    Metodo.cargarFactura(clienteSistema,inicio,fin,vehiculos.getSelectionModel().getSelectedItem().getPrecioAlquilerDia());
                     Metodo.imprimirRegistros();
                     try {
                         LOGGER.addHandler((new FileHandler("AlquilarVehiculo.xml",true)));
