@@ -20,14 +20,14 @@ public class RegistroController {
     @FXML
     private TextField usuario,nombre,cedula,celular,correo,ciudad,direccion;
     @FXML
-    private PasswordField contraseña;
+    private PasswordField contrasena;
     @FXML
     public void verificarAccion (ActionEvent e){
         Object evt =  e.getSource();
         if (evt.equals(botonRegistro))
         {
-            if (!nombre.getText().isEmpty() && !correo.getText().isEmpty() && !cedula.getText().isEmpty() && !usuario.getText().isEmpty() && !contraseña.getText().isEmpty() && !ciudad.getText().isEmpty() && !celular.getText().isEmpty() && !direccion.getText().isEmpty()) {
-                if(Metodo.verificarCredenciales(usuario.getText(),contraseña.getText()))
+            if (!nombre.getText().isEmpty() && !correo.getText().isEmpty() && !cedula.getText().isEmpty() && !usuario.getText().isEmpty() && !contrasena.getText().isEmpty() && !ciudad.getText().isEmpty() && !celular.getText().isEmpty() && !direccion.getText().isEmpty()) {
+                if(Metodo.verificarCredenciales(usuario.getText(),contrasena.getText()))
                 {
                     try {
                         LOGGER.addHandler((new FileHandler("credencialesEnUso.xml",true)));
@@ -39,7 +39,7 @@ public class RegistroController {
                     alert.setTitle("Error en las Credenciales");
                     alert.setContentText("Las credenciales proporcionadas se encuentran en uso");
                     alert.show();
-                    usuario.setText("");contraseña.setText("");
+                    usuario.setText("");contrasena.setText("");
                 }
                 else
                 {
@@ -49,12 +49,12 @@ public class RegistroController {
                         throw new RuntimeException(ex);
                     }
                     LOGGER.log(Level.INFO, "Se crean nuevas credenciales");
-                    Metodo.crearCliente(cedula.getText(),nombre.getText(), celular.getText(), correo.getText(), ciudad.getText(), direccion.getText(), usuario.getText(),contraseña.getText());
+                    Metodo.crearCliente(cedula.getText(),nombre.getText(), celular.getText(), correo.getText(), ciudad.getText(), direccion.getText(), usuario.getText(),contrasena.getText());
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Datos registrados con exito");
                     alert.setContentText("La validacion de credenciales es correcta");
                     alert.show();
-                    cedula.setText("");nombre.setText("");celular.setText("");correo.setText("");ciudad.setText("");direccion.setText("");usuario.setText("");contraseña.setText("");
+                    cedula.setText("");nombre.setText("");celular.setText("");correo.setText("");ciudad.setText("");direccion.setText("");usuario.setText("");contrasena.setText("");
                 }
             }
             else

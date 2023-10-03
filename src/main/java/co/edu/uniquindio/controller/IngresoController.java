@@ -19,12 +19,12 @@ public class IngresoController {
     @FXML
     private TextField usuario;
     @FXML
-    private PasswordField contraseña;
+    private PasswordField contrasena;
     @FXML
     public void ingresar (ActionEvent e){
         Object evt =  e.getSource();
         if (evt.equals(bttIngreso)) {
-            if (usuario.getText().equals("admin") && contraseña.getText().equals("admin")) {
+            if (usuario.getText().equals("admin") && contrasena.getText().equals("admin")) {
                 Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
                 try {
                     LOGGER.addHandler((new FileHandler("ingresoAdmin.xml",true)));
@@ -33,8 +33,8 @@ public class IngresoController {
                 }
                 LOGGER.log(Level.INFO, "Se ingreso con credenciales administrativas");
             } else {
-                if (!usuario.getText().isEmpty() && !contraseña.getText().isEmpty()) {
-                    if (Metodo.verificarDatos(usuario.getText(), contraseña.getText())) {
+                if (!usuario.getText().isEmpty() && !contrasena.getText().isEmpty()) {
+                    if (Metodo.verificarDatos(usuario.getText(), contrasena.getText())) {
                         try {
                             LOGGER.addHandler((new FileHandler("ingresoCorrecto.xml",true)));
                         } catch (IOException ex) {
@@ -45,7 +45,7 @@ public class IngresoController {
                         alert.setTitle("Datos ingresados con exito");
                         alert.setContentText("La validacion de credenciales es correcta");
                         alert.show();
-                        Metodo.recibirClienteSesion(Metodo.retornarCliente(usuario.getText(),contraseña.getText()));
+                        Metodo.recibirClienteSesion(Metodo.retornarCliente(usuario.getText(),contrasena.getText()));
                         Metodo.loadStage("/paginaVehiculo.fxml", e);
                     } else {
                         try {

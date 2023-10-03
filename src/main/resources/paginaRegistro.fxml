@@ -29,7 +29,7 @@
             <Font name="Franklin Gothic Book" size="34.0" />
          </font>
       </Label>
-      <PasswordField fx:id="contraseña" layoutX="182.0" layoutY="301.0" prefHeight="27.0" prefWidth="124.0" promptText="Contraseña">
+      <PasswordField fx:id="contrasena" layoutX="182.0" layoutY="301.0" prefHeight="27.0" prefWidth="124.0" promptText="Contraseña">
          <font>
             <Font name="Franklin Gothic Medium Cond" size="16.0" />
          </font></PasswordField>
