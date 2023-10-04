@@ -54,12 +54,10 @@ public class IngresoController {
         }
         public void initialize(URL url, ResourceBundle resourceBundle) {
         bttIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
-        usuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
-        contrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
         tituloIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
         textoContrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
         textoUsuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
-         }
+    }
     }
 
 

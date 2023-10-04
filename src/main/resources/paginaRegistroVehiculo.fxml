@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="396.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.RegistroVehiculoController">
+<AnchorPane prefHeight="396.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.RegistroVehiculoController">
    <ComboBox fx:id="automatico" layoutX="208.0" layoutY="296.0" onShowing="#listarSillas" prefHeight="27.0" prefWidth="124.0" visibleRowCount="2" />
       <Label layoutX="56.0" layoutY="270.0" prefHeight="25.0" prefWidth="81.0" text="Sillas">
          <font>
@@ -20,7 +17,7 @@
             <Font name="Franklin Gothic Book" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="126.0" layoutY="17.0" prefHeight="83.0" prefWidth="136.0" text="Registro">
+      <Label fx:id="txtRegistro" contentDisplay="CENTER" layoutX="126.0" layoutY="17.0" prefHeight="83.0" prefWidth="136.0" text="Registro">
          <font>
             <Font name="Franklin Gothic Book" size="34.0" />
          </font>
@@ -32,7 +29,7 @@
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <Label layoutX="56.0" layoutY="93.0" prefHeight="25.0" prefWidth="81.0" text="Marca">
+   <Label fx:id="txtMarca" layoutX="56.0" layoutY="93.0" prefHeight="25.0" prefWidth="81.0" text="Marca">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>
@@ -93,7 +90,7 @@
          <Font name="Franklin Gothic Medium Cond" size="16.0" />
       </font>
    </TextField>
-   <Label layoutX="362.0" layoutY="14.0" prefHeight="25.0" prefWidth="110.0" text="Imagen Ref">
+   <Label fx:id="txtRef" layoutX="362.0" layoutY="14.0" prefHeight="25.0" prefWidth="110.0" text="Imagen Ref">
       <font>
          <Font name="Franklin Gothic Book" size="15.0" />
       </font>

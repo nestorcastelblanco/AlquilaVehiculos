@@ -21,8 +21,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>co.edu.uniquindio.app.Ingreso</mainClass>
-                </configuration>
+                    <mainClass>co.edu.uniquindio.app.Ingreso</mainClass></configuration>
             </plugin>
         </plugins>
     </build>

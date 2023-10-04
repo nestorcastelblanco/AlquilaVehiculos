@@ -2,12 +2,14 @@ package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.model.Cliente;
 import co.edu.uniquindio.model.Metodo;
+import co.edu.uniquindio.model.Propiedades;
 import co.edu.uniquindio.model.Vehiculos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,19 +18,24 @@ import javafx.scene.image.ImageView;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SeleccionVehiculoController {
+public class SeleccionVehiculoController implements Initializable {
+    private final Propiedades propiedades = Propiedades.getInstance();
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
     private Label txtImagen, placa, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
+    @FXML
+    private Label txtNombre,txtModelo,txtFechaIn,txtFechaFin,txtPlaca,txtMarca,txtKm,txtAlquiler,txtSillas,txtAutomatico;
     @FXML
     private Button botonRegreso,botonCargar, botonAlquilar;
     @FXML
@@ -47,6 +54,20 @@ public class SeleccionVehiculoController {
         if (evt.equals(botonRegreso)) {
             metodo.loadStage("/pngPrincipal.fxml", e,"Se ingresa a la pagina principal");
         }
+    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        botonCargar.setText(propiedades.getResourceBundle().getString("textoCargar"));
+        txtNombre.setText(propiedades.getResourceBundle().getString("textoNombre"));
+        txtModelo.setText(propiedades.getResourceBundle().getString("textoModelo"));
+        txtFechaIn.setText(propiedades.getResourceBundle().getString("textoFechaInicio"));
+        txtFechaFin.setText(propiedades.getResourceBundle().getString("textoFechaFinal"));
+        txtPlaca.setText(propiedades.getResourceBundle().getString("textoPlaca"));
+        txtMarca.setText(propiedades.getResourceBundle().getString("textoMarca"));
+        txtAlquiler.setText(propiedades.getResourceBundle().getString("textoRentaDia"));
+        txtSillas.setText(propiedades.getResourceBundle().getString("textoSillas"));
+        txtAutomatico.setText(propiedades.getResourceBundle().getString("textoAutomatico"));
+        botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar"));
+        botonAlquilar.setText(propiedades.getResourceBundle().getString("textoRentar"));
     }
     public void recibirVehiculos()
     {
