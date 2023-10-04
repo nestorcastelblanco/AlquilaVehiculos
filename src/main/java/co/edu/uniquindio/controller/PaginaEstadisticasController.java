@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 
 public class PaginaEstadisticasController {
     private final Metodo metodo = Metodo.getInstance();
-    private final Propiedades propiedades = Propiedades.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
         @FXML
         private Label placa,alquiler, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;

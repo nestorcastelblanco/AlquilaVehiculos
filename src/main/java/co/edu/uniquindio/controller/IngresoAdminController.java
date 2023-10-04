@@ -12,8 +12,7 @@ import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class IngresoAdminController implements Initializable {
-    private final Propiedades propiedades = Propiedades.getInstance();
+public class IngresoAdminController{
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     private final Metodo metodo = Metodo.getInstance();
     @FXML
@@ -24,14 +23,7 @@ public class IngresoAdminController implements Initializable {
             metodo.loadStage("/paginaRegistroVehiculo.fxml", e, "Se ingresa a la pestaña de registro");
         }
     }
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        botonAdministrativo.setText(propiedades.getResourceBundle().getString("textoFiltrarPrestamosFechas"));
-        botonContador.setText(propiedades.getResourceBundle().getString("textoVehiculoMasRentado"));
-        botonRegistro.setText(propiedades.getResourceBundle().getString("textoRegistrarCliente"));
-        botonUtilidades.setText(propiedades.getResourceBundle().getString("textoBuscarUtilidades"));
-        botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar2"));
-        botonRegistroVehiculo.setText(propiedades.getResourceBundle().getString("textoRegistrarVehiculo"));
-    }
+
     public void regresar (ActionEvent e)
     {
         Object evt = e.getSource();
