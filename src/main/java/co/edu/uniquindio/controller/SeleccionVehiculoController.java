@@ -118,7 +118,7 @@ public class SeleccionVehiculoController{
                     Metodo.imprimirRegistros();
                     LOGGER.log(Level.INFO, "Se genero un alquiler de vehiculo");
                 }else {
-                    LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionarlo");
+                    LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionar");
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Datos necesarios no llenados");
                     alert.setContentText("No ha seleccionado un item valido");
