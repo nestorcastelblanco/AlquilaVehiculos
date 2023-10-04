@@ -63,13 +63,21 @@ public class RegistroVehiculoController {
             }
             else
             {
-                try {
-                    LOGGER.addHandler((new FileHandler("RegistroVehicularEmpty.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                if(Integer.parseInt(precio.getText()) < 0)
+                {
+                    LOGGER.log(Level.INFO, "Se intento el registro con un precio de alquiler menor a 0");
+                    JOptionPane.showMessageDialog(null,"El precio del vehículo es menor o igual a 0","Registro Fallido",2);
                 }
-                LOGGER.log(Level.INFO, "Se intento el registro un vehiculo con campos vacios");
-                JOptionPane.showMessageDialog(null,"No se llenaron los campos correspondientes","Registro Fallido",2);
+                else
+                {
+                    try {
+                        LOGGER.addHandler((new FileHandler("RegistroVehicularEmpty.xml",true)));
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    LOGGER.log(Level.INFO, "Se intento el registro un vehiculo con campos vacios");
+                    JOptionPane.showMessageDialog(null,"No se llenaron los campos correspondientes","Registro Fallido",2);
+                }
             }
         }
     }
