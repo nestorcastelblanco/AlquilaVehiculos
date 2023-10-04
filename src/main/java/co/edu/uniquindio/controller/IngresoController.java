@@ -52,12 +52,12 @@ public class IngresoController {
                 }
             }
         }
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-        bttIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
-        tituloIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
-        textoContrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
-        textoUsuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
-    }
-    }
+    // public void initialize(URL url, ResourceBundle resourceBundle) {
+    // bttIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
+    //  tituloIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
+    //  textoContrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
+    //  textoUsuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
+    //}
+}
 
 
