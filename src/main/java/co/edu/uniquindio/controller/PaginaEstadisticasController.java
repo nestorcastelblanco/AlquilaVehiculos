@@ -1,6 +1,8 @@
 package co.edu.uniquindio.controller;
 
+import co.edu.uniquindio.exceptions.InformacionErronea;
 import co.edu.uniquindio.model.Metodo;
+import co.edu.uniquindio.model.Propiedades;
 import co.edu.uniquindio.model.Vehiculos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,14 +14,18 @@ import javafx.scene.image.ImageView;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PaginaEstadisticasController {
-        private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+    private final Metodo metodo = Metodo.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
+    private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
         @FXML
         private Label placa,alquiler, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
         @FXML
@@ -28,16 +34,18 @@ public class PaginaEstadisticasController {
         public void regresar (ActionEvent e) {
             Object evt = e.getSource();
             if (evt.equals(botonRegreso)) {
-                Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
-                try {
-                    LOGGER.addHandler((new FileHandler("BotonRegresoVenSeleccion.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                LOGGER.log(Level.INFO, "Se regreso al portal de ingreso");
+                metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pagina de administrador");
             }
         }
-        public void buscar(ActionEvent actionEvent) {
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+        botonAdministrativo.setText(propiedades.getResourceBundle().getString("textoFiltrarPrestamosFechas"));
+        botonContador.setText(propiedades.getResourceBundle().getString("textoVehiculoMasRentado"));
+        botonRegistro.setText(propiedades.getResourceBundle().getString("textoRegistrarCliente"));
+        botonUtilidades.setText(propiedades.getResourceBundle().getString("textoBuscarUtilidades"));
+        botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar2"));
+        botonRegistroVehiculo.setText(propiedades.getResourceBundle().getString("textoRegistrarVehiculo"));
+        }
+        public void buscar(ActionEvent actionEvent) throws InformacionErronea {
             Object evt = actionEvent.getSource();
             if (evt.equals(botonBuscar)) {
                 Vehiculos vehiculo;
@@ -52,14 +60,10 @@ public class PaginaEstadisticasController {
                 sillas.setText(vehiculo.getNumeroSillas());
                 automatico.setText(vehiculo.getAutomatico());
                 alquiler.setText(vehiculo.getContPrestamos()+"");
+                LOGGER.log(Level.INFO,"Se cargaron los datos correspondientes");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Datos de fechas erroneos", "Validacion Rechazada", 1);
-                    try {
-                        LOGGER.addHandler((new FileHandler("errorFecha.xml", true)));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
+                    LOGGER.log(Level.INFO,"");
+                    throw new InformacionErronea("Se ingreso informacion Erronea");
                 }
         }
 }

@@ -1,88 +1,66 @@
 package co.edu.uniquindio.controller;
+import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.model.Vehiculos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import co.edu.uniquindio.model.Metodo;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class IngresoAdminController {
+public class IngresoAdminController implements Initializable {
+    private final Propiedades propiedades = Propiedades.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+    private final Metodo metodo = Metodo.getInstance();
     @FXML
     private Button botonUtilidades,botonRegistroVehiculo, botonRegreso, botonRegistro,botonAdministrativo,botonContador;
     public void registrarVehiculo (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegistroVehiculo)) {
-            Metodo.loadStage("/paginaRegistroVehiculo.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("ingresoRegistroVehiculo.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Se ingreso al registro vehicular");
+            metodo.loadStage("/paginaRegistroVehiculo.fxml", e, "Se ingresa a la pestaña de registro");
         }
+    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        botonAdministrativo.setText(propiedades.getResourceBundle().getString("textoFiltrarPrestamosFechas"));
+        botonContador.setText(propiedades.getResourceBundle().getString("textoVehiculoMasRentado"));
+        botonRegistro.setText(propiedades.getResourceBundle().getString("textoRegistrarCliente"));
+        botonUtilidades.setText(propiedades.getResourceBundle().getString("textoBuscarUtilidades"));
+        botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar2"));
+        botonRegistroVehiculo.setText(propiedades.getResourceBundle().getString("textoRegistrarVehiculo"));
     }
     public void regresar (ActionEvent e)
     {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
-            Metodo.loadStage("/pngPrincipal.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("regresarAdmin.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Se regreso a la pagina principal");
+            metodo.loadStage("/pngPrincipal.fxml", e, "Se regresa a la pagina principal");
         }
     }
     public void registrarse (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegistro)) {
-            Metodo.loadStage("/paginaRegistro.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("ingresoRegistroCliente.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Ingreso al apartado de registro de personas");
+            metodo.loadStage("/paginaRegistro.fxml", e,"Ingreso al apartado de registro de personas");
         }
     }
     public void administrativa(ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonAdministrativo)) {
-            Metodo.loadStage("/paginaPrestamos.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("ingresoPagPrestamos.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Ingreso al apartado prestamos");
+            metodo.loadStage("/paginaPrestamos.fxml", e,"Ingreso al apartado administrativo");
         }
     }
-
     public void contador(ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonContador)) {
-            Metodo.loadStage("/paginaEstadisticas.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("ingresoPagEstadisticas.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Ingreso al apartado prestamos");
+            metodo.loadStage("/paginaEstadisticas.fxml", e,"Ingreso al apartado prestamos");
         }
     }
     public void utilidades(ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonUtilidades)) {
-            Metodo.loadStage("/paginaFacturas.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("ingresoPagUtilidades.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Ingreso al apartado de utilidades");
+            metodo.loadStage("/paginaFacturas.fxml", e,"Ingreso al apartado de utilidades");
         }
     }
 }

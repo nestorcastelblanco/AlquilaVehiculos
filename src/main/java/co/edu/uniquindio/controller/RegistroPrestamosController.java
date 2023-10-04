@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 
 public class RegistroPrestamosController {
         private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+        private final Metodo metodo = Metodo.getInstance();
         @FXML
         private Label txtImagen, placa,nombreCliente,identificacion, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
         @FXML
@@ -39,13 +40,7 @@ public class RegistroPrestamosController {
         public void regresar (ActionEvent e) {
             Object evt = e.getSource();
             if (evt.equals(botonRegreso)) {
-                Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
-                try {
-                    LOGGER.addHandler((new FileHandler("BotonRegresoVenSeleccion.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                LOGGER.log(Level.INFO, "Se regreso al portal de ingreso");
+                metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pagina de administrador");
             }
         }
         public void llenarListaVehiculos(ArrayList<Vehiculos> array) {
@@ -67,11 +62,6 @@ public class RegistroPrestamosController {
                     Metodo.llenarVehiculos(vehiculos, listaVehiculos);
                 } else {
                     JOptionPane.showMessageDialog(null, "Datos de fechas erroneos", "Validacion Rechazada", 1);
-                    try {
-                        LOGGER.addHandler((new FileHandler("errorFecha.xml", true)));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
                     LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
                 }
             }
@@ -98,22 +88,8 @@ public class RegistroPrestamosController {
                 identificacion.setText(vehiculoSeleccionado.getCliente().getCedula());
                 Image imagen = new Image(vehiculoSeleccionado.getFoto());
                 imagenVehiculo.setImage(imagen);
-                try {
-                    LOGGER.addHandler((new FileHandler("BotonCargarVehiculo.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
                 LOGGER.log(Level.INFO, "Se cargaron las propiedades de los vehiculos para mostrarlos");
             } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Datos necesarios no llenados");
-                alert.setContentText("No ha seleccionado un item valido");
-                alert.show();
-                try {
-                    LOGGER.addHandler((new FileHandler("errorCarga.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
                 LOGGER.log(Level.INFO, "Se intentaron cargar atributos sin selccionar vehiculo");
             }
         }

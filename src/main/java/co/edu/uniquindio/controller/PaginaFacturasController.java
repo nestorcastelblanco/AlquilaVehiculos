@@ -1,5 +1,6 @@
 package co.edu.uniquindio.controller;
 
+import co.edu.uniquindio.exceptions.InformacionErronea;
 import co.edu.uniquindio.model.Metodo;
 import co.edu.uniquindio.model.Vehiculos;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 
 public class PaginaFacturasController {
         private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+        private final Metodo metodo = Metodo.getInstance();
         @FXML
         private Label precio;
         @FXML
@@ -30,16 +32,10 @@ public class PaginaFacturasController {
         public void regresar (ActionEvent e) {
             Object evt = e.getSource();
             if (evt.equals(botonRegreso)) {
-                Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
-                try {
-                    LOGGER.addHandler((new FileHandler("BotonRegresoVenSeleccion.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                LOGGER.log(Level.INFO, "Se regreso al portal de ingreso");
+                metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pestaña de administrador");
             }
         }
-        public void buscar(ActionEvent actionEvent) {
+        public void buscar(ActionEvent actionEvent) throws InformacionErronea {
             Object evt = actionEvent.getSource();
             if (evt.equals(botonBuscar)) {
                 if (Metodo.verificarCampos(diaInicio.getText(), mesInicio.getText(), anioInicio.getText()) != null && Metodo.verificarCampos(diaFin.getText(), mesFin.getText(), anioFin.getText()) != null)
@@ -48,13 +44,8 @@ public class PaginaFacturasController {
                     fin = Metodo.verificarCampos(diaFin.getText(), mesFin.getText(), anioFin.getText());
                     precio.setText(Metodo.adquirirUtilidades(inicio,fin) +"");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Datos de fechas erroneos", "Validacion Rechazada", 1);
-                    try {
-                        LOGGER.addHandler((new FileHandler("errorFecha.xml", true)));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
                     LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
+                    throw new InformacionErronea("Se ingresaron datos erroneos");
                 }
             }
         }

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.model;
 
+import co.edu.uniquindio.controller.IngresoController;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import lombok.*;
 
@@ -16,6 +19,9 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Getter
 @Setter
@@ -26,6 +32,23 @@ public class Metodo {
     public static ArrayList<Cliente> registros = new ArrayList<>();
     public static ArrayList<Facturas> facturas = new ArrayList<>();
     public static Cliente clienteSesion = new Cliente();
+    private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+    private static Metodo metodo;
+    private Metodo(){
+        try {
+            LOGGER.addHandler((new FileHandler("logs.xml",true)));
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    public static Metodo getInstance()
+    {
+        if(metodo == null)
+        {
+            metodo = new Metodo();
+        }
+        return metodo;
+    }
     public static void cargarDatos () {
         Cliente cliente = new Cliente();                         Cliente cliente1 = new Cliente();               Cliente cliente2 = new Cliente();
         cliente.setNombre("Nestor Castelblanco");                cliente1.setNombre("Sebastian Agudelo");        cliente2.setNombre("Hulbert Ferney");
@@ -107,8 +130,8 @@ public class Metodo {
         for (Cliente c : clientes)
         {
             if(usuario.equals(c.getUsuario()) && contrasena.equals(c.getContrasena())) {
+                clienteSesion = c;
                 state = true;
-                break;
             }
         }
         return state;
@@ -151,6 +174,7 @@ public class Metodo {
     }
     public static void crearVehiculo (String  placa, String marca, String nombre, String modelo, String km, String alquiler, String sillas, String automatico, String foto)
     {
+
         Vehiculos vehiculo = new Vehiculos();
         vehiculo.setPlaca(placa.toUpperCase());
         vehiculo.setMarca(marca.toUpperCase());
@@ -179,8 +203,9 @@ public class Metodo {
     {
        auto.setItems(pal);
     }
-    public static void loadStage(String url, Event evento) {
+    public static void loadStage(String url, Event evento, String mensaje) {
         try {
+            LOGGER.log(Level.INFO, mensaje);
             ((Node) (evento.getSource())).getScene().getWindow().hide();
             Parent root = FXMLLoader.load(Objects.requireNonNull(Metodo.class.getResource(url)));
             Scene scene = new Scene(root);
@@ -189,6 +214,7 @@ public class Metodo {
             newStage.setTitle("Travel Agency");
             newStage.show();
         } catch (Exception ignored) {
+            LOGGER.log(Level.SEVERE, ignored.getMessage());
         }
     }
     public static ArrayList<Vehiculos> enviarVehiculos()

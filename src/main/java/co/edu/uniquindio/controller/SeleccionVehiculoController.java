@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SeleccionVehiculoController {
+    private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
     private Label txtImagen, placa, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
@@ -44,13 +45,7 @@ public class SeleccionVehiculoController {
     public void regresar (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
-            Metodo.loadStage("/pngPrincipal.fxml", e);
-            try {
-                LOGGER.addHandler((new FileHandler("BotonRegresoVenSeleccion.xml",true)));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            LOGGER.log(Level.INFO, "Se regreso al portal de ingreso");
+            metodo.loadStage("/pngPrincipal.fxml", e,"Se ingresa a la pagina principal");
         }
     }
     public void recibirVehiculos()
@@ -94,22 +89,8 @@ public class SeleccionVehiculoController {
                 txtImagen.setText(vehiculoSeleccionado.toString());
                 Image imagen = new Image(vehiculoSeleccionado.getFoto());
                 imagenVehiculo.setImage(imagen);
-                try {
-                    LOGGER.addHandler((new FileHandler("BotonCargarVehiculo.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
                 LOGGER.log(Level.INFO, "Se cargaron las propiedades de los vehiculos para mostrarlos");
             } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Datos necesarios no llenados");
-                alert.setContentText("No ha seleccionado un item valido");
-                alert.show();
-                try {
-                    LOGGER.addHandler((new FileHandler("errorCarga.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
                 LOGGER.log(Level.INFO, "Se intentaron cargar atributos sin selccionar vehiculo");
             }
         }
@@ -129,18 +110,8 @@ public class SeleccionVehiculoController {
                     Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin);
                     Metodo.cargarFactura(clienteSistema,inicio,fin,vehiculos.getSelectionModel().getSelectedItem().getPrecioAlquilerDia());
                     Metodo.imprimirRegistros();
-                    try {
-                        LOGGER.addHandler((new FileHandler("AlquilarVehiculo.xml",true)));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
                     LOGGER.log(Level.INFO, "Se genero un alquiler de vehiculo");
                 }else {
-                    try {
-                        LOGGER.addHandler((new FileHandler("errorVehiculo.xml",true)));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
                     LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionarlo");
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Datos necesarios no llenados");
@@ -149,14 +120,8 @@ public class SeleccionVehiculoController {
                 }
             }
             else {
-                try {
-                    LOGGER.addHandler((new FileHandler("errorFecha.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
                 LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
             }
         }
     }
-
 }

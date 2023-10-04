@@ -1,85 +1,65 @@
 package co.edu.uniquindio.controller;
+import co.edu.uniquindio.exceptions.CampoVacioException;
+import co.edu.uniquindio.exceptions.InformacionRepetidaException;
+import co.edu.uniquindio.model.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import co.edu.uniquindio.model.Metodo;
 
+import javax.swing.text.LabelView;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class IngresoController {
+    private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+   @FXML
+   private Label tituloIngreso, textoUsuario, textoContrasena;
     @FXML
     private Button bttIngreso;
     @FXML
     private TextField usuario;
     @FXML
     private PasswordField contrasena;
+    private final Propiedades propiedades = Propiedades.getInstance();
     @FXML
-    public void ingresar (ActionEvent e){
+    public void ingresar (ActionEvent e) throws InformacionRepetidaException, CampoVacioException {
         Object evt =  e.getSource();
         if (evt.equals(bttIngreso)) {
             if (usuario.getText().equals("admin") && contrasena.getText().equals("admin")) {
-                Metodo.loadStage("/paginaPrincipalAdmin.fxml", e);
-                try {
-                    LOGGER.addHandler((new FileHandler("ingresoAdmin.xml",true)));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                LOGGER.log(Level.INFO, "Se ingreso con credenciales administrativas");
+                metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pestaña como administrador");
             } else {
                 if (!usuario.getText().isEmpty() && !contrasena.getText().isEmpty())
                 {
                     if (Metodo.verificarDatos(usuario.getText(), contrasena.getText()))
                     {
-                        try
-                        {
-                            LOGGER.addHandler((new FileHandler("ingresoCorrecto.xml",true)));
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        LOGGER.log(Level.INFO, "Se ingreso con credenciales correctas y entra a la seccion de seleccion");
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setTitle("Datos ingresados con exito");
-                        alert.setContentText("La validacion de credenciales es correcta");
-                        alert.show();
-                        Metodo.recibirClienteSesion(Metodo.retornarCliente(usuario.getText(),contrasena.getText()));
-                        Metodo.loadStage("/paginaVehiculo.fxml", e);
+                        metodo.loadStage("/paginaVehiculo.fxml", e, "Se ingresa como usuario");
                     }
-                    else
-                        {
-                             try {
-                                 LOGGER.addHandler((new FileHandler("ingresoIncorrecto.xml",true)));
-                             } catch (IOException ex)
-                             {
-                                throw new RuntimeException(ex);
-                             }
-                            LOGGER.log(Level.INFO, "Se ingresaron ccredenciales incorrectas");
-                            Alert alert = new Alert(Alert.AlertType.WARNING);
-                            alert.setTitle("Datos ingresados no validos");
-                            alert.setContentText("La validacion de credenciales es incorrecta");
-                            alert.show();
-                        }
+                    else{
+                        LOGGER.log(Level.WARNING, "Credenciales Invalidas");
+                        throw new InformacionRepetidaException("Se ingresaron credenciales invalidas");
+                    }
                 }
-                else
-                {
-                    try {
-                        LOGGER.addHandler((new FileHandler("ingresoBlanco.xml",true)));
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    LOGGER.log(Level.INFO, "Se ingreso con credenciales vacias");
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Datos necesarios no llenados");
-                    alert.setContentText("La validacion de credenciales es incorrecta");
-                    alert.show();
+                else {
+                    LOGGER.log(Level.WARNING, "Credenciales vacias");
+                    throw new CampoVacioException("Se ingresaron credenciales invalidas");
+                }
                 }
             }
         }
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+        bttIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
+        usuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
+        contrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
+        tituloIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
+        textoContrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
+        textoUsuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
+         }
     }
-}
+
+
