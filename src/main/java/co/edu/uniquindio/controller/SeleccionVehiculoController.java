@@ -28,7 +28,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SeleccionVehiculoController implements Initializable {
+public class SeleccionVehiculoController {
     private final Propiedades propiedades = Propiedades.getInstance();
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
@@ -55,20 +55,20 @@ public class SeleccionVehiculoController implements Initializable {
             metodo.loadStage("/pngPrincipal.fxml", e,"Se ingresa a la pagina principal");
         }
     }
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        botonCargar.setText(propiedades.getResourceBundle().getString("textoCargar"));
-        txtNombre.setText(propiedades.getResourceBundle().getString("textoNombre"));
-        txtModelo.setText(propiedades.getResourceBundle().getString("textoModelo"));
-        txtFechaIn.setText(propiedades.getResourceBundle().getString("textoFechaInicio"));
-        txtFechaFin.setText(propiedades.getResourceBundle().getString("textoFechaFinal"));
-        txtPlaca.setText(propiedades.getResourceBundle().getString("textoPlaca"));
-        txtMarca.setText(propiedades.getResourceBundle().getString("textoMarca"));
-        txtAlquiler.setText(propiedades.getResourceBundle().getString("textoRentaDia"));
-        txtSillas.setText(propiedades.getResourceBundle().getString("textoSillas"));
-        txtAutomatico.setText(propiedades.getResourceBundle().getString("textoAutomatico"));
-        botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar"));
-        botonAlquilar.setText(propiedades.getResourceBundle().getString("textoRentar"));
-    }
+    //public void initialize(URL url, ResourceBundle resourceBundle) {
+    //   botonCargar.setText(propiedades.getResourceBundle().getString("textoCargar"));
+    //   txtNombre.setText(propiedades.getResourceBundle().getString("textoNombre"));
+    //  txtModelo.setText(propiedades.getResourceBundle().getString("textoModelo"));
+    //  txtFechaIn.setText(propiedades.getResourceBundle().getString("textoFechaInicio"));
+    //   txtFechaFin.setText(propiedades.getResourceBundle().getString("textoFechaFinal"));
+    //   txtPlaca.setText(propiedades.getResourceBundle().getString("textoPlaca"));
+    //  txtMarca.setText(propiedades.getResourceBundle().getString("textoMarca"));
+    //  txtAlquiler.setText(propiedades.getResourceBundle().getString("textoRentaDia"));
+    //  txtSillas.setText(propiedades.getResourceBundle().getString("textoSillas"));
+    //  txtAutomatico.setText(propiedades.getResourceBundle().getString("textoAutomatico"));
+    //  botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar"));
+    // botonAlquilar.setText(propiedades.getResourceBundle().getString("textoRentar"));
+    //}
     public void recibirVehiculos()
     {
         arrayVehiculos = Metodo.enviarVehiculos();

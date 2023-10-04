@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class IngresoAdminController implements Initializable {
+public class IngresoAdminController{
     private final Propiedades propiedades = Propiedades.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     private final Metodo metodo = Metodo.getInstance();
