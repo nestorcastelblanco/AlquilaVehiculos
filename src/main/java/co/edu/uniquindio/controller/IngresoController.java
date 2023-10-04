@@ -26,7 +26,7 @@ public class IngresoController {
     private TextField usuario;
     @FXML
     private PasswordField contrasena;
-    private final Propiedades propiedades = Propiedades.getInstance();
+    //private final Propiedades propiedades = Propiedades.getInstance();
     @FXML
     public void ingresar (ActionEvent e) throws InformacionRepetidaException, CampoVacioException {
         Object evt =  e.getSource();

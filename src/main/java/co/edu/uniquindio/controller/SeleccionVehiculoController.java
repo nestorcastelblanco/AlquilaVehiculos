@@ -29,7 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SeleccionVehiculoController {
-    private final Propiedades propiedades = Propiedades.getInstance();
+    //private final Propiedades propiedades = Propiedades.getInstance();
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML

@@ -646,3 +646,19 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-04T05:03:45.649683Z</date>
+  <millis>1696395825649</millis>
+  <nanos>683000</nanos>
+  <sequence>0</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>16</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+</log>
