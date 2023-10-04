@@ -36,9 +36,9 @@ public class PaginaEstadisticasController {
                 metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pagina de administrador");
             }
         }
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        }
+    // public void initialize(URL url, ResourceBundle resourceBundle) {
+    //
+    //  }
         public void buscar(ActionEvent actionEvent) throws InformacionErronea {
             Object evt = actionEvent.getSource();
             if (evt.equals(botonBuscar)) {

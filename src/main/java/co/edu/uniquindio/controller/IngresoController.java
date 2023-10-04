@@ -18,12 +18,15 @@ import java.util.logging.Logger;
 public class IngresoController {
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
+   @FXML
+   private Label tituloIngreso, textoUsuario, textoContrasena;
     @FXML
     private Button bttIngreso;
     @FXML
     private TextField usuario;
     @FXML
     private PasswordField contrasena;
+    private final Propiedades propiedades = Propiedades.getInstance();
     @FXML
     public void ingresar (ActionEvent e) throws InformacionRepetidaException, CampoVacioException {
         Object evt =  e.getSource();
@@ -49,6 +52,12 @@ public class IngresoController {
                 }
             }
         }
-    }
+    // public void initialize(URL url, ResourceBundle resourceBundle) {
+    // bttIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
+    //  tituloIngreso.setText(propiedades.getResourceBundle().getString("textoIngreso"));
+    //  textoContrasena.setText(propiedades.getResourceBundle().getString("textoContrasena"));
+    //  textoUsuario.setText(propiedades.getResourceBundle().getString("textoUsuario"));
+    //}
+}
 
 

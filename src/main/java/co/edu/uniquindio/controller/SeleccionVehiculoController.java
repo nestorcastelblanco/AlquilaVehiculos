@@ -28,7 +28,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SeleccionVehiculoController{
+public class SeleccionVehiculoController {
+    private final Propiedades propiedades = Propiedades.getInstance();
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
@@ -54,6 +55,20 @@ public class SeleccionVehiculoController{
             metodo.loadStage("/pngPrincipal.fxml", e,"Se ingresa a la pagina principal");
         }
     }
+    //public void initialize(URL url, ResourceBundle resourceBundle) {
+    //   botonCargar.setText(propiedades.getResourceBundle().getString("textoCargar"));
+    //   txtNombre.setText(propiedades.getResourceBundle().getString("textoNombre"));
+    //  txtModelo.setText(propiedades.getResourceBundle().getString("textoModelo"));
+    //  txtFechaIn.setText(propiedades.getResourceBundle().getString("textoFechaInicio"));
+    //   txtFechaFin.setText(propiedades.getResourceBundle().getString("textoFechaFinal"));
+    //   txtPlaca.setText(propiedades.getResourceBundle().getString("textoPlaca"));
+    //  txtMarca.setText(propiedades.getResourceBundle().getString("textoMarca"));
+    //  txtAlquiler.setText(propiedades.getResourceBundle().getString("textoRentaDia"));
+    //  txtSillas.setText(propiedades.getResourceBundle().getString("textoSillas"));
+    //  txtAutomatico.setText(propiedades.getResourceBundle().getString("textoAutomatico"));
+    //  botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar"));
+    // botonAlquilar.setText(propiedades.getResourceBundle().getString("textoRentar"));
+    //}
     public void recibirVehiculos()
     {
         arrayVehiculos = Metodo.enviarVehiculos();
@@ -118,7 +133,7 @@ public class SeleccionVehiculoController{
                     Metodo.imprimirRegistros();
                     LOGGER.log(Level.INFO, "Se genero un alquiler de vehiculo");
                 }else {
-                    LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionar");
+                    LOGGER.log(Level.INFO, "Se intento alquilar un vehiculo sin seleccionarlo");
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Datos necesarios no llenados");
                     alert.setContentText("No ha seleccionado un item valido");

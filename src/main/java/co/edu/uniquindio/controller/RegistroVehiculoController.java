@@ -18,7 +18,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RegistroVehiculoController{
+public class RegistroVehiculoController {
+    private final Propiedades propiedades = Propiedades.getInstance();
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
@@ -31,6 +32,17 @@ public class RegistroVehiculoController{
     private ComboBox automatico, sillas;
     ObservableList<Integer> listaSillas = FXCollections.observableArrayList(1,2,3,4,5);
     ObservableList<String> listaAutomatico = FXCollections.observableArrayList("Si","No");
+    //public void initialize(URL url, ResourceBundle resourceBundle) {
+    //  txtRegistro.setText(propiedades.getResourceBundle().getString("textoRegistrar2"));
+    //  txtMarca.setText(propiedades.getResourceBundle().getString("textoMarca2"));
+    //  txtPlaca.setText(propiedades.getResourceBundle().getString("textoPlaca2"));
+    //  txtNombre.setText(propiedades.getResourceBundle().getString("textoNombre2"));
+    //    txtModelo.setText(propiedades.getResourceBundle().getString("textoModelo2"));
+    //    txtKm.setText(propiedades.getResourceBundle().getString("textoKm2"));
+    //    txtPrecio.setText(propiedades.getResourceBundle().getString("textoPrecioDiario"));
+    //    txtSillas.setText(propiedades.getResourceBundle().getString("txtSillas"));
+    //    txtAutomatico.setText(propiedades.getResourceBundle().getString("textoAutomatico2"));
+    //}
     public void regresar (ActionEvent e) {
         Object evt = e.getSource();
         if (evt.equals(botonRegreso)) {
