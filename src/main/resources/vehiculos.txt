@@ -1,3 +1,3 @@
-TRACKER ---- CHEVROLET
-SANDERO ---- RENAULT
-SPARK GT ---- CHEVROLET
+FQK884;TRACKER;CHEVROLET;2019;C:\Users\nesto\Programacion III\AlquilaVehiculos\src\main\resources\imagenes\imagenesVehiculos\tracker.png;45000;5;SI;;0.0;0;
+KMP282;SANDERO;RENAULT;2019;C:\Users\nesto\Programacion III\AlquilaVehiculos\src\main\resources\imagenes\imagenesVehiculos\sandero.png;45000;5;SI;;0.0;0;
+FQK884;SPARK GT;CHEVROLET;2020;C:\Users\nesto\Programacion III\AlquilaVehiculos\src\main\resources\imagenes\imagenesVehiculos\spark.png;45000;5;SI;;0.0;0;

@@ -118,17 +118,17 @@ public class Metodo {
         vehiculos.add(vehiculo2);
 
         try {
-            escribirArchivoFormatterClientes("C:\\AlquilaFacil\\src\\main\\resources\\clientesRegistrados.txt", clientes);
+            escribirArchivoFormatterClientes("src/main/resources/clientesRegistrados.txt", clientes);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         try {
-            escribirArchivoFormatterVehiculos("C:\\AlquilaFacil\\src\\main\\resources\\vehiculos.txt", vehiculos);
+            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.txt", vehiculos);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         try {
-            escribirArchivoFormatterAlquiler("C:\\AlquilaFacil\\src\\main\\resources\\vehiculosAlquilados.txt", registros);
+            escribirArchivoFormatterAlquiler("src/main/resources/vehiculosAlquilados.txt", registros);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -235,7 +235,7 @@ public class Metodo {
         cliente.setContrasena(contrasena);
         clientes.add(cliente);
         try {
-            escribirArchivoFormatterClientes("C:\\AlquilaFacil\\src\\main\\resources\\clientesRegistrados.txt", clientes);
+            escribirArchivoFormatterClientes("src/main/resources/clientesRegistrados.txt", clientes);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -255,7 +255,7 @@ public class Metodo {
         vehiculo.setFoto(foto);
         vehiculos.add(vehiculo);
         try {
-            escribirArchivoFormatterVehiculos("C:\\AlquilaFacil\\src\\main\\resources\\vehiculos.txt", vehiculos);
+            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.txt", vehiculos);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -314,7 +314,7 @@ public class Metodo {
         arrayFechas.add(fechaFinal);
         selectedItem.setFechasAlquiladas(arrayFechas);
         try {
-            Metodo.escribirArchivoFormatterAlquiler("C:\\AlquilaFacil\\src\\main\\resources\\vehiculosAlquilados.txt",registros);
+            Metodo.escribirArchivoFormatterAlquiler("src/main/resources/vehiculosAlquilados.txt",registros);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -399,24 +399,37 @@ public class Metodo {
     public static void escribirArchivoFormatterClientes(String ruta, ArrayList<Cliente> cliente) throws IOException{
         cliente.stream().toList();
         Formatter ft = new Formatter(ruta);
-        for(Object s : cliente){
-            ft.format(s+"%n");
+        for(Cliente s : cliente){
+            ft.format(s.getCedula()+";" +s.getNombre()+";"+s.getTelefono()+";"+ s.getEmail()+";"+s.getCiudad()+";"+s.getDireccionResidencia()+";"+s.getUsuario()+";"+s.getContrasena()+";"+"%n");
         }
         ft.close();
     }
-    public static void escribirArchivoFormatterVehiculos(String ruta, ArrayList<Vehiculos> cliente) throws IOException{
-        cliente.stream().toList();
+    public static void escribirArchivoFormatterVehiculos(String ruta, ArrayList<Vehiculos> vehiculo) throws IOException{
+        vehiculo.stream().toList();
         Formatter ft = new Formatter(ruta);
-        for(Object s : cliente){
-            ft.format(s+"%n");
+        for(Vehiculos s : vehiculo){
+            ft.format(s.getPlaca()+";"+s.getNombre()+";"+s.getMarca()+";"+s.getModelo()+";"+s.getFoto()+";"+s.getKilometraje()+";"+s.getNumeroSillas()+";"+s.getAutomatico()+";");
+            for (int i = 0; i<s.getFechasAlquiladas().size();i++)
+            {
+                ft.format(s.getFechasAlquiladas().get(i) +",");
+            }
+            ft.format(";"+s.getValorTotal()+";"+s.getContPrestamos()+";"+"%n");
         }
         ft.close();
     }
     public static void escribirArchivoFormatterAlquiler(String ruta, ArrayList<Cliente> cliente) throws IOException{
         cliente.stream().toList();
         Formatter ft = new Formatter(ruta);
-        for(Object s : cliente){
-            ft.format(s+"%n");
+        for(Cliente s : cliente){
+            ft.format(s.getCedula()+";" +s.getNombre()+";"+s.getTelefono()+";"+ s.getEmail()+";"+s.getCiudad()+";"+s.getDireccionResidencia()+";"+s.getUsuario()+";"+s.getContrasena()+";");
+            for (int i = 0; i<s.getVehiculoAdquirido().size();i++)
+            {
+                ft.format(s.getVehiculoAdquirido().get(i).getPlaca()+","+s.getVehiculoAdquirido().get(i).getNombre()+","+s.getVehiculoAdquirido().get(i).getMarca()+","+s.getVehiculoAdquirido().get(i).getModelo()+","+s.getVehiculoAdquirido().get(i).getFoto()+","+s.getVehiculoAdquirido().get(i).getKilometraje()+","+s.getVehiculoAdquirido().get(i).getNumeroSillas()+","+s.getVehiculoAdquirido().get(i).getAutomatico());
+            }
+            for (int i = 0; i<s.getVehiculoAdquirido().get(i).getFechasAlquiladas().size();i++)
+            {
+                ft.format(s.getVehiculoAdquirido().get(i).getFechasAlquiladas().get(i) +"'");
+            }
         }
         ft.close();
     }

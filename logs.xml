@@ -782,3 +782,71 @@
   <message>Se regresa a la pagina principal</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-09T20:20:32.151128800Z</date>
+  <millis>1696882832151</millis>
+  <nanos>128800</nanos>
+  <sequence>0</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-09T20:20:35.665279400Z</date>
+  <millis>1696882835665</millis>
+  <nanos>279400</nanos>
+  <sequence>2</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de registro de personas</message>
+</record>
+<record>
+  <date>2023-10-09T20:20:45.862129900Z</date>
+  <millis>1696882845862</millis>
+  <nanos>129900</nanos>
+  <sequence>3</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se crean nuevas credenciales</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-09T21:19:15.022391100Z</date>
+  <millis>1696886355022</millis>
+  <nanos>391100</nanos>
+  <sequence>0</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+<record>
+  <date>2023-10-09T21:19:26.832383700Z</date>
+  <millis>1696886366832</millis>
+  <nanos>383700</nanos>
+  <sequence>3</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>cargar</method>
+  <thread>17</thread>
+  <message>Se cargaron las propiedades de los vehiculos para mostrarlos</message>
+</record>
+</log>
