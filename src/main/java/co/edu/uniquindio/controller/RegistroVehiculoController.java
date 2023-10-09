@@ -27,7 +27,7 @@ public class RegistroVehiculoController {
     private TextField placa, nombre, marca, modelo, foto, km, precio;
     @FXML
     private ComboBox automatico, sillas;
-    ObservableList<Integer> listaSillas = FXCollections.observableArrayList(1,2,3,4,5);
+    ObservableList<String> listaSillas = FXCollections.observableArrayList("1","2","3","4","5");
     ObservableList<String> listaAutomatico = FXCollections.observableArrayList("Si","No");
     //public void initialize(URL url, ResourceBundle resourceBundle) {
     //  txtRegistro.setText(propiedades.getResourceBundle().getString("textoRegistrar2"));
@@ -56,7 +56,7 @@ public class RegistroVehiculoController {
         if (evt.equals(botonRegistro))
         {
             if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedIndex() != -1 && sillas.getSelectionModel().getSelectedIndex() != -1 ) {
-                Metodo.crearVehiculo(placa.getText(),marca.getText(),nombre.getText(),modelo.getText(),km.getText(),precio.getText(),sillas.getSelectionModel().getSelectedItem().toString(),automatico.getSelectionModel().getSelectedItem().toString(),foto.getText());
+                Metodo.crearVehiculo(placa.getText(),marca.getText(),nombre.getText(),modelo.getText(),km.getText(),String.valueOf(precio.getText()),sillas.getSelectionModel().getSelectedItem().toString(),automatico.getSelectionModel().getSelectedItem().toString(),foto.getText());
                 placa.setText("");marca.setText("");nombre.setText("");modelo.setText("");km.setText("");precio.setText("");foto.setText("");
                 LOGGER.log(Level.INFO, "Se registro un vehiculo correctamente");
                 JOptionPane.showMessageDialog(null,"Datos Registrados Correctamente","Registro Realizado",1);

@@ -264,7 +264,7 @@ public class Metodo {
     {
         System.out.println(vehiculos);
     }
-    public static void llenarComboSillas (ComboBox<Integer> sillas, ObservableList<Integer> numeros)
+    public static void llenarComboSillas (ComboBox<String> sillas, ObservableList<String> numeros)
     {
         sillas.setItems(numeros);
     }
