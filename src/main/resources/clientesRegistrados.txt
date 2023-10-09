@@ -1,0 +1,3 @@
+Cliente(cedula=1104697206, nombre=Nestor Castelblanco, telefono=3054194624, email=nestorf.castelblancod@gmail.com, ciudad=Armenia, direccionResidencia=Calle 9N, usuario=123, contrasena=123, vehiculoAdquirido=[])
+Cliente(cedula=11046972, nombre=Sebastian Agudelo, telefono=30234533, email=sebastianagudelom, ciudad=Armenia, direccionResidencia=Calle 10N, usuario=1234, contrasena=1234, vehiculoAdquirido=[])
+Cliente(cedula=110412306, nombre=Hulbert Ferney, telefono=305324124, email=hulberta@uqvirtual.edu.co, ciudad=Armenia, direccionResidencia=Calle 9N, usuario=12345, contrasena=12345, vehiculoAdquirido=[])

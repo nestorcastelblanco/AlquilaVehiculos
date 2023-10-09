@@ -3,6 +3,7 @@ package co.edu.uniquindio.model;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -12,15 +13,21 @@ import java.time.LocalDate;
 public class Vehiculos {
     private String placa, nombre, marca, modelo, foto, kilometraje,numeroSillas, automatico;
     private LocalDate fechaInicio, fechaFin;
+    private ArrayList<ArrayList<LocalDate>> fechasAlquiladas = new ArrayList<>();
     private float valorTotal, precioAlquilerDia;
     private Cliente cliente;
     private int contPrestamos;
 
+    public void setFechasAlquiladas(ArrayList<LocalDate> fechas)
+    {
+        this.fechasAlquiladas.add(fechas);
+    }
     public int getContPrestamos() {
         return contPrestamos;
     }
 
     public void setContPrestamos(int contPrestamos) {
+
         this.contPrestamos += contPrestamos;
     }
 
@@ -29,7 +36,6 @@ public class Vehiculos {
         String s = this.nombre + " ---- " + this.marca;
         return s;
     }
-
     public Cliente getCliente() {
         return cliente;
     }

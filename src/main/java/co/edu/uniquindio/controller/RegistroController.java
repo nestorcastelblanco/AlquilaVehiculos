@@ -3,13 +3,10 @@ package co.edu.uniquindio.controller;
 import co.edu.uniquindio.model.Metodo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,6 +31,7 @@ public class RegistroController {
                 }
                 else
                 {
+                    Metodo.crearCliente(cedula.getText(),nombre.getText(),celular.getText(),correo.getText(),ciudad.getText(),direccion.getText(),usuario.getText(),contrasena.getText());
                     LOGGER.log(Level.INFO, "Se crean nuevas credenciales");
                     cedula.setText("");nombre.setText("");celular.setText("");correo.setText("");ciudad.setText("");direccion.setText("");usuario.setText("");contrasena.setText("");
                 }

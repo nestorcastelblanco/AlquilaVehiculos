@@ -1,16 +1,10 @@
 package co.edu.uniquindio.controller;
-import co.edu.uniquindio.model.Propiedades;
-import co.edu.uniquindio.model.Vehiculos;
+
+import co.edu.uniquindio.model.Metodo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import co.edu.uniquindio.model.Metodo;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
+
 import java.util.logging.Logger;
 public class IngresoAdminController{
     //private final Propiedades propiedades = Propiedades.getInstance();

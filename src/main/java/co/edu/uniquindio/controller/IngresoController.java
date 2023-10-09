@@ -1,17 +1,15 @@
 package co.edu.uniquindio.controller;
+
 import co.edu.uniquindio.exceptions.CampoVacioException;
 import co.edu.uniquindio.exceptions.InformacionRepetidaException;
-import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.model.Metodo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import co.edu.uniquindio.model.Metodo;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
-import javax.swing.text.LabelView;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,7 +40,6 @@ public class IngresoController {
                     }
                     else{
                         LOGGER.log(Level.WARNING, "Credenciales Invalidas");
-                        throw new InformacionRepetidaException("Se ingresaron credenciales invalidas");
                     }
                 }
                 else {

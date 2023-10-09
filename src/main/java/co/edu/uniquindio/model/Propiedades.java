@@ -1,6 +1,7 @@
 package co.edu.uniquindio.model;
 
 import lombok.Getter;
+
 import java.util.ResourceBundle;
 /**
  * Clase Singleton para acceder a los textos que están guardados en los archivos de

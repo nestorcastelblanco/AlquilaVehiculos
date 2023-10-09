@@ -1,22 +1,21 @@
 package co.edu.uniquindio.controller;
 
-import co.edu.uniquindio.model.Cliente;
 import co.edu.uniquindio.model.Metodo;
 import co.edu.uniquindio.model.Vehiculos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.logging.FileHandler;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +34,7 @@ public class RegistroPrestamosController {
         private TextField diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
         private LocalDate inicio, fin;
         ObservableList<Vehiculos> listaVehiculos;
-        ArrayList<Vehiculos> arrayVehiculos = new ArrayList<Vehiculos>();
+        HashSet<Vehiculos> arrayVehiculos = new HashSet<>();
         private int indiceCombo;
         public void regresar (ActionEvent e) {
             Object evt = e.getSource();
@@ -43,7 +42,7 @@ public class RegistroPrestamosController {
                 metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pagina de administrador");
             }
         }
-        public void llenarListaVehiculos(ArrayList<Vehiculos> array) {
+        public void llenarListaVehiculos(HashSet<Vehiculos> array) {
             for (int i = 0; i < array.size(); i++) {
                 array.stream().toList();
                 listaVehiculos = FXCollections.observableArrayList(array);

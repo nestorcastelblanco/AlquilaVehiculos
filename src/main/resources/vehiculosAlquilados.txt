@@ -1,0 +1,1 @@
+Cliente(cedula=null, nombre=null, telefono=null, email=null, ciudad=null, direccionResidencia=null, usuario=null, contrasena=null, vehiculoAdquirido=[SANDERO ---- RENAULT])
