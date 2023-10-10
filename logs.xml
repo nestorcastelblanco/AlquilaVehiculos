@@ -929,3 +929,124 @@
   <thread>17</thread>
   <message>Se genero un alquiler de vehiculo</message>
 </record>
+<record>
+  <date>2023-10-10T18:14:07.353894500Z</date>
+  <millis>1696961647353</millis>
+  <nanos>894500</nanos>
+  <sequence>5</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:11.528125900Z</date>
+  <millis>1696961651528</millis>
+  <nanos>125900</nanos>
+  <sequence>6</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:14.109538100Z</date>
+  <millis>1696961654109</millis>
+  <nanos>538100</nanos>
+  <sequence>8</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de registro de personas</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:25.692172400Z</date>
+  <millis>1696961665692</millis>
+  <nanos>172400</nanos>
+  <sequence>9</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se crean nuevas credenciales</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:27.466472300Z</date>
+  <millis>1696961667466</millis>
+  <nanos>472300</nanos>
+  <sequence>10</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la ventana de administrador</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:37.611041600Z</date>
+  <millis>1696961677611</millis>
+  <nanos>41600</nanos>
+  <sequence>12</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se regresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:42.685036500Z</date>
+  <millis>1696961682685</millis>
+  <nanos>36500</nanos>
+  <sequence>13</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:56.125405600Z</date>
+  <millis>1696961696125</millis>
+  <nanos>405600</nanos>
+  <sequence>16</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>cargar</method>
+  <thread>17</thread>
+  <message>Se cargaron las propiedades de los vehiculos para mostrarlos</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:58.317737500Z</date>
+  <millis>1696961698317</millis>
+  <nanos>737500</nanos>
+  <sequence>17</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>alquilar</method>
+  <thread>17</thread>
+  <message>Se genero un alquiler de vehiculo</message>
+</record>
+<record>
+  <date>2023-10-10T18:14:59.724986800Z</date>
+  <millis>1696961699724</millis>
+  <nanos>986800</nanos>
+  <sequence>18</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina principal</message>
+</record>
+</log>
