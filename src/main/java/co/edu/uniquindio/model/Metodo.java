@@ -1,6 +1,8 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.controller.IngresoController;
+import co.edu.uniquindio.controller.RegistroPrestamosController;
+import co.edu.uniquindio.controller.SeleccionVehiculoController;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +32,7 @@ import java.util.logging.Logger;
 public class Metodo {
     public static ArrayList<Cliente> clientes = new ArrayList<>();
     public static ArrayList<Vehiculos> vehiculos = new ArrayList<>();
-    public static ArrayList<Cliente> registros = new ArrayList<>();
+    public static ArrayList<Registros> registros = new ArrayList<>();
     public static ArrayList<Facturas> facturas = new ArrayList<>();
     public static Cliente clienteSesion = new Cliente();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
@@ -136,14 +138,12 @@ public class Metodo {
 
     public static HashSet<Vehiculos> listarVehiculosAlquilados(LocalDate fechaInicio, LocalDate fechaFinal) {
         HashSet<Vehiculos> vehiculosRegistrados = new HashSet<>();
-        for (int i = 0; i < registros.size(); i++) {
-            for (int j = 0; j < registros.get(i).getVehiculoAdquirido().size(); j++) {
-                if (registros.get(i).getVehiculoAdquirido().get(j).getFechaInicio().isAfter(fechaInicio) || registros.get(i).getVehiculoAdquirido().get(j).getFechaInicio().isEqual(fechaInicio)
-                        && registros.get(i).getVehiculoAdquirido().get(j).getFechaFin().isBefore(fechaFinal) || registros.get(i).getVehiculoAdquirido().get(j).getFechaFin().isEqual(fechaFinal)) {
-                    registros.get(i).getVehiculoAdquirido().get(j).setCliente(registros.get(i));
-                    vehiculosRegistrados.add(registros.get(i).getVehiculoAdquirido().get(j));
+        for (int i = 0; i < registros.size(); i++)
+        {
+            if (registros.get(i).getFechaInicio().isAfter(fechaInicio) || registros.get(i).getFechaInicio().isEqual(fechaInicio) && registros.get(i).getFechafin().isBefore(fechaFinal) || registros.get(i).getFechafin().isEqual(fechaFinal))
+                {
+                    vehiculosRegistrados.add(registros.get(i).getVehiculo());
                 }
-            }
         }
         return vehiculosRegistrados;
     }
@@ -206,6 +206,7 @@ public class Metodo {
             if(clientes.get(i).getUsuario().equals(usuario) && clientes.get(i).getContrasena().equals(contrasena))
             {
                 state = true;
+                Metodo.recibirClienteSesion(clientes.get(i));
             }
         }
         return state;
@@ -301,14 +302,19 @@ public class Metodo {
     }
     public static void
     cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem,LocalDate fechaInicio, LocalDate fechaFinal) {
+        Registros registro = new Registros();
         Vehiculos vehiculo = new Vehiculos();
+        registro.setCliente(clienteSistema);
+        registro.setVehiculo(selectedItem);
+        registro.setFechaInicio(fechaInicio);
+        registro.setFechafin(fechaFinal);
         vehiculo = selectedItem;
         long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
         vehiculo.setValorTotal((float) dias * vehiculo.getPrecioAlquilerDia());
         vehiculo.setFechaInicio(fechaInicio);
         vehiculo.setFechaFin(fechaFinal);
         clienteSistema.setVehiculoAdquirido(selectedItem);
-        registros.add(clienteSistema);
+        registros.add(registro);
         ArrayList<LocalDate> arrayFechas = new ArrayList<>();
         arrayFechas.add(fechaInicio);
         arrayFechas.add(fechaFinal);
@@ -417,19 +423,12 @@ public class Metodo {
         }
         ft.close();
     }
-    public static void escribirArchivoFormatterAlquiler(String ruta, ArrayList<Cliente> cliente) throws IOException{
+    public static void escribirArchivoFormatterAlquiler(String ruta, ArrayList<Registros> cliente) throws IOException{
         cliente.stream().toList();
         Formatter ft = new Formatter(ruta);
-        for(Cliente s : cliente){
-            ft.format(s.getCedula()+";" +s.getNombre()+";"+s.getTelefono()+";"+ s.getEmail()+";"+s.getCiudad()+";"+s.getDireccionResidencia()+";"+s.getUsuario()+";"+s.getContrasena()+";");
-            for (int i = 0; i<s.getVehiculoAdquirido().size();i++)
-            {
-                ft.format(s.getVehiculoAdquirido().get(i).getPlaca()+","+s.getVehiculoAdquirido().get(i).getNombre()+","+s.getVehiculoAdquirido().get(i).getMarca()+","+s.getVehiculoAdquirido().get(i).getModelo()+","+s.getVehiculoAdquirido().get(i).getFoto()+","+s.getVehiculoAdquirido().get(i).getKilometraje()+","+s.getVehiculoAdquirido().get(i).getNumeroSillas()+","+s.getVehiculoAdquirido().get(i).getAutomatico());
-            }
-            for (int i = 0; i<s.getVehiculoAdquirido().get(i).getFechasAlquiladas().size();i++)
-            {
-                ft.format(s.getVehiculoAdquirido().get(i).getFechasAlquiladas().get(i) +"'");
-            }
+        for(Registros s : cliente)
+        {
+            ft.format(s.getCliente().getCedula()+";" +s.getCliente().getNombre()+";"+s.getCliente().getTelefono()+";"+ s.getCliente().getEmail()+";"+s.getCliente().getCiudad()+";"+s.getCliente().getDireccionResidencia()+";"+s.getCliente().getUsuario()+";"+s.getCliente().getContrasena()+";"+ s.getVehiculo().getPlaca()+";"+s.getVehiculo().getNombre()+";"+s.getVehiculo().getMarca()+";"+s.getVehiculo().getModelo()+";"+s.getVehiculo().getFoto()+";"+s.getVehiculo().getKilometraje()+";"+s.getVehiculo().getNumeroSillas()+";"+s.getVehiculo().getAutomatico()+";"+s.getFechaInicio()+";"+s.getFechafin()+"%n");
         }
         ft.close();
     }
