@@ -477,7 +477,6 @@ public class Metodo {
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
         Object objeto = is.readObject();
         is.close();
-
         return objeto;
     }
 

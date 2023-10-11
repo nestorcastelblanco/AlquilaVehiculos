@@ -2,6 +2,7 @@ package co.edu.uniquindio.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vehiculos {
+public class Vehiculos  implements Serializable {
     private String placa, nombre, marca, modelo, foto, kilometraje,numeroSillas, automatico;
     private LocalDate fechaInicio, fechaFin;
     private ArrayList<ArrayList<LocalDate>> fechasAlquiladas = new ArrayList<>();

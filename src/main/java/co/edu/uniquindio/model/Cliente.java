@@ -2,6 +2,7 @@ package co.edu.uniquindio.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class Cliente implements Serializable {
     private String  cedula, nombre, telefono, email, ciudad,direccionResidencia, usuario, contrasena;
     private ArrayList<Vehiculos> vehiculoAdquirido = new ArrayList<Vehiculos>();
     public ArrayList<Vehiculos> getVehiculoAdquirido() {
