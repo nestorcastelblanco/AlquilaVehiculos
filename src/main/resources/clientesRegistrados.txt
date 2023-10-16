@@ -2,3 +2,4 @@
 11046972;Sebastian Agudelo;30234533;sebastianagudelom;Armenia;Calle 10N;1234;1234;
 110412306;Hulbert Ferney;305324124;hulberta@uqvirtual.edu.co;Armenia;Calle 9N;12345;12345;
 93294839;Cesar;3125497753;direccion@sysdatec.edu.co;Libano;Cra 9na #1b-71;cesar;cesar;
+1234657;Julian;3025;julian;Armenia;aca;julian;julian;

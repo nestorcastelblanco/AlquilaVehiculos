@@ -3735,3 +3735,575 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-16T16:12:10.324384Z</date>
+  <millis>1697472730324</millis>
+  <nanos>384000</nanos>
+  <sequence>0</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>WARNING</level>
+  <class>co.edu.uniquindio.controller.IngresoController</class>
+  <method>ingresar</method>
+  <thread>17</thread>
+  <message>Credenciales Invalidas</message>
+</record>
+<record>
+  <date>2023-10-16T16:12:18.242192400Z</date>
+  <millis>1697472738242</millis>
+  <nanos>192400</nanos>
+  <sequence>1</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-16T16:12:19.878915600Z</date>
+  <millis>1697472739878</millis>
+  <nanos>915600</nanos>
+  <sequence>2</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de registro de personas</message>
+</record>
+<record>
+  <date>2023-10-16T16:12:45.456669600Z</date>
+  <millis>1697472765456</millis>
+  <nanos>669600</nanos>
+  <sequence>4</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se crean nuevas credenciales</message>
+</record>
+<record>
+  <date>2023-10-16T16:12:46.920219300Z</date>
+  <millis>1697472766920</millis>
+  <nanos>219300</nanos>
+  <sequence>5</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la ventana de administrador</message>
+</record>
+<record>
+  <date>2023-10-16T16:12:50.976355400Z</date>
+  <millis>1697472770976</millis>
+  <nanos>355400</nanos>
+  <sequence>6</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña de registro</message>
+</record>
+<record>
+  <date>2023-10-16T16:13:13.231901100Z</date>
+  <millis>1697472793231</millis>
+  <nanos>901100</nanos>
+  <sequence>8</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se registro un vehiculo correctamente</message>
+</record>
+<record>
+  <date>2023-10-16T16:13:18.750204900Z</date>
+  <millis>1697472798750</millis>
+  <nanos>204900</nanos>
+  <sequence>9</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Desde la ventana de registro, regreso al menu</message>
+</record>
+<record>
+  <date>2023-10-16T16:13:40.843990400Z</date>
+  <millis>1697472820843</millis>
+  <nanos>990400</nanos>
+  <sequence>10</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña de registro</message>
+</record>
+<record>
+  <date>2023-10-16T16:14:05.815629400Z</date>
+  <millis>1697472845815</millis>
+  <nanos>629400</nanos>
+  <sequence>12</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>WARNING</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>verificarPlaca</method>
+  <thread>17</thread>
+  <message>Se intento registrar un vehiculo ya registrado</message>
+</record>
+<record>
+  <date>2023-10-16T16:14:05.816627900Z</date>
+  <millis>1697472845816</millis>
+  <nanos>627900</nanos>
+  <sequence>13</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se intento el registro un vehiculo con campos vacios</message>
+</record>
+<record>
+  <date>2023-10-16T16:14:28.583218300Z</date>
+  <millis>1697472868583</millis>
+  <nanos>218300</nanos>
+  <sequence>14</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se registro un vehiculo correctamente</message>
+</record>
+<record>
+  <date>2023-10-16T16:14:31.802315Z</date>
+  <millis>1697472871802</millis>
+  <nanos>315000</nanos>
+  <sequence>15</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Desde la ventana de registro, regreso al menu</message>
+</record>
+<record>
+  <date>2023-10-16T16:14:34.666786700Z</date>
+  <millis>1697472874666</millis>
+  <nanos>786700</nanos>
+  <sequence>16</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se regresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:14:45.289742900Z</date>
+  <millis>1697472885289</millis>
+  <nanos>742900</nanos>
+  <sequence>17</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-16T16:16:41.162140300Z</date>
+  <millis>1697473001162</millis>
+  <nanos>140300</nanos>
+  <sequence>0</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+<record>
+  <date>2023-10-16T16:17:38.428734600Z</date>
+  <millis>1697473058428</millis>
+  <nanos>734600</nanos>
+  <sequence>2</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:17:56.229027300Z</date>
+  <millis>1697473076229</millis>
+  <nanos>27300</nanos>
+  <sequence>3</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-16T16:17:59.366945800Z</date>
+  <millis>1697473079366</millis>
+  <nanos>945800</nanos>
+  <sequence>4</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña de registro</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:08.802755300Z</date>
+  <millis>1697473088802</millis>
+  <nanos>755300</nanos>
+  <sequence>6</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se registro un vehiculo correctamente</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:11.272681200Z</date>
+  <millis>1697473091272</millis>
+  <nanos>681200</nanos>
+  <sequence>7</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Desde la ventana de registro, regreso al menu</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:12.248442600Z</date>
+  <millis>1697473092248</millis>
+  <nanos>442600</nanos>
+  <sequence>8</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se regresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:16.327145100Z</date>
+  <millis>1697473096327</millis>
+  <nanos>145100</nanos>
+  <sequence>9</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:27.343038700Z</date>
+  <millis>1697473107343</millis>
+  <nanos>38700</nanos>
+  <sequence>11</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>alquilar</method>
+  <thread>17</thread>
+  <message>Se genero un alquiler de vehiculo</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:52.368794500Z</date>
+  <millis>1697473132368</millis>
+  <nanos>794500</nanos>
+  <sequence>12</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:57.733709300Z</date>
+  <millis>1697473137733</millis>
+  <nanos>709300</nanos>
+  <sequence>13</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-16T16:18:59.472051500Z</date>
+  <millis>1697473139472</millis>
+  <nanos>51500</nanos>
+  <sequence>14</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado prestamos</message>
+</record>
+<record>
+  <date>2023-10-16T16:19:00.487347900Z</date>
+  <millis>1697473140487</millis>
+  <nanos>347900</nanos>
+  <sequence>17</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.PaginaEstadisticasController</class>
+  <method>buscar</method>
+  <thread>17</thread>
+  <message>Se cargaron los datos correspondientes</message>
+</record>
+<record>
+  <date>2023-10-16T16:19:02.248630500Z</date>
+  <millis>1697473142248</millis>
+  <nanos>630500</nanos>
+  <sequence>18</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina de administrador</message>
+</record>
+<record>
+  <date>2023-10-16T16:19:03.778377500Z</date>
+  <millis>1697473143778</millis>
+  <nanos>377500</nanos>
+  <sequence>19</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de utilidades</message>
+</record>
+<record>
+  <date>2023-10-16T16:19:15.630274900Z</date>
+  <millis>1697473155630</millis>
+  <nanos>274900</nanos>
+  <sequence>21</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña de administrador</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-16T16:58:35.965140200Z</date>
+  <millis>1697475515965</millis>
+  <nanos>140200</nanos>
+  <sequence>0</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+<record>
+  <date>2023-10-16T16:58:48.230275Z</date>
+  <millis>1697475528230</millis>
+  <nanos>275000</nanos>
+  <sequence>2</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:58:52.855106200Z</date>
+  <millis>1697475532855</millis>
+  <nanos>106200</nanos>
+  <sequence>3</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-16T16:58:55.325341400Z</date>
+  <millis>1697475535325</millis>
+  <nanos>341400</nanos>
+  <sequence>4</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña de registro</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:25.791013300Z</date>
+  <millis>1697475565791</millis>
+  <nanos>13300</nanos>
+  <sequence>6</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.RegistroVehiculoController</class>
+  <method>verificarAccion</method>
+  <thread>17</thread>
+  <message>Se registro un vehiculo correctamente</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:28.004366600Z</date>
+  <millis>1697475568004</millis>
+  <nanos>366600</nanos>
+  <sequence>7</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Desde la ventana de registro, regreso al menu</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:29.713743100Z</date>
+  <millis>1697475569713</millis>
+  <nanos>743100</nanos>
+  <sequence>8</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se regresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:33.160520300Z</date>
+  <millis>1697475573160</millis>
+  <nanos>520300</nanos>
+  <sequence>9</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:45.575284100Z</date>
+  <millis>1697475585575</millis>
+  <nanos>284100</nanos>
+  <sequence>11</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.controller.SeleccionVehiculoController</class>
+  <method>alquilar</method>
+  <thread>17</thread>
+  <message>Se genero un alquiler de vehiculo</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:51.824991800Z</date>
+  <millis>1697475591824</millis>
+  <nanos>991800</nanos>
+  <sequence>12</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T16:59:57.950865900Z</date>
+  <millis>1697475597950</millis>
+  <nanos>865900</nanos>
+  <sequence>13</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña como administrador</message>
+</record>
+<record>
+  <date>2023-10-16T17:00:12.024952600Z</date>
+  <millis>1697475612024</millis>
+  <nanos>952600</nanos>
+  <sequence>14</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Ingreso al apartado de utilidades</message>
+</record>
+<record>
+  <date>2023-10-16T17:01:11.994431700Z</date>
+  <millis>1697475671994</millis>
+  <nanos>431700</nanos>
+  <sequence>16</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa a la pestaña de administrador</message>
+</record>
+<record>
+  <date>2023-10-16T17:01:13.517430300Z</date>
+  <millis>1697475673517</millis>
+  <nanos>430300</nanos>
+  <sequence>17</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se regresa a la pagina principal</message>
+</record>
+<record>
+  <date>2023-10-16T17:01:19.269122200Z</date>
+  <millis>1697475679269</millis>
+  <nanos>122200</nanos>
+  <sequence>18</sequence>
+  <logger>co.edu.uniquindio.controller.IngresoController</logger>
+  <level>INFO</level>
+  <class>co.edu.uniquindio.model.Metodo</class>
+  <method>loadStage</method>
+  <thread>17</thread>
+  <message>Se ingresa como usuario</message>
+</record>
+</log>

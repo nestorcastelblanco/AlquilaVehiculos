@@ -114,14 +114,17 @@ public class Metodo {
     }
 
     private static void mostrarArrays() {
+        System.out.println("Clientes: ");
         for (int i = 0; i<clientes.size() ;i++)
         {
             System.out.println(clientes.get(i).toString());
         }
+        System.out.println("Registros: ");
         for (int i = 0; i<registros.size() ;i++)
         {
             System.out.println(registros.get(i).toString());
         }
+        System.out.println("Vehiculos: ");
         for (int i = 0; i<vehiculos.size() ;i++)
         {
             System.out.println(vehiculos.get(i).toString());
@@ -152,6 +155,30 @@ public class Metodo {
                         .usuario(valores[6])
                         .contrasena(valores[7])
                         .build());
+            }
+        }catch (IOException e){
+            LOGGER.severe(e.getMessage());
+        }
+    }
+    private static void leerFacturas() {
+        try{
+            ArrayList<String> lineas = leerArchivoScanner("src/main/resources/facturas.txt");
+            for(String linea : lineas){
+                String[] valores = linea.split(";");
+                facturas.add((Facturas) Facturas.builder()
+                        .cliente(Cliente.builder()
+                                .cedula(valores[0])
+                                .nombre(valores[1])
+                                .telefono(valores[2])
+                                .email(valores[3])
+                                .ciudad(valores[4])
+                                .direccionResidencia(valores[5])
+                                .usuario(valores[6])
+                                .contrasena(valores[7])
+                                .build())
+                        .fechaInicio(LocalDate.parse(valores[8]))
+                        .fechaFin(LocalDate.parse(valores[9]))
+                        .valorTotal(Float.parseFloat(valores[10])).build());
             }
         }catch (IOException e){
             LOGGER.severe(e.getMessage());
@@ -383,7 +410,7 @@ public class Metodo {
         String mss = msg + "\n\n" + clienteSistema.getFactura() + "\n" +msg1 +"  " + selectedItem.toString() + "\n" + msg2+ "  " + vehiculo.getPrecioAlquilerDia() + "\n" + msg3 +" " + dias + "\n" + msg4 + " " + fechaInicio + "\n" + msg5 + " " + fechaFinal + "\n" + msg6 + " " + vehiculo.getValorTotal();
         JOptionPane.showMessageDialog(null, mss, msg, 1);
     }
-    public static void cargarFactura(Cliente clienteSistema,LocalDate fechaInicio, LocalDate fechaFinal, float valor) {
+    public static void cargarFactura(Cliente clienteSistema,LocalDate fechaInicio, LocalDate fechaFinal, float valor) throws IOException {
         Facturas factura = new Facturas();
         long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
         factura.setValorTotal((float) dias * valor);
@@ -391,6 +418,7 @@ public class Metodo {
         factura.setFechaFin(fechaFinal);
         factura.setCliente(clienteSistema);
         facturas.add(factura);
+        escribirArchivoFormatterFacturas("src/main/resources/facturas.txt",facturas);
     }
     public static void imprimirRegistros()
     {
@@ -480,6 +508,15 @@ public class Metodo {
         for(Registros s : cliente)
         {
             ft.format(s.getCliente().getCedula()+";" +s.getCliente().getNombre()+";"+s.getCliente().getTelefono()+";"+ s.getCliente().getEmail()+";"+s.getCliente().getCiudad()+";"+s.getCliente().getDireccionResidencia()+";"+s.getCliente().getUsuario()+";"+s.getCliente().getContrasena()+";"+ s.getVehiculo().getPlaca()+";"+s.getVehiculo().getNombre()+";"+s.getVehiculo().getMarca()+";"+s.getVehiculo().getModelo()+";"+s.getVehiculo().getFoto()+";"+s.getVehiculo().getKilometraje()+";"+s.getVehiculo().getNumeroSillas()+";"+s.getVehiculo().getAutomatico()+";"+s.getFechaInicio()+";"+s.getFechafin()+"%n");
+        }
+        ft.close();
+    }
+    public static void escribirArchivoFormatterFacturas(String ruta, ArrayList<Facturas> facturas) throws IOException{
+        facturas.stream().toList();
+        Formatter ft = new Formatter(ruta);
+        for(int i = 0 ; i<facturas.size() ; i++)
+        {
+            ft.format(facturas.get(i).getCliente().getCedula()+";" +facturas.get(i).getCliente().getNombre()+";"+facturas.get(i).getCliente().getTelefono()+";"+ facturas.get(i).getCliente().getEmail()+";"+facturas.get(i).getCliente().getCiudad()+";"+facturas.get(i).getCliente().getDireccionResidencia()+";"+facturas.get(i).getCliente().getUsuario()+";"+facturas.get(i).getCliente().getContrasena()+";"+ facturas.get(i).getFechaInicio()+";"+facturas.get(i).getFechaFin()+";"+facturas.get(i).getValorTotal()+"%n");
         }
         ft.close();
     }

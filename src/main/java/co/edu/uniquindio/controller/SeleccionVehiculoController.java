@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -158,8 +159,7 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
             }
         }
     }
-    public void alquilar(ActionEvent actionEvent)
-    {
+    public void alquilar(ActionEvent actionEvent) throws IOException {
         Object evt = actionEvent.getSource();
         if (evt.equals(botonAlquilar))
         {
