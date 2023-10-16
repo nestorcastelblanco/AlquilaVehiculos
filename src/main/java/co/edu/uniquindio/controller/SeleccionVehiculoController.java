@@ -2,23 +2,28 @@ package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.model.Cliente;
 import co.edu.uniquindio.model.Metodo;
+import co.edu.uniquindio.model.Propiedades;
 import co.edu.uniquindio.model.Vehiculos;
+import co.edu.uniquindio.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SeleccionVehiculoController {
-    //private final Propiedades propiedades = Propiedades.getInstance();
+public class SeleccionVehiculoController implements Initializable, CambioIdiomaListener {
     private final Metodo metodo = Metodo.getInstance();
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     @FXML
@@ -39,6 +44,32 @@ public class SeleccionVehiculoController {
     ObservableList<Vehiculos> listaVehiculos;
     ArrayList<Vehiculos> arrayVehiculos = new ArrayList<Vehiculos>();
     private int indiceCombo;
+    private static final Propiedades propiedades = Propiedades.getInstance();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+        cambiarIdioma();
+    }
+    public void cambiarIdioma() {
+        botonCargar.setText(propiedades.getResourceBundle().getString("bttCargar"));
+        botonRegreso.setText(propiedades.getResourceBundle().getString("bttRegresar"));
+        botonAlquilar.setText(propiedades.getResourceBundle().getString("bttAlquilar"));
+        botonBuscar.setText(propiedades.getResourceBundle().getString("buscar"));
+        txtNombre.setText(propiedades.getResourceBundle().getString("nombre"));
+        txtModelo.setText(propiedades.getResourceBundle().getString("modelo"));
+        txtPlaca.setText(propiedades.getResourceBundle().getString("placa"));
+        txtMarca.setText(propiedades.getResourceBundle().getString("marca"));
+        txtKm.setText(propiedades.getResourceBundle().getString("km"));
+        txtAlquiler.setText(propiedades.getResourceBundle().getString("alquilerDia"));
+        txtSillas.setText(propiedades.getResourceBundle().getString("sillas"));
+        txtAutomatico.setText(propiedades.getResourceBundle().getString("automatico"));
+        txtFechaIn.setText(propiedades.getResourceBundle().getString("txtFechaInicio"));
+        txtFechaFin.setText(propiedades.getResourceBundle().getString("txtFechaFinal"));
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        cambiarIdioma();
+    }
 
     public void regresar(ActionEvent e) {
         Object evt = e.getSource();
@@ -46,21 +77,6 @@ public class SeleccionVehiculoController {
             metodo.loadStage("/pngPrincipal.fxml", e, "Se ingresa a la pagina principal");
         }
     }
-
-    //public void initialize(URL url, ResourceBundle resourceBundle) {
-    //   botonCargar.setText(propiedades.getResourceBundle().getString("textoCargar"));
-    //   txtNombre.setText(propiedades.getResourceBundle().getString("textoNombre"));
-    //  txtModelo.setText(propiedades.getResourceBundle().getString("textoModelo"));
-    //  txtFechaIn.setText(propiedades.getResourceBundle().getString("textoFechaInicio"));
-    //   txtFechaFin.setText(propiedades.getResourceBundle().getString("textoFechaFinal"));
-    //   txtPlaca.setText(propiedades.getResourceBundle().getString("textoPlaca"));
-    //  txtMarca.setText(propiedades.getResourceBundle().getString("textoMarca"));
-    //  txtAlquiler.setText(propiedades.getResourceBundle().getString("textoRentaDia"));
-    //  txtSillas.setText(propiedades.getResourceBundle().getString("textoSillas"));
-    //  txtAutomatico.setText(propiedades.getResourceBundle().getString("textoAutomatico"));
-    //  botonRegreso.setText(propiedades.getResourceBundle().getString("textoRegresar"));
-    // botonAlquilar.setText(propiedades.getResourceBundle().getString("textoRentar"));
-    //}
     public void listarVehiculos(Event event) {
         recibirClienteSesion();
     }

@@ -4,10 +4,12 @@ import co.edu.uniquindio.model.Metodo;
 import co.edu.uniquindio.model.Propiedades;
 import co.edu.uniquindio.model.Vehiculos;
 import co.edu.uniquindio.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -23,9 +25,11 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RegistroPrestamosController {
+public class RegistroPrestamosController implements Initializable, CambioIdiomaListener {
         private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
         private final Metodo metodo = Metodo.getInstance();
+        @FXML
+        private Label labelFechaInicio,labelFechaFinal,labelNombre,labelModelo,labelNombreCliente,labelIdentificacion,labelMarca,labelKm,labelAlquilerDia,labelSillas,labelAutomatico,labelPlaca;
         @FXML
         private Label txtImagen, placa,nombreCliente,identificacion, nombre, marca, modelo, kilometraje, alquilerDia,sillas,automatico;
         @FXML
@@ -47,15 +51,20 @@ public class RegistroPrestamosController {
     }
     public void cambiarIdioma() {
         botonRegreso.setText(propiedades.getResourceBundle().getString("bttRegresar"));
-        botonRegistro.setText(propiedades.getResourceBundle().getString("bttRegistrarse"));
-        txtRegistro.setText(propiedades.getResourceBundle().getString("txtRegistro"));
-        txtCedula.setText(propiedades.getResourceBundle().getString("cedula"));
-        txtCelular.setText(propiedades.getResourceBundle().getString("celular"));
-        txtCorreo.setText(propiedades.getResourceBundle().getString("correo"));
-        txtCiudad.setText(propiedades.getResourceBundle().getString("ciudad"));
-        txtDireccion.setText(propiedades.getResourceBundle().getString("direccion"));
-        txtUsuario.setText(propiedades.getResourceBundle().getString("usuario"));
-        txtContrasena.setText(propiedades.getResourceBundle().getString("contrasena"));
+        botonBuscar.setText(propiedades.getResourceBundle().getString("buscar"));
+        botonCargar.setText(propiedades.getResourceBundle().getString("bttCargar"));
+        labelFechaInicio.setText(propiedades.getResourceBundle().getString("txtFechaInicio"));
+        labelFechaFinal.setText(propiedades.getResourceBundle().getString("txtFechaFinal"));
+        labelNombre.setText(propiedades.getResourceBundle().getString("nombre"));
+        labelIdentificacion.setText(propiedades.getResourceBundle().getString("identificacion"));
+        labelModelo.setText(propiedades.getResourceBundle().getString("modelo"));
+        labelNombreCliente.setText(propiedades.getResourceBundle().getString("nombreCliente"));
+        labelPlaca.setText(propiedades.getResourceBundle().getString("placa"));
+        labelMarca.setText(propiedades.getResourceBundle().getString("marca"));
+        labelKm.setText(propiedades.getResourceBundle().getString("km"));
+        labelAlquilerDia.setText(propiedades.getResourceBundle().getString("alquilerDia"));
+        labelSillas.setText(propiedades.getResourceBundle().getString("sillas"));
+        labelAutomatico.setText(propiedades.getResourceBundle().getString("automatico"));
     }
     @Override
     public void onCambioIdioma(CambioIdiomaEvent evento) {

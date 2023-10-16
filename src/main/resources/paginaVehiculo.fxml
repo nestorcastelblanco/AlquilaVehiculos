@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.SeleccionVehiculoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="
+" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.SeleccionVehiculoController">
    <children>
       <Button fx:id="botonRegreso" layoutX="43.0" layoutY="361.0" mnemonicParsing="false" onAction="#regresar" prefHeight="25.0" prefWidth="86.0" text="Regresar">
          <font>
