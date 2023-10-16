@@ -59,6 +59,8 @@ public class Metodo {
         leerClientes();
         leerAlquileres();
         leerVehiculos();
+        mostrarArrays();
+
         /**
         Vehiculos vehiculo = new Vehiculos();
         Vehiculos vehiculo1 = new Vehiculos();
@@ -110,6 +112,22 @@ public class Metodo {
             throw new RuntimeException(e);
         }
     }
+
+    private static void mostrarArrays() {
+        for (int i = 0; i<clientes.size() ;i++)
+        {
+            System.out.println(clientes.get(i).toString());
+        }
+        for (int i = 0; i<registros.size() ;i++)
+        {
+            System.out.println(registros.get(i).toString());
+        }
+        for (int i = 0; i<vehiculos.size() ;i++)
+        {
+            System.out.println(vehiculos.get(i).toString());
+        }
+    }
+
     private static void leerVehiculos() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/Permanencia/vehiculo.ser"))) {
             Vehiculos vehiculo = (Vehiculos) in.readObject();
@@ -340,12 +358,12 @@ public class Metodo {
         return clienteSesion;
     }
     public static void cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem,LocalDate fechaInicio, LocalDate fechaFinal,String msg,String msg1,String msg2,String msg3,String msg4,String msg5,String msg6) {
-        Registros registro = null;
+        Registros registro = Registros.builder()
+                .cliente(clienteSistema)
+                .vehiculo(selectedItem)
+                .fechaInicio(fechaInicio)
+                .fechafin(fechaFinal).build();
         Vehiculos vehiculo = new Vehiculos();
-        registro.setCliente(clienteSistema);
-        registro.setVehiculo(selectedItem);
-        registro.setFechaInicio(fechaInicio);
-        registro.setFechafin(fechaFinal);
         vehiculo = selectedItem;
         long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
         vehiculo.setValorTotal((float) dias * vehiculo.getPrecioAlquilerDia());

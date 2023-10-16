@@ -16,7 +16,6 @@ public class Registros  implements Serializable {
     private Cliente cliente;
     private Vehiculos vehiculo;
     private LocalDate fechaInicio, fechafin;
-
     public String toString()
     {
         return vehiculo.getNombre() + " " + vehiculo.getPlaca();
