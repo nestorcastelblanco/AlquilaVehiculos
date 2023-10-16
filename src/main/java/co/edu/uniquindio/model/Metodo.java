@@ -59,6 +59,7 @@ public class Metodo {
         leerClientes();
         leerAlquileres();
         leerVehiculos();
+        leerFacturas();
         mostrarArrays();
 
         /**
