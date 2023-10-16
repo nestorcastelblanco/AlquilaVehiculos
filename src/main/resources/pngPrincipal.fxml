@@ -34,4 +34,5 @@
             <Image url="@imagenes/concepto-cartel-alquiler-coches-chica-vector-estilo-dibujos-animados-coche-rojo-negocio-alquiler-autos-ilustracion-publicidad-transporte-automoviles_53562-4491.png" />
          </image>
       </ImageView>
+   <Button fx:id="cambiarIdioma" layoutX="102.0" layoutY="383.0" mnemonicParsing="false" onAction="#cambiarIdioma" prefHeight="25.0" prefWidth="124.0" text="Cambiar Idioma" />
 </AnchorPane>

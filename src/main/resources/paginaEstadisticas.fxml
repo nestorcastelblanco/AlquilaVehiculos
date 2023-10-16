@@ -23,17 +23,17 @@
       </Pane>
       <Pane layoutX="-169.0" layoutY="73.0" prefHeight="27.0" prefWidth="773.0" style="-fx-background-color: #E8D5A9; -fx-region-border: qwer;">
          <children>
-            <Label layoutX="209.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Nombre">
+            <Label fx:id="nombreT" layoutX="209.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Nombre">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="350.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Modelo">
+            <Label fx:id="modeloT" layoutX="350.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Modelo">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="572.0" layoutY="-3.0" prefHeight="33.0" prefWidth="141.0" text="Numero Alquiler">
+            <Label fx:id="numAlquilerT" layoutX="572.0" layoutY="-3.0" prefHeight="33.0" prefWidth="141.0" text="Numero Alquiler">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
@@ -61,22 +61,22 @@
       </Pane>
       <Pane layoutX="-162.0" layoutY="140.0" prefHeight="27.0" prefWidth="780.0" style="-fx-background-color: #E8D5A9;">
          <children>
-            <Label layoutX="201.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Placa">
+            <Label fx:id="placaT" layoutX="201.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Placa">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="344.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Marca">
+            <Label fx:id="marcaT" layoutX="344.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Marca">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="499.0" layoutY="-1.0" prefHeight="33.0" prefWidth="106.0" text="Km">
+            <Label fx:id="kmT" layoutX="499.0" layoutY="-1.0" prefHeight="33.0" prefWidth="106.0" text="Km">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="642.0" layoutY="-4.0" prefHeight="33.0" prefWidth="106.0" text="Alquiler (Dia)">
+            <Label fx:id="alquilerT" layoutX="642.0" layoutY="-4.0" prefHeight="33.0" prefWidth="106.0" text="Alquiler (Dia)">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
@@ -109,12 +109,12 @@
       </Pane>
       <Pane layoutX="-162.0" layoutY="209.0" prefHeight="27.0" prefWidth="478.0" style="-fx-background-color: #E8D5A9;">
          <children>
-            <Label layoutX="347.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Automatico">
+            <Label fx:id="automaticoT" layoutX="347.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Automatico">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="199.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Sillas">
+            <Label fx:id="sillasT" layoutX="199.0" layoutY="-3.0" prefHeight="33.0" prefWidth="106.0" text="Sillas">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="20.0" />
                </font>

@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="396.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.IngresoAdminController">
+<AnchorPane prefHeight="396.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.controller.IngresoAdminController">
       <Button fx:id="botonRegreso" layoutX="48.0" layoutY="340.0" mnemonicParsing="false" onAction="#regresar" prefHeight="38.0" prefWidth="241.0" text="Regresar" textOverrun="LEADING_ELLIPSIS" />
       <ImageView fitHeight="416.0" fitWidth="341.0" layoutX="328.0" pickOnBounds="true">
          <image>

@@ -1,7 +1,9 @@
 package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.model.Metodo;
+import co.edu.uniquindio.model.Propiedades;
 import co.edu.uniquindio.model.Vehiculos;
+import co.edu.uniquindio.utils.CambioIdiomaEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,8 +16,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.swing.*;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +39,28 @@ public class RegistroPrestamosController {
         private LocalDate inicio, fin;
         ObservableList<Vehiculos> listaVehiculos;
         HashSet<Vehiculos> arrayVehiculos = new HashSet<>();
+    private static final Propiedades propiedades = Propiedades.getInstance();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+        cambiarIdioma();
+    }
+    public void cambiarIdioma() {
+        botonRegreso.setText(propiedades.getResourceBundle().getString("bttRegresar"));
+        botonRegistro.setText(propiedades.getResourceBundle().getString("bttRegistrarse"));
+        txtRegistro.setText(propiedades.getResourceBundle().getString("txtRegistro"));
+        txtCedula.setText(propiedades.getResourceBundle().getString("cedula"));
+        txtCelular.setText(propiedades.getResourceBundle().getString("celular"));
+        txtCorreo.setText(propiedades.getResourceBundle().getString("correo"));
+        txtCiudad.setText(propiedades.getResourceBundle().getString("ciudad"));
+        txtDireccion.setText(propiedades.getResourceBundle().getString("direccion"));
+        txtUsuario.setText(propiedades.getResourceBundle().getString("usuario"));
+        txtContrasena.setText(propiedades.getResourceBundle().getString("contrasena"));
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        cambiarIdioma();
+    }
         private int indiceCombo;
         public void regresar (ActionEvent e) {
             Object evt = e.getSource();
