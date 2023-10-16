@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Vehiculos  implements Serializable {
     private String placa, nombre, marca, modelo, foto, kilometraje,numeroSillas, automatico;
     private LocalDate fechaInicio, fechaFin;

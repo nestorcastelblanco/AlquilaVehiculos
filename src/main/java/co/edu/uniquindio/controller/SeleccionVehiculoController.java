@@ -16,8 +16,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.swing.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,6 +41,7 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
     private ComboBox<Vehiculos> vehiculos;
     @FXML
     private TextField diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
+    private String msg,msg1,msg2,msg3,msg4,msg5,msg6;
     private boolean stateFecha = false;
     Cliente clienteSistema;
     private LocalDate inicio, fin;
@@ -65,6 +69,13 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
         txtAutomatico.setText(propiedades.getResourceBundle().getString("automatico"));
         txtFechaIn.setText(propiedades.getResourceBundle().getString("txtFechaInicio"));
         txtFechaFin.setText(propiedades.getResourceBundle().getString("txtFechaFinal"));
+        msg = propiedades.getResourceBundle().getString("msg");
+        msg1 = propiedades.getResourceBundle().getString("msg1");
+        msg2 = propiedades.getResourceBundle().getString("msg2");
+        msg3 = propiedades.getResourceBundle().getString("msg3");
+        msg4 = propiedades.getResourceBundle().getString("msg4");
+        msg5 = propiedades.getResourceBundle().getString("msg5");
+        msg6 = propiedades.getResourceBundle().getString("msg6");
     }
     @Override
     public void onCambioIdioma(CambioIdiomaEvent evento) {
@@ -163,7 +174,7 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
                     anioInicio.setText("");
                     anioFin.setText("");
                     Metodo.buscarVehiculo(vehiculos.getSelectionModel().getSelectedItem());
-                    Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin);
+                    Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin,msg,msg1,msg2,msg3,msg4,msg5,msg6);
                     Metodo.cargarFactura(clienteSistema,inicio,fin,vehiculos.getSelectionModel().getSelectedItem().getPrecioAlquilerDia());
                     Metodo.imprimirRegistros();
                     LOGGER.log(Level.INFO, "Se genero un alquiler de vehiculo");

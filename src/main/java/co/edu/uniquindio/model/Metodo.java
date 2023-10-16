@@ -3,6 +3,8 @@ package co.edu.uniquindio.model;
 import co.edu.uniquindio.controller.IngresoController;
 import co.edu.uniquindio.controller.RegistroPrestamosController;
 import co.edu.uniquindio.controller.SeleccionVehiculoController;
+import co.edu.uniquindio.utils.ArchivoUtils;
+import com.sun.javafx.scene.shape.ArcHelper;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -54,43 +56,16 @@ public class Metodo {
     }
 
     public static void cargarDatos() {
-        Cliente cliente = new Cliente();
-        Cliente cliente1 = new Cliente();
-        Cliente cliente2 = new Cliente();
-        cliente.setNombre("Nestor Castelblanco");
-        cliente1.setNombre("Sebastian Agudelo");
-        cliente2.setNombre("Hulbert Ferney");
-        cliente.setCedula("1104697206");
-        cliente1.setCedula("11046972");
-        cliente2.setCedula("110412306");
-        cliente.setCiudad("Armenia");
-        cliente1.setCiudad("Armenia");
-        cliente2.setCiudad("Armenia");
-        cliente.setEmail("nestorf.castelblancod@gmail.com");
-        cliente1.setEmail("sebastianagudelom");
-        cliente2.setEmail("hulberta@uqvirtual.edu.co");
-        cliente.setTelefono("3054194624");
-        cliente1.setTelefono("30234533");
-        cliente2.setTelefono("305324124");
-        cliente.setDireccionResidencia("Calle 9N");
-        cliente1.setDireccionResidencia("Calle 10N");
-        cliente2.setDireccionResidencia("Calle 9N");
-        cliente.setUsuario("123");
-        cliente1.setUsuario("1234");
-        cliente2.setUsuario("12345");
-        cliente.setContrasena("123");
-        cliente1.setContrasena("1234");
-        cliente2.setContrasena("12345");
-        clientes.add(cliente);
-        clientes.add(cliente1);
-        clientes.add(cliente2);
-
+        leerClientes();
+        leerAlquileres();
+        leerVehiculos();
+        /**
         Vehiculos vehiculo = new Vehiculos();
         Vehiculos vehiculo1 = new Vehiculos();
         Vehiculos vehiculo2 = new Vehiculos();
         vehiculo.setPlaca("FQK884");
         vehiculo1.setPlaca("KMP282");
-        vehiculo2.setPlaca("FQK884");
+        vehiculo2.setPlaca("FQK898");
         vehiculo.setMarca("CHEVROLET");
         vehiculo1.setMarca("RENAULT");
         vehiculo2.setMarca("CHEVROLET");
@@ -113,19 +88,19 @@ public class Metodo {
         vehiculo1.setAutomatico("SI");
         vehiculo2.setAutomatico("SI");
         vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");
-        vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");
-        vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
-        vehiculos.add(vehiculo);
-        vehiculos.add(vehiculo1);
-        vehiculos.add(vehiculo2);
-
+        //vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");
+        //vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
+        //vehiculos.add(vehiculo);
+        //vehiculos.add(vehiculo1);
+        //vehiculos.add(vehiculo2);
+        *///
         try {
             escribirArchivoFormatterClientes("src/main/resources/clientesRegistrados.txt", clientes);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         try {
-            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.txt", vehiculos);
+            escribirArchivoFormatterVehiculos();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -135,14 +110,75 @@ public class Metodo {
             throw new RuntimeException(e);
         }
     }
-
-    public static HashSet<Vehiculos> listarVehiculosAlquilados(LocalDate fechaInicio, LocalDate fechaFinal) {
-        HashSet<Vehiculos> vehiculosRegistrados = new HashSet<>();
+    private static void leerVehiculos() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/Permanencia/vehiculo.ser"))) {
+            Vehiculos vehiculo = (Vehiculos) in.readObject();
+            System.out.println("Objeto Vehiculo deserializado desde vehiculo.ser");
+            // Trabajar con el objeto deserializado
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void leerClientes() {
+        try{
+            ArrayList<String> lineas = leerArchivoScanner("src/main/resources/clientesRegistrados.txt");
+            for(String linea : lineas){
+                String[] valores = linea.split(";");
+                clientes.add( Cliente.builder()
+                        .cedula(valores[0])
+                        .nombre(valores[1])
+                        .telefono(valores[2])
+                        .email(valores[3])
+                        .ciudad(valores[4])
+                        .direccionResidencia(valores[5])
+                        .usuario(valores[6])
+                        .contrasena(valores[7])
+                        .build());
+            }
+        }catch (IOException e){
+            LOGGER.severe(e.getMessage());
+        }
+    }
+    private static void leerAlquileres(){
+        try{
+            ArrayList<String> lineas = leerArchivoScanner("src/main/resources/vehiculosAlquilados.txt");
+            for(String linea : lineas){
+                String[] valores = linea.split(";");
+                registros.add( Registros.builder()
+                        .cliente(Cliente.builder()
+                                .cedula(valores[0])
+                                .nombre(valores[1])
+                                .telefono(valores[2])
+                                .email(valores[3])
+                                .ciudad(valores[4])
+                                .direccionResidencia(valores[5])
+                                .usuario(valores[6])
+                                .contrasena(valores[7])
+                                .build())
+                        .vehiculo(Vehiculos.builder()
+                                .placa(valores[8])
+                                .nombre(valores[9])
+                                .marca(valores[10])
+                                .modelo(valores[11])
+                                .foto(valores[12])
+                                .kilometraje(valores[13])
+                                .numeroSillas(valores[14])
+                                .automatico(valores[15])
+                                .build())
+                        .fechaInicio(LocalDate.parse(valores[16]))
+                        .fechafin(LocalDate.parse(valores[17])).build());
+            }
+        }catch (IOException e){
+            LOGGER.severe(e.getMessage());
+        }
+    }
+    public static HashSet<Registros> listarVehiculosAlquilados(LocalDate fechaInicio, LocalDate fechaFinal) {
+        HashSet<Registros> vehiculosRegistrados = new HashSet<>();
         for (int i = 0; i < registros.size(); i++)
         {
             if (registros.get(i).getFechaInicio().isAfter(fechaInicio) || registros.get(i).getFechaInicio().isEqual(fechaInicio) && registros.get(i).getFechafin().isBefore(fechaFinal) || registros.get(i).getFechafin().isEqual(fechaFinal))
                 {
-                    vehiculosRegistrados.add(registros.get(i).getVehiculo());
+                    vehiculosRegistrados.add(registros.get(i));
                 }
         }
         return vehiculosRegistrados;
@@ -243,7 +279,6 @@ public class Metodo {
     }
     public static void crearVehiculo (String  placa, String marca, String nombre, String modelo, String km, String alquiler, String sillas, String automatico, String foto)
     {
-
         Vehiculos vehiculo = new Vehiculos();
         vehiculo.setPlaca(placa.toUpperCase());
         vehiculo.setMarca(marca.toUpperCase());
@@ -256,7 +291,7 @@ public class Metodo {
         vehiculo.setFoto(foto);
         vehiculos.add(vehiculo);
         try {
-            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.txt", vehiculos);
+            escribirArchivoFormatterVehiculos();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -270,6 +305,10 @@ public class Metodo {
         sillas.setItems(numeros);
     }
     public static void llenarVehiculos (ComboBox<Vehiculos> vehiculos, ObservableList<Vehiculos> vh)
+    {
+        vehiculos.setItems(vh);
+    }
+    public static void llenarVehiculosRegistros (ComboBox<Registros> vehiculos, ObservableList<Registros> vh)
     {
         vehiculos.setItems(vh);
     }
@@ -300,9 +339,8 @@ public class Metodo {
     {
         return clienteSesion;
     }
-    public static void
-    cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem,LocalDate fechaInicio, LocalDate fechaFinal) {
-        Registros registro = new Registros();
+    public static void cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem,LocalDate fechaInicio, LocalDate fechaFinal,String msg,String msg1,String msg2,String msg3,String msg4,String msg5,String msg6) {
+        Registros registro = null;
         Vehiculos vehiculo = new Vehiculos();
         registro.setCliente(clienteSistema);
         registro.setVehiculo(selectedItem);
@@ -324,8 +362,8 @@ public class Metodo {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String msg = "Factura de prestacion de servicios y contratacion\n\n" + clienteSistema.getFactura() + "\n" +"Vehiculo Seleccionado  " + selectedItem.toString() + "\n" + "Valor alquiler Diario " + vehiculo.getPrecioAlquilerDia() + "\nCantidad de dias Reservados  " + dias + "\nFecha Inicio " + fechaInicio + "\nFecha Final " + fechaFinal + "\nValor Total: " + vehiculo.getValorTotal();
-        JOptionPane.showMessageDialog(null, msg, "Factura Prestacion de Servicios", 1);
+        String mss = msg + "\n\n" + clienteSistema.getFactura() + "\n" +msg1 +"  " + selectedItem.toString() + "\n" + msg2+ "  " + vehiculo.getPrecioAlquilerDia() + "\n" + msg3 +" " + dias + "\n" + msg4 + " " + fechaInicio + "\n" + msg5 + " " + fechaFinal + "\n" + msg6 + " " + vehiculo.getValorTotal();
+        JOptionPane.showMessageDialog(null, mss, msg, 1);
     }
     public static void cargarFactura(Cliente clienteSistema,LocalDate fechaInicio, LocalDate fechaFinal, float valor) {
         Facturas factura = new Facturas();
@@ -410,18 +448,13 @@ public class Metodo {
         }
         ft.close();
     }
-    public static void escribirArchivoFormatterVehiculos(String ruta, ArrayList<Vehiculos> vehiculo) throws IOException{
-        vehiculo.stream().toList();
-        Formatter ft = new Formatter(ruta);
-        for(Vehiculos s : vehiculo){
-            ft.format(s.getPlaca()+";"+s.getNombre()+";"+s.getMarca()+";"+s.getModelo()+";"+s.getFoto()+";"+s.getKilometraje()+";"+s.getNumeroSillas()+";"+s.getAutomatico()+";");
-            for (int i = 0; i<s.getFechasAlquiladas().size();i++)
-            {
-                ft.format(s.getFechasAlquiladas().get(i) +",");
-            }
-            ft.format(";"+s.getValorTotal()+";"+s.getContPrestamos()+";"+"%n");
+    public static void escribirArchivoFormatterVehiculos() throws IOException{
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vehiculo.ser"))) {
+            out.writeObject(vehiculos);
+            System.out.println("Objeto Vehiculo serializado y guardado en vehiculo.ser");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        ft.close();
     }
     public static void escribirArchivoFormatterAlquiler(String ruta, ArrayList<Registros> cliente) throws IOException{
         cliente.stream().toList();
@@ -503,5 +536,18 @@ public class Metodo {
         Object objeto = decoder.readObject();
         decoder.close();
         return objeto;
+    }
+
+    public static boolean verificarPlaca(String text) {
+        boolean state = true;
+        for (Vehiculos c : vehiculos )
+        {
+            if (c.getPlaca().equals(text))
+            {
+                state = false;
+                LOGGER.log(Level.WARNING, "Se intento registrar un vehiculo ya registrado");
+            }
+        }
+        return state;
     }
 }

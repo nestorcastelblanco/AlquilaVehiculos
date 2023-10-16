@@ -10,6 +10,7 @@ import java.util.ArrayList;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Cliente implements Serializable {
     private String  cedula, nombre, telefono, email, ciudad,direccionResidencia, usuario, contrasena;
     private ArrayList<Vehiculos> vehiculoAdquirido = new ArrayList<Vehiculos>();

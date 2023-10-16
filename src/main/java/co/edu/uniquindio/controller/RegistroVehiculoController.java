@@ -80,7 +80,7 @@ public class RegistroVehiculoController implements Initializable, CambioIdiomaLi
         Object evt =  e.getSource();
         if (evt.equals(botonRegistro))
         {
-            if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && automatico.getSelectionModel().getSelectedIndex() != -1 && sillas.getSelectionModel().getSelectedIndex() != -1 ) {
+            if (!nombre.getText().isEmpty() && !placa.getText().isEmpty() && (Metodo.verificarPlaca(placa.getText()) == true) && !km.getText().isEmpty() && !foto.getText().isEmpty() && !precio.getText().isEmpty() && (Integer.parseInt(precio.getText()) >= 0) && !marca.getText().isEmpty() && !modelo.getText().isEmpty() && (automatico.getSelectionModel().getSelectedIndex() != -1) && (sillas.getSelectionModel().getSelectedIndex() != -1)) {
                 Metodo.crearVehiculo(placa.getText(),marca.getText(),nombre.getText(),modelo.getText(),km.getText(),String.valueOf(precio.getText()),sillas.getSelectionModel().getSelectedItem().toString(),automatico.getSelectionModel().getSelectedItem().toString(),foto.getText());
                 placa.setText("");marca.setText("");nombre.setText("");modelo.setText("");km.setText("");precio.setText("");foto.setText("");
                 LOGGER.log(Level.INFO, "Se registro un vehiculo correctamente");

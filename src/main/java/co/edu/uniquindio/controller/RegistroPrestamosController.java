@@ -2,6 +2,7 @@ package co.edu.uniquindio.controller;
 
 import co.edu.uniquindio.model.Metodo;
 import co.edu.uniquindio.model.Propiedades;
+import co.edu.uniquindio.model.Registros;
 import co.edu.uniquindio.model.Vehiculos;
 import co.edu.uniquindio.utils.CambioIdiomaEvent;
 import co.edu.uniquindio.utils.CambioIdiomaListener;
@@ -37,12 +38,13 @@ public class RegistroPrestamosController implements Initializable, CambioIdiomaL
         @FXML
         private ImageView imagenVehiculo;
         @FXML
-        private ComboBox<Vehiculos> vehiculos;
+        private ComboBox<Registros> vehiculos;
         @FXML
         private TextField diaInicio, mesInicio, anioInicio, diaFin, mesFin, anioFin;
         private LocalDate inicio, fin;
-        ObservableList<Vehiculos> listaVehiculos;
-        HashSet<Vehiculos> arrayVehiculos = new HashSet<>();
+        ObservableList<Registros> listaVehiculos;
+        private boolean state = false;
+        HashSet<Registros> arrayVehiculos = new HashSet<>();
     private static final Propiedades propiedades = Propiedades.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,7 +79,7 @@ public class RegistroPrestamosController implements Initializable, CambioIdiomaL
                 metodo.loadStage("/paginaPrincipalAdmin.fxml", e, "Se ingresa a la pagina de administrador");
             }
         }
-        public void llenarListaVehiculos(HashSet<Vehiculos> array) {
+        public void llenarListaVehiculos(HashSet<Registros> array) {
             for (int i = 0; i < array.size(); i++) {
                 array.stream().toList();
                 listaVehiculos = FXCollections.observableArrayList(array);
@@ -93,7 +95,8 @@ public class RegistroPrestamosController implements Initializable, CambioIdiomaL
                     fin = Metodo.verificarCampos(diaFin.getText(), mesFin.getText(), anioFin.getText());
                     arrayVehiculos = Metodo.listarVehiculosAlquilados(inicio, fin);
                     llenarListaVehiculos(arrayVehiculos);
-                    Metodo.llenarVehiculos(vehiculos, listaVehiculos);
+                    Metodo.llenarVehiculosRegistros(vehiculos, listaVehiculos);
+                    state = true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Datos de fechas erroneos", "Validacion Rechazada", 1);
                     LOGGER.log(Level.INFO, "Se intentaron cargar fechas erroneas");
@@ -104,28 +107,34 @@ public class RegistroPrestamosController implements Initializable, CambioIdiomaL
         Object evt = actionEvent.getSource();
         if (evt.equals(botonCargar))
         {
-            if (vehiculos.getSelectionModel().getSelectedIndex() != -1)
+            if(state)
             {
-                indiceCombo = vehiculos.getSelectionModel().getSelectedIndex();
-                Vehiculos vehiculoSeleccionado = vehiculos.getSelectionModel().getSelectedItem();
-                System.out.print(vehiculoSeleccionado.toString());
-                nombre.setText(vehiculoSeleccionado.getNombre());
-                modelo.setText(vehiculoSeleccionado.getModelo());
-                placa.setText(vehiculoSeleccionado.getPlaca());
-                marca.setText(vehiculoSeleccionado.getMarca());
-                kilometraje.setText(vehiculoSeleccionado.getKilometraje());
-                alquilerDia.setText(String.valueOf(vehiculoSeleccionado.getPrecioAlquilerDia()));
-                sillas.setText(vehiculoSeleccionado.getNumeroSillas());
-                automatico.setText(vehiculoSeleccionado.getAutomatico());
-                txtImagen.setText(vehiculoSeleccionado.toString());
-                nombreCliente.setText(vehiculoSeleccionado.getCliente().getNombre());
-                identificacion.setText(vehiculoSeleccionado.getCliente().getCedula());
-                Image imagen = new Image(vehiculoSeleccionado.getFoto());
-                imagenVehiculo.setImage(imagen);
-                LOGGER.log(Level.INFO, "Se cargaron las propiedades de los vehiculos para mostrarlos");
-            } else {
-                LOGGER.log(Level.INFO, "Se intentaron cargar atributos sin selccionar vehiculo");
+                if (vehiculos.getSelectionModel().getSelectedIndex() != -1)
+                {
+                    indiceCombo = vehiculos.getSelectionModel().getSelectedIndex();
+                    Registros vehiculoSeleccionado = vehiculos.getSelectionModel().getSelectedItem();
+                    System.out.print(vehiculoSeleccionado.toString());
+                    nombre.setText(vehiculoSeleccionado.getVehiculo().getNombre());
+                    modelo.setText(vehiculoSeleccionado.getVehiculo().getModelo());
+                    placa.setText(vehiculoSeleccionado.getVehiculo().getPlaca());
+                    marca.setText(vehiculoSeleccionado.getVehiculo().getMarca());
+                    kilometraje.setText(vehiculoSeleccionado.getVehiculo().getKilometraje());
+                    alquilerDia.setText(String.valueOf(vehiculoSeleccionado.getVehiculo().getPrecioAlquilerDia()));
+                    sillas.setText(vehiculoSeleccionado.getVehiculo().getNumeroSillas());
+                    automatico.setText(vehiculoSeleccionado.getVehiculo().getAutomatico());
+                    txtImagen.setText(vehiculoSeleccionado.toString());
+                    nombreCliente.setText(vehiculoSeleccionado.getCliente().getNombre());
+                    identificacion.setText(vehiculoSeleccionado.getCliente().getCedula());
+                    Image imagen = new Image(vehiculoSeleccionado.getVehiculo().getFoto());
+                    imagenVehiculo.setImage(imagen);
+                    LOGGER.log(Level.INFO, "Se cargaron las propiedades de los vehiculos para mostrarlos");
+                } else {
+                    LOGGER.log(Level.INFO, "Se intentaron cargar atributos sin selccionar vehiculo");
+                }
+            }else{
+                LOGGER.log(Level.INFO,"Se intento ingresar al apartado sin tener fechas verificadas");
             }
+
         }
     }
 }
