@@ -1,5 +1,4 @@
 package co.edu.uniquindio.utils;
-
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedReader;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
-
 /**
  * Clase de utilidad para la lectura y escritura de archivos
  * @author caflorezvi

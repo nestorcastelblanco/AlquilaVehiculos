@@ -2,4 +2,5 @@
 11046972;Sebastian Agudelo;30234533;sebastianagudelom;Armenia;Calle 10N;1234;1234;FQK898;SPARK GT;CHEVROLET;2020;C:\Users\nesto\Programacion III\AlquilaVehiculos\src\main\resources\imagenes\imagenesVehiculos\spark.png;45000;5;SI;2023-10-02;2023-10-10
 110412306;Hulbert Ferney;305324124;hulberta@uqvirtual.edu.co;Armenia;Calle 9N;12345;12345;KMP289;RANGER;FORD;2023;ASD;0;2;NO;2023-10-02;2023-10-10
 1104697206;Nestor Castelblanco;3054194624;nestorf.castelblancod@gmail.com;Armenia;Calle 9N;123;123;654;654;654;654;654;654;2;NO;2023-10-02;2023-10-10
-11046972;Sebastian Agudelo;30234533;sebastianagudelom;Armenia;Calle 10N;1234;1234;NFC290;CAMARO;CHEVROLET;2023;ASDC;5200;1;NO;2023-10-02;2023-10-10
+1104697206;Nestor Castelblanco;3054194624;nestorf.castelblancod@gmail.com;Armenia;Calle 9N;123;123;KMP282;SANDERO;RENAULT ;2019;"C:\Users\nesto\Programacion III\AlquilaVehiculos\src\main\resources\imagenes\imagenesVehiculos\sandero.png";15000;5;SI;2023-10-02;2023-10-10
+1104697206;Nestor Castelblanco;3054194624;nestorf.castelblancod@gmail.com;Armenia;Calle 9N;123;123;FQK884;TRACKER;CHEVROLET;2019;C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png;45000;5;SI;2023-10-02;2023-10-10

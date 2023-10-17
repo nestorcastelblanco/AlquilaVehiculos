@@ -6,6 +6,7 @@ import co.edu.uniquindio.model.Metodo;
 import co.edu.uniquindio.model.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class IngresoController {
+public class IngresoController implements Initializable {
     private final Metodo metodo = Metodo.getInstance();
     private boolean esIngles = false;
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
@@ -74,7 +75,10 @@ public class IngresoController {
         contrasena.setPromptText(propiedades.getResourceBundle().getString("textoTxtCn"));
 
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+    }
 }
 
 

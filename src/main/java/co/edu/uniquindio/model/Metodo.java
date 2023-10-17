@@ -39,9 +39,12 @@ public class Metodo {
     public static ArrayList<Registros> registros = new ArrayList<>();
     public static ArrayList<Facturas> facturas = new ArrayList<>();
     public static Cliente clienteSesion = new Cliente();
+    public static String RUTA_CLIENTES = "src/main/resources/clientesRegistrados.txt";
+    public static String RUTA_VEHICULOS = "src/main/resources/vehiculos.ser";
+    public static String RUTA_ALQUILERES = "src/main/resources/vehiculosAlquilados.txt";
+    public static String RUTA_FACTURAS = "src/main/resources/facturas.txt";
     private static final Logger LOGGER = Logger.getLogger(IngresoController.class.getName());
     private static Metodo metodo;
-
     private Metodo() {
         try {
             LOGGER.addHandler((new FileHandler("logs.xml", true)));
@@ -49,14 +52,12 @@ public class Metodo {
             throw new RuntimeException(ex);
         }
     }
-
     public static Metodo getInstance() {
         if (metodo == null) {
             metodo = new Metodo();
         }
         return metodo;
     }
-
     public static void cargarDatos() {
         leerClientes();
         leerAlquileres();
@@ -64,39 +65,17 @@ public class Metodo {
         leerFacturas();
         mostrarArrays();
         /**
-        Vehiculos vehiculo = new Vehiculos();
-        Vehiculos vehiculo1 = new Vehiculos();
-        Vehiculos vehiculo2 = new Vehiculos();
-        vehiculo.setPlaca("FQK884");
-        vehiculo1.setPlaca("KMP282");
-        vehiculo2.setPlaca("FQK898");
-        vehiculo.setMarca("CHEVROLET");
-        vehiculo1.setMarca("RENAULT");
-        vehiculo2.setMarca("CHEVROLET");
-        vehiculo.setNombre("TRACKER");
-        vehiculo1.setNombre("SANDERO");
-        vehiculo2.setNombre("SPARK GT");
-        vehiculo.setModelo("2019");
-        vehiculo1.setModelo("2019");
-        vehiculo2.setModelo("2020");
-        vehiculo.setKilometraje("45000");
-        vehiculo1.setKilometraje("45000");
-        vehiculo2.setKilometraje("45000");
-        vehiculo.setPrecioAlquilerDia(115000);
-        vehiculo1.setPrecioAlquilerDia(120000);
-        vehiculo2.setPrecioAlquilerDia(120000);
-        vehiculo.setNumeroSillas("5");
-        vehiculo1.setNumeroSillas("5");
-        vehiculo2.setNumeroSillas("5");
-        vehiculo.setAutomatico("SI");
-        vehiculo1.setAutomatico("SI");
-        vehiculo2.setAutomatico("SI");
-        vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");
-        //vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");
-        //vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
-        //vehiculos.add(vehiculo);
-        //vehiculos.add(vehiculo1);
-        //vehiculos.add(vehiculo2);
+        Vehiculos vehiculo = new Vehiculos();        Vehiculos vehiculo1 = new Vehiculos();        Vehiculos vehiculo2 = new Vehiculos();
+        vehiculo.setPlaca("FQK884");        vehiculo1.setPlaca("KMP282");        vehiculo2.setPlaca("FQK898");
+        vehiculo.setMarca("CHEVROLET");        vehiculo1.setMarca("RENAULT");        vehiculo2.setMarca("CHEVROLET");
+        vehiculo.setNombre("TRACKER");        vehiculo1.setNombre("SANDERO");        vehiculo2.setNombre("SPARK GT");
+        vehiculo.setModelo("2019");        vehiculo1.setModelo("2019");        vehiculo2.setModelo("2020");
+        vehiculo.setKilometraje("45000");        vehiculo1.setKilometraje("45000");        vehiculo2.setKilometraje("45000");
+        vehiculo.setPrecioAlquilerDia(115000);        vehiculo1.setPrecioAlquilerDia(120000);        vehiculo2.setPrecioAlquilerDia(120000);
+        vehiculo.setNumeroSillas("5");        vehiculo1.setNumeroSillas("5");        vehiculo2.setNumeroSillas("5");
+        vehiculo.setAutomatico("SI");        vehiculo1.setAutomatico("SI");        vehiculo2.setAutomatico("SI");
+        vehiculo.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\tracker.png");        //vehiculo1.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\sandero.png");        //vehiculo2.setFoto("C:\\Users\\nesto\\Programacion III\\AlquilaVehiculos\\src\\main\\resources\\imagenes\\imagenesVehiculos\\spark.png");
+        //vehiculos.add(vehiculo);        //vehiculos.add(vehiculo1);        //vehiculos.add(vehiculo2);
         *///
         try {
             escribirArchivoFormatterClientes("src/main/resources/clientesRegistrados.txt", clientes);
@@ -138,14 +117,22 @@ public class Metodo {
         }
     }
     private static void leerVehiculos() {
-        ArrayList<Vehiculos> vehiculo = new ArrayList<>();
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/vehiculos.ser"))) {
-            vehiculo = (ArrayList<Vehiculos>) in.readObject();
+        System.out.println("-- 1 --");
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(RUTA_VEHICULOS))) {
+            System.out.println("-- 2 --");
+            ArrayList<Vehiculos> vehiculo = (ArrayList<Vehiculos>) entrada.readObject();
             System.out.println("Vehículos deserializados correctamente.");
+            // Iterar y trabajar con los objetos Vehiculo deserializados
+            for (Vehiculos vehicul : vehiculo) {
+                vehiculos.add(vehicul);
+                System.out.println("Marca: " + vehicul.getMarca() + ", Nombre: " + vehicul.getNombre());
+                // Trabajar con las fechas del vehículo si es necesario
+                ArrayList<ArrayList<LocalDate>> fechas = vehicul.getFechasAlquiladas();
+                // Haz lo que quieras con las fechas...
+            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        vehiculos = vehiculo;
     }
     private static void leerClientes() {
         try{
@@ -354,7 +341,7 @@ public class Metodo {
         vehiculo.setFoto(foto);
         vehiculos.add(vehiculo);
         try {
-            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.ser", vehiculos);
+            escribirArchivoFormatterVehiculos(RUTA_VEHICULOS, vehiculos);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -453,6 +440,8 @@ public class Metodo {
             {
                 vehiculos.get(i).setContPrestamos(+1);
                 vehiculos.get(i).getFechasAlquiladas().add(fechas);
+                System.out.println(vehiculos.get(i).getFechasAlquiladas().toString());
+
             }
         }
         escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.ser",vehiculos);
@@ -503,8 +492,8 @@ public class Metodo {
         ft.close();
     }
     public static void escribirArchivoFormatterVehiculos(String ruta, ArrayList<Vehiculos> vehiculos) throws IOException{
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/main/resources/vehiculos.ser"))) {
-            out.writeObject(vehiculos);
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta))) {
+            salida.writeObject(vehiculos);
             System.out.println("Vehículos serializados correctamente.");
         } catch (IOException e) {
             e.printStackTrace();

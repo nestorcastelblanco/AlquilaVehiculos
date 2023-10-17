@@ -109,6 +109,10 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
         if (evt.equals(botonBuscar)) {
             if(Metodo.verificarCampos(diaInicio.getText(),mesInicio.getText(),anioInicio.getText()) != null && Metodo.verificarCampos(diaFin.getText(),mesFin.getText(),anioFin.getText()) != null)
             {
+                if (vehiculos.getItems() != null)
+                {
+                    vehiculos.getItems().clear();
+                }
                 inicio = Metodo.verificarCampos(diaInicio.getText(),mesInicio.getText(),anioInicio.getText());
                 fin = Metodo.verificarCampos(diaFin.getText(),mesFin.getText(),anioFin.getText());
                 if (inicio.isBefore(fin))
