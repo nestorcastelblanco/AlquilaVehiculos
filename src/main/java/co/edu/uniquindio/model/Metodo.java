@@ -21,6 +21,8 @@ import javax.swing.*;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -61,7 +63,6 @@ public class Metodo {
         leerVehiculos();
         leerFacturas();
         mostrarArrays();
-
         /**
         Vehiculos vehiculo = new Vehiculos();
         Vehiculos vehiculo1 = new Vehiculos();
@@ -103,7 +104,7 @@ public class Metodo {
             throw new RuntimeException(e);
         }
         try {
-            escribirArchivoFormatterVehiculos();
+            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.ser",vehiculos);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -130,16 +131,21 @@ public class Metodo {
         {
             System.out.println(vehiculos.get(i).toString());
         }
+        System.out.println("Facturas: ");
+        for (int i = 0; i<facturas.size() ;i++)
+        {
+            System.out.println(facturas.get(i).toString());
+        }
     }
-
     private static void leerVehiculos() {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/Permanencia/vehiculo.ser"))) {
-            Vehiculos vehiculo = (Vehiculos) in.readObject();
-            System.out.println("Objeto Vehiculo deserializado desde vehiculo.ser");
-            // Trabajar con el objeto deserializado
+        ArrayList<Vehiculos> vehiculo = new ArrayList<>();
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/vehiculos.ser"))) {
+            vehiculo = (ArrayList<Vehiculos>) in.readObject();
+            System.out.println("Vehículos deserializados correctamente.");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        vehiculos = vehiculo;
     }
     private static void leerClientes() {
         try{
@@ -166,24 +172,34 @@ public class Metodo {
             ArrayList<String> lineas = leerArchivoScanner("src/main/resources/facturas.txt");
             for(String linea : lineas){
                 String[] valores = linea.split(";");
-                facturas.add((Facturas) Facturas.builder()
+                facturas.add(Facturas.builder()
                         .cliente(Cliente.builder()
-                                .cedula(valores[0])
-                                .nombre(valores[1])
-                                .telefono(valores[2])
-                                .email(valores[3])
-                                .ciudad(valores[4])
-                                .direccionResidencia(valores[5])
-                                .usuario(valores[6])
-                                .contrasena(valores[7])
-                                .build())
+                        .cedula(valores[0])
+                        .nombre(valores[1])
+                        .telefono(valores[2])
+                        .email(valores[3])
+                        .ciudad(valores[4])
+                        .direccionResidencia(valores[5])
+                        .usuario(valores[6])
+                        .contrasena(valores[7])
+                        .build())
                         .fechaInicio(LocalDate.parse(valores[8]))
                         .fechaFin(LocalDate.parse(valores[9]))
-                        .valorTotal(Float.parseFloat(valores[10])).build());
+                        .valorTotal(Float.parseFloat(valores[10]))
+                        .build());
             }
         }catch (IOException e){
             LOGGER.severe(e.getMessage());
         }
+    }
+    public static void escribirArchivoFormatterFacturas(String ruta, ArrayList<Facturas> facturas) throws IOException{
+        facturas.stream().toList();
+        Formatter ft = new Formatter(ruta);
+        for(int i = 0 ; i<facturas.size() ; i++)
+        {
+            ft.format(facturas.get(i).getCliente().getCedula()+";" +facturas.get(i).getCliente().getNombre()+";"+facturas.get(i).getCliente().getTelefono()+";"+ facturas.get(i).getCliente().getEmail()+";"+facturas.get(i).getCliente().getCiudad()+";"+facturas.get(i).getCliente().getDireccionResidencia()+";"+facturas.get(i).getCliente().getUsuario()+";"+facturas.get(i).getCliente().getContrasena()+";"+ facturas.get(i).getFechaInicio()+";"+facturas.get(i).getFechaFin()+";"+facturas.get(i).getValorTotal()+"%n");
+        }
+        ft.close();
     }
     private static void leerAlquileres(){
         try{
@@ -233,6 +249,7 @@ public class Metodo {
     public static float adquirirUtilidades(LocalDate fechaInicio, LocalDate fechaFinal) {
         float contadorUtilidades = 0;
         for (int i = 0; i < facturas.size(); i++) {
+
             if (facturas.get(i).getFechaInicio().isAfter(fechaInicio) || facturas.get(i).getFechaInicio().isEqual(fechaInicio)
                     && facturas.get(i).getFechaFin().isBefore(fechaFinal) || facturas.get(i).getFechaFin().isEqual(fechaFinal)) {
                 contadorUtilidades += facturas.get(i).getValorTotal();
@@ -337,7 +354,7 @@ public class Metodo {
         vehiculo.setFoto(foto);
         vehiculos.add(vehiculo);
         try {
-            escribirArchivoFormatterVehiculos();
+            escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.ser", vehiculos);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -386,11 +403,6 @@ public class Metodo {
         return clienteSesion;
     }
     public static void cargarRegistro(Cliente clienteSistema, Vehiculos selectedItem,LocalDate fechaInicio, LocalDate fechaFinal,String msg,String msg1,String msg2,String msg3,String msg4,String msg5,String msg6) {
-        Registros registro = Registros.builder()
-                .cliente(clienteSistema)
-                .vehiculo(selectedItem)
-                .fechaInicio(fechaInicio)
-                .fechafin(fechaFinal).build();
         Vehiculos vehiculo = new Vehiculos();
         vehiculo = selectedItem;
         long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
@@ -398,6 +410,11 @@ public class Metodo {
         vehiculo.setFechaInicio(fechaInicio);
         vehiculo.setFechaFin(fechaFinal);
         clienteSistema.setVehiculoAdquirido(selectedItem);
+        Registros registro = Registros.builder()
+                .cliente(clienteSistema)
+                .vehiculo(selectedItem)
+                .fechaInicio(fechaInicio)
+                .fechafin(fechaFinal).build();
         registros.add(registro);
         ArrayList<LocalDate> arrayFechas = new ArrayList<>();
         arrayFechas.add(fechaInicio);
@@ -412,12 +429,13 @@ public class Metodo {
         JOptionPane.showMessageDialog(null, mss, msg, 1);
     }
     public static void cargarFactura(Cliente clienteSistema,LocalDate fechaInicio, LocalDate fechaFinal, float valor) throws IOException {
-        Facturas factura = new Facturas();
         long dias = fechaInicio.until(fechaFinal, ChronoUnit.DAYS);
-        factura.setValorTotal((float) dias * valor);
-        factura.setFechaInicio(fechaInicio);
-        factura.setFechaFin(fechaFinal);
-        factura.setCliente(clienteSistema);
+        Facturas factura = Facturas.builder()
+                .cliente(clienteSistema)
+                .fechaFin(fechaFinal)
+                .fechaInicio(fechaInicio)
+                .valorTotal((float) dias * valor)
+                .build();
         facturas.add(factura);
         escribirArchivoFormatterFacturas("src/main/resources/facturas.txt",facturas);
     }
@@ -425,14 +443,19 @@ public class Metodo {
     {
         System.out.println(registros);
     }
-    public static void buscarVehiculo(Vehiculos item) {
+    public static void buscarVehiculo(Vehiculos item,LocalDate inicio, LocalDate fin) throws IOException {
+        ArrayList<LocalDate> fechas = new ArrayList<>();
+        fechas.add(inicio);
+        fechas.add(fin);
         for(int i = 0; i<vehiculos.size();i++ )
         {
             if ( vehiculos.get(i).equals(item))
             {
                 vehiculos.get(i).setContPrestamos(+1);
+                vehiculos.get(i).getFechasAlquiladas().add(fechas);
             }
         }
+        escribirArchivoFormatterVehiculos("src/main/resources/vehiculos.ser",vehiculos);
     }
     public static Vehiculos buscarVehiculoAlquiler() {
         Vehiculos vehiculo = new Vehiculos();
@@ -471,22 +494,6 @@ public class Metodo {
      * @return Lista de String por cada línea del archivo
      * @throws IOException
      */
-    public static ArrayList<String> leerArchivoBufferedReader(String ruta) throws IOException{
-
-        ArrayList<String> lista = new ArrayList<>();
-        FileReader fr = new FileReader(ruta);
-        BufferedReader br = new BufferedReader(fr);
-        String linea;
-
-        while( ( linea = br.readLine() )!=null ) {
-            lista.add(linea);
-        }
-
-        br.close();
-        fr.close();
-
-        return lista;
-    }
     public static void escribirArchivoFormatterClientes(String ruta, ArrayList<Cliente> cliente) throws IOException{
         cliente.stream().toList();
         Formatter ft = new Formatter(ruta);
@@ -495,10 +502,10 @@ public class Metodo {
         }
         ft.close();
     }
-    public static void escribirArchivoFormatterVehiculos() throws IOException{
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vehiculo.ser"))) {
+    public static void escribirArchivoFormatterVehiculos(String ruta, ArrayList<Vehiculos> vehiculos) throws IOException{
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/main/resources/vehiculos.ser"))) {
             out.writeObject(vehiculos);
-            System.out.println("Objeto Vehiculo serializado y guardado en vehiculo.ser");
+            System.out.println("Vehículos serializados correctamente.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -512,88 +519,6 @@ public class Metodo {
         }
         ft.close();
     }
-    public static void escribirArchivoFormatterFacturas(String ruta, ArrayList<Facturas> facturas) throws IOException{
-        facturas.stream().toList();
-        Formatter ft = new Formatter(ruta);
-        for(int i = 0 ; i<facturas.size() ; i++)
-        {
-            ft.format(facturas.get(i).getCliente().getCedula()+";" +facturas.get(i).getCliente().getNombre()+";"+facturas.get(i).getCliente().getTelefono()+";"+ facturas.get(i).getCliente().getEmail()+";"+facturas.get(i).getCliente().getCiudad()+";"+facturas.get(i).getCliente().getDireccionResidencia()+";"+facturas.get(i).getCliente().getUsuario()+";"+facturas.get(i).getCliente().getContrasena()+";"+ facturas.get(i).getFechaInicio()+";"+facturas.get(i).getFechaFin()+";"+facturas.get(i).getValorTotal()+"%n");
-        }
-        ft.close();
-    }
-
-    /**
-     * Escribe datos en un archivo de texto
-     * @param ruta ruta Ruta donde se va a crear el archivo
-     * @param lista Información a guardar en el archivo
-     * @param concat True si se concatena los nuevos datos sin sobreescibir todo el archivo
-     * @throws IOException
-     */
-    public static void escribirArchivoBufferedWriter(String ruta, ArrayList<String> lista, boolean concat) throws IOException{
-
-        FileWriter fw = new FileWriter(ruta, concat);
-        BufferedWriter bw = new BufferedWriter(fw);
-
-        for (String string : lista) {
-            bw.write(string);
-            bw.newLine();
-        }
-
-        bw.close();
-        fw.close();
-    }
-
-    /**
-     * Serializa un objeto en disco
-     * @param ruta Ruta del archivo donde se va a serializar el objeto
-     * @param objeto Objeto a serializar
-     * @throws IOException
-     */
-    public static void serializarObjeto(String ruta, Object objeto, boolean concat) throws IOException{
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(ruta, concat));
-        os.writeObject(objeto);
-        os.close();
-    }
-
-    /**
-     * Deserializa un objeto que está guardado en disco
-     * @param ruta Ruta del archivo a deserializar
-     * @return Objeto deserializado
-     * @throws ClassNotFoundException
-     * @throws IOException
-     */
-    public static Object deserializarObjeto(String ruta) throws IOException, ClassNotFoundException {
-        ObjectInputStream is = new ObjectInputStream(new FileInputStream(ruta));
-        Object objeto = is.readObject();
-        is.close();
-        return objeto;
-    }
-
-    /**
-     * Serializa un objeto en un archivo en formato XML
-     * @param ruta Ruta del archivo donde se va a serializar el objeto
-     * @param objeto Objeto a serializar
-     * @throws FileNotFoundException
-     */
-    public static void serializarObjetoXML(String ruta, Object objeto) throws FileNotFoundException {
-        XMLEncoder encoder = new XMLEncoder(new FileOutputStream(ruta));
-        encoder.writeObject(objeto);
-        encoder.close();
-    }
-
-    /**
-     * Deserializa un objeto desde un archivo XML
-     * @param ruta Ruta del archivo a deserializar
-     * @return Objeto deserializado
-     * @throws IOException
-     */
-    public static Object deserializarObjetoXML(String ruta) throws IOException{
-        XMLDecoder decoder = new XMLDecoder(new FileInputStream(ruta));
-        Object objeto = decoder.readObject();
-        decoder.close();
-        return objeto;
-    }
-
     public static boolean verificarPlaca(String text) {
         boolean state = true;
         for (Vehiculos c : vehiculos )
@@ -605,5 +530,19 @@ public class Metodo {
             }
         }
         return state;
+    }
+    public static boolean isImageValid(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("HEAD");
+            int responseCode = connection.getResponseCode();
+
+            // Si el código de respuesta es 200, la imagen es válida
+            return responseCode == HttpURLConnection.HTTP_OK;
+        } catch (Exception e) {
+            // Si hay alguna excepción, la URL de la imagen no es válida
+            return false;
+        }
     }
 }

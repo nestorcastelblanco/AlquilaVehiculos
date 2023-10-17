@@ -147,9 +147,15 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
                     alquilerDia.setText(String.valueOf(vehiculoSeleccionado.getPrecioAlquilerDia()));
                     sillas.setText(vehiculoSeleccionado.getNumeroSillas());
                     automatico.setText(vehiculoSeleccionado.getAutomatico());
-                    txtImagen.setText(vehiculoSeleccionado.toString());
-                    Image imagen = new Image(vehiculoSeleccionado.getFoto());
-                    imagenVehiculo.setImage(imagen);
+                    if (Metodo.isImageValid(vehiculoSeleccionado.getFoto()))
+                    {
+                        txtImagen.setText(vehiculoSeleccionado.toString());
+                        Image imagen = new Image(vehiculoSeleccionado.getFoto());
+                        imagenVehiculo.setImage(imagen);
+                        LOGGER.log(Level.INFO, "Se añadio una imagen valida");
+                    }else {
+                        LOGGER.log(Level.INFO,"Se intento añadir una imagen no valida");
+                    }
                     LOGGER.log(Level.INFO, "Se cargaron las propiedades de los vehiculos para mostrarlos");
                 } else {
                     LOGGER.log(Level.INFO, "Se intentaron cargar atributos sin selccionar vehiculo");
@@ -173,7 +179,7 @@ public class SeleccionVehiculoController implements Initializable, CambioIdiomaL
                     mesFin.setText("");
                     anioInicio.setText("");
                     anioFin.setText("");
-                    Metodo.buscarVehiculo(vehiculos.getSelectionModel().getSelectedItem());
+                    Metodo.buscarVehiculo(vehiculos.getSelectionModel().getSelectedItem(),inicio,fin);
                     Metodo.cargarRegistro(clienteSistema,vehiculos.getSelectionModel().getSelectedItem(), inicio,fin,msg,msg1,msg2,msg3,msg4,msg5,msg6);
                     Metodo.cargarFactura(clienteSistema,inicio,fin,vehiculos.getSelectionModel().getSelectedItem().getPrecioAlquilerDia());
                     Metodo.imprimirRegistros();
